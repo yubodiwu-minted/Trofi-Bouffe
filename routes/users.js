@@ -12,10 +12,17 @@ router.get("/", function(req, res, next) {
 router.post("/", function(req, res) {
     console.log("users post / route is hit");
 
-    bcrypt.hash(req.body.password, 12).then((hashedPassword) => {
-        return hashedPassword;
+    checkDBForUser(req.body.username, req.body.email)
+    .then((data) => {
+        if (data.length === 0) {
+            return hashPassword(req.body.password, 12);
+        } else {
+            res.end("user already exists");
+        }
     })
     .then((hashedPassword) => {
+        if (!hashedPassword) return;
+
         return knex("users").insert({
             first_name: req.body.firstName,
             last_name: req.body.lastName,
@@ -28,8 +35,25 @@ router.post("/", function(req, res) {
         console.log(data);
     })
     .catch((error) => {
-        console.log(error);
+        console.error(error);
     });
 });
+
+function checkDBForUser(username, email) {
+    return knex("users")
+        .select("id")
+        .where("username", username)
+        .orWhere("email", email)
+        .then((data) => {
+            return data
+        });
+}
+
+function hashPassword(passwordForHash, salt) {
+    return bcrypt.hash(passwordForHash, salt)
+        .then((hashedPassword) => {
+            return hashedPassword;
+        });
+}
 
 module.exports = router;
