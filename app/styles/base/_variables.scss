@@ -1,0 +1,31 @@
+// Colors
+$grey: #333333;
+$header-bg: #074E68;
+$button-blue: #3B5998;
+$button-green: #87D37C;
+
+// nav-bar
+$subnav-link-padding: 0.9rem;
+$subnav-font-size: 0.75rem;
+$subnav-link-opacity: 0.15;
+$header-height: 2.5rem;
+$transition: all .35s ease-in-out;
+
+// entrance page
+$container-height: 25rem;
+$button-width: 7rem;
+$button-padding: 0.5rem;
+
+// Default medium-gray color
+$medium-gray: #cacaca;
+// Default global padding
+$global-padding: 1rem;
+// Global value used for all elements that have a border radius.
+$global-radius: 3px;
+
+// Setting the form border color
+$form-border-color: $medium-gray;
+// Setting the form padding
+$form-padding: $global-padding;
+// Setting the form border radius
+$form-radius: $global-radius;

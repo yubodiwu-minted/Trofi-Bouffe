@@ -1,0 +1,28 @@
+.form-container {
+    top: $header-height;
+    height: $container-height;
+    margin-top: $header-height;
+    margin-bottom: $header-height;
+    border-radius: $global-radius * 5;
+}
+
+.form-container > div {
+    margin-bottom: $header-height;
+
+    button {
+        width: 18rem;
+        border-radius: $global-radius * 5;
+    }
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+}
+
+.log-in-form {
+    background: white;
+    border: 1px solid $form-border-color;
+    padding: $form-padding;
+    border-radius: $form-radius;
+}
