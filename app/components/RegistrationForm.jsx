@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from "axios";
 // import {Fieldset, Field, createValue} from "react-forms";
 // import JoiForm from "react-joi-forms";
 
@@ -11,8 +12,23 @@ export default class RegistrationForm extends Component {
 
     onFormSubmit(event) {
         event.preventDefault();
-        console.log("submitted");
-        console.log(this.refs.firstName.value);
+
+        if (this.refs.password.value === this.refs.confirmPassword.value) {
+            axios.post("/users", {
+                firstName: this.refs.firstName.value,
+                lastName: this.refs.lastName.value,
+                email: this.refs.email.value,
+                username: this.refs.username.value,
+                password: this.refs.password.value
+            })
+            .then((response) => {
+                console.log("post was made from client-side");
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+        }
     }
 
     // TODO
