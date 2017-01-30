@@ -1,0 +1,42 @@
+.entrance-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: $header-height;
+    height: $container-height;
+
+    .entrance-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        width: $button-width * 3;
+        background: white;
+        border: 2px solid $grey;
+        border-radius: 3rem;
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            button {
+                margin: 0.5rem;
+                width: $button-width;
+                padding: $button-padding;
+                border-radius: 2rem;
+                color: white;
+                font-size: large;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+#sign-in {
+    background-color: $button-blue;
+}
+
+#sign-up {
+    background-color: $button-green;
+}
