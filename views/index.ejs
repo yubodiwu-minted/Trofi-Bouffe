@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="TrofiBouffe">
 
 <head>
     <meta charset="UTF-8" />
-    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <!-- <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" > -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4-rc2/foundation.min.css">
+    <link rel="stylesheet" href="./stylesheets/main.css">
 </head>
 
 <body>
-    <div id="app"></div>
-    <script src="./bundle.js"></script>
+    <div id="app" ng-controller="AppControl">
+        <% include ./Header %>
+        <div ng-show="currentPath === ''">
+            <% include ./Landing %>
+        </div>
+        <div ng-show="currentPath === 'users/new'">
+            new users path
+            adsklfjkasldfa
+            sdf
+            qw
+            gqw
+            g
+            rg
+            r
+            gwqr
+            gklerhgewjthjklewlkjhqjklwrjklhqw
+        </div>
+    </div>
+    <!-- <script src="./bundle.js"></script> -->
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./javascripts/main.js"></script>
 </body>
 
 </html>

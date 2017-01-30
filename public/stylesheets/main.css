@@ -1,0 +1,77 @@
+.header {
+  text-align: center;
+  background: #074E68;
+  background-size: cover;
+  position: relative;
+  overflow: visible;
+  padding-top: 0.625rem;
+  padding-bottom: 5.8rem; }
+  .header .headline {
+    color: #ffe;
+    max-height: 0.83333rem; }
+
+.header-subnav {
+  float: none;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  bottom: 0;
+  width: 100%; }
+  .header-subnav li {
+    float: none;
+    display: inline-block; }
+    .header-subnav li a {
+      padding: 0.9rem 1rem;
+      font-size: 0.75rem;
+      color: #ffe;
+      text-transform: uppercase;
+      display: block;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.35s ease-in-out; }
+      .header-subnav li a.is-active {
+        background: rgba(250, 250, 250, 0.15); }
+      .header-subnav li a:hover {
+        background: rgba(250, 250, 250, 0.15);
+        transition: all 0.35s ease-in-out; }
+
+body {
+  background-image: url("/images/main-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%; }
+
+.entrance-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 2.5rem;
+  height: 25rem; }
+  .entrance-container .entrance-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    width: 21rem;
+    background: white;
+    border: 2px solid #333333;
+    border-radius: 3rem; }
+    .entrance-container .entrance-div .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .entrance-container .entrance-div .button-container button {
+        margin: 0.5rem;
+        width: 7rem;
+        padding: 0.5rem;
+        border-radius: 2rem;
+        color: white;
+        font-size: large;
+        font-weight: 500; }
+
+#sign-in {
+  background-color: #3B5998; }
+
+#sign-up {
+  background-color: #87D37C; }
+
+/*# sourceMappingURL=main.css.map */
