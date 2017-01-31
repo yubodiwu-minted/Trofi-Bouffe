@@ -37,7 +37,7 @@ ReactDOM.render(
         <Router history={hashHistory}>
             <Route path="/" component={Main}>
                 <IndexRoute component={Landing}></IndexRoute>
-                <Route path="new-user" component={RegistrationForm}></Route>
+                <Route path="user/new" component={RegistrationForm}></Route>
                 <Route path="login" component={LoginForm}></Route>
             </Route>
         </Router>
