@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const knex = require("../knex");
-const bcrypt = require("bcrypt-as-promised")
+const bcrypt = require("bcrypt-as-promised");
 
-/* GET users listing. */
 router.get("/", function(req, res, next) {
     console.log("users get / route is hit");
     res.render("../views/index.ejs")
@@ -51,10 +50,6 @@ router.post("/login", function(req, res) {
     })
     .then((data) => {
         if (data.loggedIn) {
-            // console.log("cookie generated");
-            // res.cookie('session', 5);
-            // console.log("after cookie generated");
-            console.log(data.userId);
             res.json({
                 id: data.userId,
                 authenticated: true
