@@ -51,9 +51,6 @@ router.post("/login", function(req, res) {
     })
     .then((data) => {
         if (data.loggedIn) {
-            // console.log("cookie generated");
-            // res.cookie('session', 5);
-            // console.log("after cookie generated");
             console.log(data.userId);
             res.json({
                 id: data.userId,
