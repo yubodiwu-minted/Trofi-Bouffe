@@ -12,7 +12,7 @@ router.get("/", function(req, res, next) {
 router.post("/", function(req, res) {
     console.log("users post / route is hit");
 
-    checkDBForUser(req.body.username, req.body.email)
+    getPasswordForUser(req.body.username, req.body.email)
     .then((data) => {
         if (data.length === 0) {
             return hashPassword(req.body.password, 12);
@@ -32,16 +32,43 @@ router.post("/", function(req, res) {
         });
     })
     .then((data) => {
-        console.log(data);
+        res.send(data);
     })
     .catch((error) => {
         console.error(error);
     });
 });
 
-function checkDBForUser(username, email) {
+router.post("/login", function(req, res) {
+    console.log("users log in route hit");
+
+    getPasswordForUser("", req.body.email)
+    .then((user) => {
+        return {
+            loggedIn: bcrypt.compare(req.body.password, user[0].hashed_password),
+            userId: user[0].id
+        };
+    })
+    .then((data) => {
+        if (data.loggedIn) {
+            // console.log("cookie generated");
+            // res.cookie('session', 5);
+            // console.log("after cookie generated");
+            console.log(data.userId);
+            res.json({
+                id: data.userId,
+                authenticated: true
+            });
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+});
+
+function getPasswordForUser(username, email) {
     return knex("users")
-        .select("id")
+        .select("hashed_password", "id")
         .where("username", username)
         .orWhere("email", email)
         .then((data) => {

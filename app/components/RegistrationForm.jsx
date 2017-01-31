@@ -73,7 +73,6 @@ export default class RegistrationForm extends Component {
                             </p>
                         </div>
                     </form>
-
                 </div>
             </div>
         );
