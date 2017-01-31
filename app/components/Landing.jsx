@@ -12,7 +12,7 @@ export default() => {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/new-user">
+                        <Link to="/user/new">
                             <button id="sign-up">Sign Up</button>
                         </Link>
                     </div>
