@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router";
 
 export default() => {
     return (
@@ -6,10 +7,14 @@ export default() => {
             <div className="entrance-div">
                 <div className="button-container">
                     <div>
-                        <button id="sign-in">Sign In</button>
+                        <Link to="/login">
+                            <button id="sign-in">Sign In</button>
+                        </Link>
                     </div>
                     <div>
-                        <button id="sign-up">Sign Up</button>
+                        <Link to="/new-user">
+                            <button id="sign-up">Sign Up</button>
+                        </Link>
                     </div>
                 </div>
             </div>

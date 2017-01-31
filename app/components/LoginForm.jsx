@@ -10,15 +10,15 @@ export default class LoginForm extends Component {
 
     onFormSubmit(event) {
         event.preventDefault();
-        console.log("attempted axios");
 
         axios.post("/users/login", {
             email: this.refs.email.value,
             password: this.refs.password.value
         })
         .then((response) => {
-            console.log("logged in from client side");
-            console.log(response);
+            if (response.data.authenticated) {
+                localStorage.setItem("id_token", response.data.id);
+            }
         })
         .catch((error) => {
             console.log(error);

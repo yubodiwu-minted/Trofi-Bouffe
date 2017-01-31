@@ -11,10 +11,10 @@ export default(props) => {
                     <a href="#">Browse Recipes</a>
                 </li>
                 <li>
-                    <a href="#">Sign Up</a>
+                    <a href="#/new-user">Sign Up</a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://zurb.com/responsive">Log in</a>
+                    <a href="#/login">Log in</a>
                 </li>
             </ul>
         </header>
