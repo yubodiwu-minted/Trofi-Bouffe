@@ -17,6 +17,14 @@ store.subscribe(() => {
     console.log("New state:", state);
 });
 
+var actions = require("actions");
+var store = require("configureStore").configure();
+
+store.subscribe(() => {
+    var state = store.getState();
+    console.log("New state:", state);
+});
+
 // Load foundation
 // require("style!css!foundation-sites/dist/css/foundation.min.css");
 $(document).foundation();
