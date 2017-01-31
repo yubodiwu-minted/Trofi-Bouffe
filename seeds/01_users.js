@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
                 last_name: "Bettilyon",
                 email: "teb311@gmail.com",
                 username: "teb311",
-                hashed_password: "needtohash"
+                hashed_password: "$2a$12$SSrZvsR.0Ki6pZp8Jhtlq.e9/kuT.T1H8Xc1ePTquNy.qKxEXNKPS"
             }),
             knex("users").insert({
                 id: 2,
@@ -17,7 +17,7 @@ exports.seed = function(knex, Promise) {
                 last_name: "Lewis",
                 email: "parker@gmail.com",
                 username: "parker",
-                hashed_password: "needtohash"
+                hashed_password: "$2a$12$SSrZvsR.0Ki6pZp8Jhtlq.e9/kuT.T1H8Xc1ePTquNy.qKxEXNKPS"
             }),
             knex("users").insert({
                 id: 3,
@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
                 last_name: "Murray",
                 email: "robertmurray@gmail.com",
                 username: "robertmurray",
-                hashed_password: "needtohash"
+                hashed_password: "$2a$12$SSrZvsR.0Ki6pZp8Jhtlq.e9/kuT.T1H8Xc1ePTquNy.qKxEXNKPS"
             }),
             knex("users").insert({
                 id: 4,
@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
                 last_name: "Aghdaee",
                 email: "hamid.aghdaee@gmail.com",
                 username: "hamid.aghdaee",
-                hashed_password: "needtohash"
+                hashed_password: "$2a$12$SSrZvsR.0Ki6pZp8Jhtlq.e9/kuT.T1H8Xc1ePTquNy.qKxEXNKPS"
             })
         ]);
     }).then(() => {

@@ -6,6 +6,7 @@ import {Route, Router, IndexRoute, hashHistory} from "react-router";
 import Main from "Main";
 import Landing from "Landing";
 import RegistrationForm from "RegistrationForm";
+import LoginForm from "LoginForm";
 
 // Load foundation
 $(document).foundation();
@@ -17,7 +18,8 @@ ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
             <IndexRoute component={Landing}></IndexRoute>
-            <Route path="users/new" component={RegistrationForm}></Route>
+            <Route path="new-user" component={RegistrationForm}></Route>
+            <Route path="login" component={LoginForm}></Route>
         </Route>
     </Router>,
     document.getElementById('app')
