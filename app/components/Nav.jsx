@@ -11,7 +11,7 @@ export default(props) => {
                     <a href="#">Browse Recipes</a>
                 </li>
                 <li>
-                    <a href="#/new-user">Sign Up</a>
+                    <a href="#/user/new">Sign Up</a>
                 </li>
                 <li>
                     <a href="#/login">Log in</a>

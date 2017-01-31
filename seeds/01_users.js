@@ -34,6 +34,14 @@ exports.seed = function(knex, Promise) {
                 email: "hamid.aghdaee@gmail.com",
                 username: "hamid.aghdaee",
                 hashed_password: "$2a$12$SSrZvsR.0Ki6pZp8Jhtlq.e9/kuT.T1H8Xc1ePTquNy.qKxEXNKPS"
+            }),
+            knex("users").insert({
+                id: 5,
+                first_name: "Yubo",
+                last_name: "Diwu",
+                email: "yubo.diwu@gmail.com",
+                username: "yubodiwu",
+                hashed_password: "$2a$12$SSrZvsR.0Ki6pZp8Jhtlq.e9/kuT.T1H8Xc1ePTquNy.qKxEXNKPS"
             })
         ]);
     }).then(() => {
