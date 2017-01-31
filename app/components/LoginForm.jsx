@@ -23,9 +23,8 @@ class LoginForm extends Component {
         })
         .then((response) => {
             console.log("attempted login");
-            console.log(response.data.id);
             if (response.data.authenticated) {
-                dispatch(actions.login(response.data.id));
+                localStorage.setItem("jwt", response.data.jwt);
             }
         })
         .catch((error) => {

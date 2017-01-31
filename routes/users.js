@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../knex");
 const bcrypt = require("bcrypt-as-promised");
+const generateToken = require("./generateToken.js");
+const APP_SECRET = "SUPERSECRETAPPSECRET";
 
 router.get("/", function(req, res, next) {
     console.log("users get / route is hit");
@@ -11,7 +13,7 @@ router.get("/", function(req, res, next) {
 router.post("/", function(req, res) {
     console.log("users post / route is hit");
 
-    getPasswordForUser(req.body.username, req.body.email)
+    getUser(req.body.username, req.body.email)
         .then((data) => {
             if (data.length === 0) {
                 return hashPassword(req.body.password, 12);
@@ -22,16 +24,19 @@ router.post("/", function(req, res) {
         .then((hashedPassword) => {
             if (!hashedPassword) return;
 
-            return knex("users").insert({
+            knex("users").insert({
                 first_name: req.body.firstName,
                 last_name: req.body.lastName,
                 email: req.body.email,
                 username: req.body.username,
                 hashed_password: hashedPassword
-            });
-        })
-        .then((data) => {
-            res.send(data);
+            })
+                .then(() => {
+                    res.json(authenticateAndJWT({
+                        username: req.body.username,
+                        email: req.body.email
+                    }));
+                });
         })
         .catch((error) => {
             console.error(error);
@@ -41,29 +46,29 @@ router.post("/", function(req, res) {
 router.post("/login", function(req, res) {
     console.log("users log in route hit");
 
-    getPasswordForUser("", req.body.email)
+    getUser("", req.body.email)
         .then((user) => {
-            return {
-                loggedIn: bcrypt.compare(req.body.password, user[0].hashed_password),
-                userId: user[0].id
-            };
-        })
-        .then((data) => {
-            if (data.loggedIn) {
-                res.json({
-                    id: data.userId,
-                    authenticated: true
+            return bcrypt.compare(req.body.password, user[0].hashed_password)
+                .then(() => {
+                    return user[0]
+                })
+                .catch(() => {
+                    return undefined;
                 });
-            }
+        })
+        .then((user) => {
+            console.log(user);
+            var authentication = authenticateAndJWT(user);
+            res.json(authentication);
         })
         .catch((error) => {
             console.log(error);
         })
 });
 
-function getPasswordForUser(username, email) {
+function getUser(username, email) {
     return knex("users")
-        .select("hashed_password", "id")
+        .select("*")
         .where("username", username)
         .orWhere("email", email)
         .then((data) => {
@@ -76,6 +81,22 @@ function hashPassword(passwordForHash, salt) {
         .then((hashedPassword) => {
             return hashedPassword;
         });
+}
+
+function authenticateAndJWT(user) {
+    if (user !== undefined) {
+        var token = generateToken({
+            username: user.username,
+            email: user.email,
+        }, APP_SECRET);
+
+        return {
+            jwt: token,
+            authenticated: true
+        };
+    } else {
+        return {authenticated: false};
+    }
 }
 
 module.exports = router;
