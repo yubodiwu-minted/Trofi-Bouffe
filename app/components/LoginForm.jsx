@@ -1,7 +1,10 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 import axios from "axios";
 
-export default class LoginForm extends Component {
+var actions = require("actions");
+
+class LoginForm extends Component {
     constructor(props) {
         super(props);
 
@@ -9,15 +12,20 @@ export default class LoginForm extends Component {
     }
 
     onFormSubmit(event) {
+        var {dispatch} = this.props;
         event.preventDefault();
+
+        console.log("form submitted");
 
         axios.post("/users/login", {
             email: this.refs.email.value,
             password: this.refs.password.value
         })
         .then((response) => {
+            console.log("attempted login");
+            console.log(response.data.id);
             if (response.data.authenticated) {
-                localStorage.setItem("id_token", response.data.id);
+                dispatch(actions.login(response.data.id));
             }
         })
         .catch((error) => {
@@ -54,3 +62,5 @@ export default class LoginForm extends Component {
         );
     }
 }
+
+export default connect()(LoginForm);
