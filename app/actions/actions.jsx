@@ -5,9 +5,9 @@ export var login = (user_id) => {
     };
 }
 
-export var getRecipeList = (recipeList) => {
+export var getRecipesList = (recipesList) => {
     return {
-        type: "GET_RECIPE_LIST",
-        payload: recipeList
+        type: "GET_RECIPES_LIST",
+        payload: recipesList
     };
 };
