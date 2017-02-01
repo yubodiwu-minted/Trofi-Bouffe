@@ -22,7 +22,8 @@ exports.up = function(knex, Promise) {
             table.increments("id").primary();
             table.string("upc").defaultTo(null);
             table.string("plu").defaultTo(null);
-            table.string("name").notNullable();
+            table.string("product_name").notNullable();
+            table.string("name");
             table.integer("calories").defaultTo(null);
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
@@ -30,7 +31,7 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable("recipe_ingredients", (table) => {
             table.integer("recipe_id").notNullable().references("id").inTable("recipes").onDelete("cascade");
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
-            table.integer("amount").notNullable().defaultTo(0);
+            table.integer("quantity").notNullable().defaultTo(0);
             table.string("units").notNullable().defaultTo("g");
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
