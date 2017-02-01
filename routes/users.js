@@ -2,8 +2,12 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../knex");
 const bcrypt = require("bcrypt-as-promised");
-const generateToken = require("./generateToken.js");
-const APP_SECRET = "SUPERSECRETAPPSECRET";
+const {
+    generateToken,
+    getUser,
+    hashPassword,
+    authenticateAndJWT
+} = require("./users_helpers.js");
 
 router.get("/", function(req, res, next) {
     console.log("users get / route is hit");
@@ -18,7 +22,7 @@ router.post("/", function(req, res) {
             return hashPassword(req.body.password, 12);
         } else {
             console.log("user already exists");
-            res.json("user already exists");
+            res.end("user already exists");
         }
     }).then((hashedPassword) => {
         if (!hashedPassword)
@@ -61,34 +65,5 @@ router.post("/login", function(req, res) {
         console.log(error);
     })
 });
-
-function getUser(username, email) {
-    return knex("users")
-        .select("*")
-        .where("username", username)
-        .orWhere("email", email).then((data) => {
-            return data
-        });
-}
-
-function hashPassword(passwordForHash, salt) {
-    return bcrypt.hash(passwordForHash, salt).then((hashedPassword) => {
-        return hashedPassword;
-    });
-}
-
-function authenticateAndJWT(user) {
-    if (user !== undefined) {
-        var token = generateToken({
-            id: user.id,
-            username: user.username,
-            email: user.email
-        }, APP_SECRET);
-
-        return {jwt: token, authenticated: true};
-    } else {
-        return {authenticated: false};
-    }
-}
 
 module.exports = router;

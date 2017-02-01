@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
+import {connect} from "react-redux";
 
-export default class UserRecipesList extends Component {
+class UserRecipesList extends Component {
     constructor(props) {
         super(props);
     }
@@ -26,3 +27,5 @@ export default class UserRecipesList extends Component {
         );
     }
 }
+
+export default connect()

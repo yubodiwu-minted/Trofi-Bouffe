@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const knex = require("../knex");
-const JWT = require("jsonwebtoken")
+const JWT = require("jsonwebtoken");
 const APP_SECRET = "SUPERSECRETAPPSECRET";
 
 router.get("/", (req, res) => {
@@ -13,8 +13,15 @@ router.get("/", (req, res) => {
         console.error(err);
     }
 
-    if (verified) {
-        knex("recipes")
+    if (user) {
+        knex("recipes").select("*")
+            .where("user_id", user.id).then((recipes) => {
+                console.log("does this happen?");
+                console.log(recipes);
+                res.json(recipes)
+            })
+    } else {
+        res.error("failed")
     }
 });
 
