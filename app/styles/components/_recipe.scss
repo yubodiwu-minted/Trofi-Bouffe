@@ -1,0 +1,27 @@
+.recipe {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 10rem;
+    padding: $global-padding * 2;
+    margin: $global-padding;
+    border-radius: 1.5rem;
+    background: $light-grey-border;
+
+    img {
+        margin-right: 1rem;
+        border-radius: 50%;
+        height: 5rem;
+        width: 5rem;
+    }
+}
+
+.recipe-info {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
