@@ -4,18 +4,17 @@ import axios from "axios";
 class UserRecipe extends Component {
     constructor(props) {
         super(props);
+
+        this.getIngredients = this.getIngredients.bind(this);
     }
 
     async getIngredients() {
-        var ingredients = await axios.get("/ingredients?id=" + this.props.id);
+        var ingredients = await axios.get(`/ingredients/${this.props.id}`);
     }
 
     render() {
         return (
-            <div className="recipe" onClick={() => {
-                console.log("div was clicked");
-                console.log(this.props.id);
-            }}>
+            <div className="recipe" onClick={this.getIngredients}>
                 <img src={this.props.img} alt=""/>
                 <div className="recipe-info">
                     <h3>
