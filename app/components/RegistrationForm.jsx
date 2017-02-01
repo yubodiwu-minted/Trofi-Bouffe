@@ -20,12 +20,14 @@ export default class RegistrationForm extends Component {
                 email: this.refs.email.value,
                 username: this.refs.username.value,
                 password: this.refs.password.value
-            })
-            .then((response) => {
-                console.log("post was made from client-side");
-                console.log(response);
-            })
-            .catch((error) => {
+            }).then((response) => {
+                if (response.data !== "user already exists") {
+                    console.log(response);
+                    localStorage.setItem("jwt", response.data.jwt);
+
+                    window.location.hash = "user/recipes";
+                }
+            }).catch((error) => {
                 console.error(error);
             })
         }
@@ -61,16 +63,11 @@ export default class RegistrationForm extends Component {
                             <label>Confirm Password
                                 <input type="text" ref="confirmPassword" placeholder="Password"/>
                             </label>
-                            <input id="show-password" type="checkbox"/>
-                            <label htmlFor="show-password">Show password</label>
                             <div className="button-holder">
                                 <button>
                                     <a type="submit" className="button expanded">Sign Up</a>
                                 </button>
                             </div>
-                            <p className="text-center">
-                                <a href="#">Forgot your password?</a>
-                            </p>
                         </div>
                     </form>
                 </div>

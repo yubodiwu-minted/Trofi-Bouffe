@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 
 export default() => {
+    if (localStorage.getItem("jwt")) {
+        window.location.hash = "/user/recipes"
+    }
+
     return (
         <div className="entrance-container">
             <div className="entrance-div">

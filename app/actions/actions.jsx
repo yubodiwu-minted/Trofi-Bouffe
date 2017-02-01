@@ -4,3 +4,10 @@ export var login = (user_id) => {
         payload: user_id
     };
 }
+
+export var getRecipesList = (recipesList) => {
+    return {
+        type: "GET_RECIPES_LIST",
+        payload: recipesList
+    };
+};
