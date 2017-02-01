@@ -46,5 +46,7 @@ exports.seed = function(knex, Promise) {
                 img: "http://www.seriouseats.com/recipes/assets_c/2016/08/20160827-cherry-tomato-pasta-13-thumb-1500xauto-433876.jpg"
             })
         ]);
+    }).then(() => {
+        return knex.raw("SELECT setval('recipes_id_seq', (SELECT MAX(id) FROM recipes));");
     });
 };

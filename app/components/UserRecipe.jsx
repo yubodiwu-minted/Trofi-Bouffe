@@ -1,21 +1,36 @@
 import React, {Component} from "react";
+import axios from "axios";
 
-export default (props) => {
-    console.log(props.img);
-    return (
-        <div className="recipe">
-            <img src={props.img} alt=""/>
-            <div className="recipe-info">
-                <h3>
-                    {props.name}
-                </h3>
-                <p>
-                    Calories: 500
-                </p>
-                <p>
-                    Servings: 4
-                </p>
+class UserRecipe extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    async getIngredients() {
+        var ingredients = await axios.get("/ingredients?id=" + this.props.id);
+    }
+
+    render() {
+        return (
+            <div className="recipe" onClick={() => {
+                console.log("div was clicked");
+                console.log(this.props.id);
+            }}>
+                <img src={this.props.img} alt=""/>
+                <div className="recipe-info">
+                    <h3>
+                        {this.props.name}
+                    </h3>
+                    <p>
+                        Calories: 500
+                    </p>
+                    <p>
+                        Servings: 4
+                    </p>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
+
+export default UserRecipe;
