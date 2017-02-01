@@ -63,16 +63,11 @@ export default class RegistrationForm extends Component {
                             <label>Confirm Password
                                 <input type="text" ref="confirmPassword" placeholder="Password"/>
                             </label>
-                            <input id="show-password" type="checkbox"/>
-                            <label htmlFor="show-password">Show password</label>
                             <div className="button-holder">
                                 <button>
                                     <a type="submit" className="button expanded">Sign Up</a>
                                 </button>
                             </div>
-                            <p className="text-center">
-                                <a href="#">Forgot your password?</a>
-                            </p>
                         </div>
                     </form>
                 </div>
