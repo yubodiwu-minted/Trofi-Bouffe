@@ -1,0 +1,32 @@
+.recipes-container {
+    display: flex;
+    justify-content: center;
+
+    .recipes-list {
+        box-shadow: $div-shadow;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        padding: $global-padding * 3;
+        background: white;
+        height: 55rem;
+        margin-top: $global-padding;
+        margin-bottom: $global-padding;
+        border-radius: 2rem;
+    }
+}
+
+#new-recipe-button {
+    height: 4rem;
+    background: $button-green;
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 3rem;
+    padding-bottom: 0.5rem;
+
+    span {
+        font-size: 2.8rem;
+    }
+}

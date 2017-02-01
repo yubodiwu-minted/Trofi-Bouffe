@@ -39,6 +39,7 @@ ReactDOM.render(
                 <IndexRoute component={Landing}></IndexRoute>
                 <Route path="user/new" component={RegistrationForm}></Route>
                 <Route path="login" component={LoginForm}></Route>
+                <Route path="user/recipes" component={UserRecipesList}></Route>
             </Route>
         </Router>
     </Provider>,
