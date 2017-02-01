@@ -313,7 +313,7 @@ exports.seed = function(knex, Promise) {
                     id: 62,
                     upc: "492122603878",
                     plu: null,
-                    product_name: "Guerrero White Corn Tortillas 6" (18 Ct.)"
+                    product_name: "Guerrero White Corn Tortillas 6\" (18 Ct.)"
                 }, {
                     id: 63,
                     upc: "492122607401",

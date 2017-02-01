@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
-    return knex("ingredients").del().then(function() {
-        return knex("recipe_ingredients").insert([
+    return knex("ingredients").then(function() {
+        return knex("ingredients").insert([
             {
                 id: 98,
                 upc: "782645787019",
@@ -28,5 +28,7 @@ exports.seed = function(knex, Promise) {
                 name: "pecorino romano cheese"
             }
         ]);
+    }).then(() => {
+        return knex.raw("SELECT setval('ingredients_id_seq', (SELECT MAX(id) FROM ingredients));");
     });
 };
