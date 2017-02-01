@@ -20,12 +20,14 @@ export default class RegistrationForm extends Component {
                 email: this.refs.email.value,
                 username: this.refs.username.value,
                 password: this.refs.password.value
-            })
-            .then((response) => {
-                console.log("post was made from client-side");
-                console.log(response);
-            })
-            .catch((error) => {
+            }).then((response) => {
+                if (response.data !== "user already exists") {
+                    console.log(response);
+                    localStorage.setItem("jwt", response.data.jwt);
+
+                    window.location.hash = "user/recipes";
+                }
+            }).catch((error) => {
                 console.error(error);
             })
         }

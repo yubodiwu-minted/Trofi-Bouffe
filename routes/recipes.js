@@ -8,14 +8,14 @@ router.get("/", (req, res) => {
     console.log("recipes index route hit");
 
     try {
-        var verified = JWT.verify(req.query.jwt, APP_SECRET);
+        var user = JWT.verify(req.query.jwt, APP_SECRET);
     } catch(err) {
-        console.log("does this happen?");
         console.error(err);
     }
 
-    console.log("verified", verified);
-    res.end();
+    if (verified) {
+        knex("recipes")
+    }
 });
 
 module.exports = router;
