@@ -20,8 +20,10 @@ exports.up = function(knex, Promise) {
         }),
         knex.schema.createTable("ingredients", (table) => {
             table.increments("id").primary();
+            table.string("upc").defaultTo(null);
+            table.string("plu").defaultTo(null);
             table.string("name").notNullable();
-            table.integer("calories").notNullable();
+            table.integer("calories").defaultTo(null);
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
         }),
