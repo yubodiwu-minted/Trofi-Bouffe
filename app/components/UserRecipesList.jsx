@@ -6,6 +6,13 @@ export default class UserRecipesList extends Component {
         super(props);
     }
 
+    async getRecipes() {
+        console.log("get recipes success");
+        var jwt = localStorage.getItem("jwt");
+        var recipes = await axios("/recipes?jwt=" + jwt);
+        console.log(recipes);
+    }
+
     render() {
         return (
             <div className="recipes-container row">
@@ -13,7 +20,7 @@ export default class UserRecipesList extends Component {
                     <div className="recipes-holder">
                         THIS IS WHERE ALL OF THE RECIPES WILL GO
                     </div>
-                    <button id="new-recipe-button" className="columns medium-7 large-6 small-centered"><span>+</span> RECIPE</button>
+                    <button onClick={this.getRecipes} id="new-recipe-button" className="columns medium-7 large-6 small-centered"><span>+</span> RECIPE</button>
                 </div>
             </div>
         );
