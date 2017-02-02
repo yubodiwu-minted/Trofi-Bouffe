@@ -29,7 +29,7 @@ var currentRecipeReducer = (state = null, action) => {
         default:
             return state;
     }
-}
+};
 
 var ingredientsListReducer = (state = [], action) => {
     Object.freeze(state);
@@ -40,11 +40,23 @@ var ingredientsListReducer = (state = [], action) => {
         default:
             return state;
     }
+};
+
+var stepsListReducer = (state = [], action) => {
+    Object.freeze(state);
+
+    switch (action.type) {
+        case "GET_RECIPE_STEPS":
+            return action.payload;
+        default:
+            return state;
+    }
 }
 
 module.exports = {
     loginReducer,
     recipesReducer,
     ingredientsListReducer,
-    currentRecipeReducer
+    currentRecipeReducer,
+    stepsListReducer
 };

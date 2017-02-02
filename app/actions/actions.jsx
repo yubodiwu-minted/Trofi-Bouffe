@@ -25,3 +25,10 @@ export var getCurrentRecipe = (recipe) => {
         payload: recipe
     };
 };
+
+export var getRecipeSteps = (stepsList) => {
+    return {
+        type: "GET_RECIPE_STEPS",
+        payload: stepsList
+    };
+};
