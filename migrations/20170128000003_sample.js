@@ -31,7 +31,7 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable("recipe_ingredients", (table) => {
             table.integer("recipe_id").notNullable().references("id").inTable("recipes").onDelete("cascade");
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
-            table.integer("quantity");
+            table.float("quantity");
             table.string("units");
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
