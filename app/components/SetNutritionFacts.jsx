@@ -13,4 +13,8 @@ const SetNutritionFacts = (props) => {
     );
 }
 
-export default connect()(SetNutritionFacts);
+export default connect((state) => {
+    return {
+        ingredientsList: state.ingredientsList
+    };
+})(SetNutritionFacts);

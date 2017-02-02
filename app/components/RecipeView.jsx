@@ -8,7 +8,7 @@ import SetNutritionFacts from "SetNutritionFacts";
 const APPID = "57583012";
 const APPKEY = "680b07dfde35ff433dadae06d1571c4c";
 
-const testUrl = `https://api.nutritionix.com/v1_1/search/pecorino%20romano?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=${APPID}&appKey=${APPKEY}`
+const testUrl = `https://api.nutritionix.com/v1_1/search/pecorino%20romano?results=0:20&fields=item_name,brand_name,item_id,nf_calories,nf_serving_size_qty,nf_serving_size_unit&appId=${APPID}&appKey=${APPKEY}`
 
 console.log(testUrl);
 
@@ -36,7 +36,8 @@ var renderDirections = (props) => {
     });
 };
 
-var setNutritionFacts = () => {
+var setNutritionFacts = async () => {
+    // console.log(await axios.get(testUrl));
     window.location.hash = "/recipe/set_facts";
 }
 
