@@ -17,6 +17,12 @@ class UserRecipe extends Component {
             var response = await axios.get(`/ingredients/${this.props.id}`);
             var ingredients = response.data;
             dispatch(actions.getRecipeIngredients(ingredients));
+            dispatch(actions.getCurrentRecipe({
+                id: this.props.id,
+                img: this.props.img,
+                name: this.props.name,
+                user_id: this.props.user_id
+            }));
 
             window.location.hash = "/recipe/view"
         } catch (err) {

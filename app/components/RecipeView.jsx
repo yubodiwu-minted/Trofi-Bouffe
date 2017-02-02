@@ -27,6 +27,7 @@ var RecipeView = (props) => {
 
 export default connect((state) => {
     return {
-        ingredientsList: state.ingredientsList
+        ingredientsList: state.ingredientsList,
+        currentRecipe: state.currentRecipe
     };
 })(RecipeView);

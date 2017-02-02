@@ -18,3 +18,10 @@ export var getRecipeIngredients = (ingredientsList) => {
         payload: ingredientsList
     };
 };
+
+export var getCurrentRecipe = (recipe) => {
+    return {
+        type: "GET_CURRENT_RECIPE",
+        payload: recipe
+    };
+}
