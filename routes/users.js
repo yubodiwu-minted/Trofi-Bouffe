@@ -39,11 +39,15 @@ router.post("/", function(req, res) {
                 return getUser(req.body.username, req.body.email);
             });
     }).then((user) => {
-        res.json(authenticateAndJWT({
-            id: user[0].id,
-            username: user[0].username,
-            email: user[0].email
-        }));
+        try {
+            res.json(authenticateAndJWT({
+                id: user[0].id,
+                username: user[0].username,
+                email: user[0].email
+            }));
+        } catch (err) {
+            console.error(err);
+        }
     }).catch((error) => {
         console.error(error);
     });
