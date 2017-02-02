@@ -58,5 +58,5 @@ module.exports = {
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,
-    stepsListReducer
+    directionsReducer
 };

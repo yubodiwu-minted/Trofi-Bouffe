@@ -14,8 +14,12 @@ class UserRecipe extends Component {
     async viewRecipe() {
         try {
             var {dispatch} = this.props;
-            var response = await axios.get(`/ingredients/${this.props.id}`);
-            var ingredients = response.data;
+
+            var ingredientsResponse = await axios.get(`/ingredients/${this.props.id}`);
+            var directionsResponse = await axios.get(`/directions/${this.props.id}`);
+            var ingredients = ingredientsResponse.data;
+            var directions = directionsResponse.data;
+
             dispatch(actions.getRecipeIngredients(ingredients));
             dispatch(actions.getCurrentRecipe({
                 id: this.props.id,
@@ -23,6 +27,7 @@ class UserRecipe extends Component {
                 name: this.props.name,
                 user_id: this.props.user_id
             }));
+            dispatch(actions.getRecipeDirections(directions));
 
             window.location.hash = "/recipe/view"
         } catch (err) {

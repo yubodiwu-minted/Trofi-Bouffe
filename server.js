@@ -8,7 +8,8 @@ const bodyParser = require("body-parser");
 const routes = require("./routes/index");
 const users = require("./routes/users");
 const recipes = require("./routes/recipes");
-const ingredients = require("./routes/ingredients")
+const ingredients = require("./routes/ingredients");
+const directions = require("./routes/directions");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use("/", routes);
 app.use("/users", users);
 app.use("/recipes", recipes);
 app.use("/ingredients", ingredients);
+app.use("/directions", directions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
