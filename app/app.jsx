@@ -8,6 +8,7 @@ import Landing from "Landing";
 import RegistrationForm from "RegistrationForm";
 import LoginForm from "LoginForm";
 import UserRecipesList from "UserRecipesList";
+import RecipeView from "RecipeView";
 
 var actions = require("actions");
 var store = require("configureStore").configure();
@@ -39,6 +40,8 @@ ReactDOM.render(
                 <IndexRoute component={Landing}></IndexRoute>
                 <Route path="user/new" component={RegistrationForm}></Route>
                 <Route path="login" component={LoginForm}></Route>
+                <Route path="user/recipes" component={UserRecipesList}></Route>
+                <Route path="recipe/view" component={RecipeView}></Route>
             </Route>
         </Router>
     </Provider>,

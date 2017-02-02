@@ -1,0 +1,44 @@
+.recipe {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    min-height: 10rem;
+    padding: $global-padding * 2;
+    margin: $global-padding;
+    border-radius: 1.5rem;
+    background: $light-grey-border;
+
+    div {
+        display: flex;
+    }
+
+    img {
+        margin-right: 1rem;
+        border-radius: 50%;
+        height: 5rem;
+        width: 5rem;
+    }
+
+    button {
+        align-self: flex-end;
+    }
+}
+
+.recipe-info {
+    flex-direction: column;
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+#edit-recipe-button {
+    min-height: 2rem;
+    background: $button-blue;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}

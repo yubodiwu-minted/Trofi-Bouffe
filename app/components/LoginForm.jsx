@@ -11,25 +11,26 @@ class LoginForm extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFormSubmit(event) {
+    async onFormSubmit(event) {
         var {dispatch} = this.props;
         event.preventDefault();
 
         console.log("form submitted");
 
-        axios.post("/users/login", {
-            email: this.refs.email.value,
-            password: this.refs.password.value
-        })
-        .then((response) => {
-            console.log("attempted login");
+        try {
+            let response = await axios.post("/users/login", {
+                email: this.refs.email.value,
+                password: this.refs.password.value
+            });
+
             if (response.data.authenticated) {
                 localStorage.setItem("jwt", response.data.jwt);
+
+                window.location.hash = "user/recipes"
             }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+        } catch(error) {
+            console.error(error);
+        }
     }
 
     render() {
