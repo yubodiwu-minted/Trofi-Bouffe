@@ -14,9 +14,23 @@ var renderIngredients = (props) => {
 }
 
 var RecipeView = (props) => {
+    if (!props.currentRecipe) {
+        return (
+            <div className="content-container row">
+                <div className="content-list columns medium-10 large-8 small-centered">
+                    <h3>No recipe specified...</h3>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="content-container row">
             <div className="content-list columns medium-10 large-8 small-centered">
+                <div>
+                    <img src={props.currentRecipe.img} alt="recipe_img"/>
+                    <h3>{props.currentRecipe.name}</h3>
+                </div>
                 <div className="recipes-holder">
                     {renderIngredients(props)}
                 </div>
