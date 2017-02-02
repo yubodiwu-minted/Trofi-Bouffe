@@ -21,13 +21,9 @@ router.post("/", function(req, res) {
         if (data.length === 0) {
             return hashPassword(req.body.password, 12);
         } else {
-            console.log("user already exists");
-            res.end("user already exists");
+            throw new Error("user already exists");
         }
     }).then((hashedPassword) => {
-        if (!hashedPassword)
-            return;
-
         return knex("users")
             .insert({
                 first_name: req.body.firstName,
@@ -39,16 +35,13 @@ router.post("/", function(req, res) {
                 return getUser(req.body.username, req.body.email);
             });
     }).then((user) => {
-        try {
-            res.json(authenticateAndJWT({
-                id: user[0].id,
-                username: user[0].username,
-                email: user[0].email
-            }));
-        } catch (err) {
-            console.error(err);
-        }
+        res.json(authenticateAndJWT({
+            id: user[0].id,
+            username: user[0].username,
+            email: user[0].email
+        }));
     }).catch((error) => {
+        res.end("user already exists");
         console.error(error);
     });
 });
