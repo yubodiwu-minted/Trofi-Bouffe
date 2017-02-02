@@ -14,6 +14,8 @@ exports.up = function(knex, Promise) {
             table.increments("id").primary();
             table.integer("user_id").notNullable().references("id").inTable("users").onDelete("cascade");
             table.string("name").notNullable();
+            table.integer("calories");
+            table.integer("servings");
             table.string("img");
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
@@ -46,6 +48,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
     return Promise.all([
+        knex.schema.dropTable("recipe_steps"),
         knex.schema.dropTable("recipe_ingredients"),
         knex.schema.dropTable("ingredients"),
         knex.schema.dropTable("recipes"),

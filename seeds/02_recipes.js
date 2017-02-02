@@ -5,6 +5,7 @@ exports.seed = function(knex, Promise) {
                 id: 1,
                 user_id: 5,
                 name: "Cacio e Pepe",
+                servings: 2,
                 img: "http://www.seriouseats.com/recipes/assets_c/2016/02/20160220-cacio-e-pepe-21-thumb-1500xauto-430008.jpg"
             }),
             knex("recipes").insert({
