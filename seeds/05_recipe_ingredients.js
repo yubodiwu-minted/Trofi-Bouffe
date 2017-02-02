@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
             }, {
                 recipe_id: 1,
                 ingredient_id: 67,
-                quantity: 5,
+                quantity: 0.5,
                 units: "lbs"
             }, {
                 recipe_id: 1,
@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
                 recipe_id: 1,
                 ingredient_id: 100,
                 quantity: null,
-                units: null
+                units: "a pinch"
             }, {
                 recipe_id: 1,
                 ingredient_id: 101,

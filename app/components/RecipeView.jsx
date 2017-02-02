@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import convertUnitAbbreviation from "convertUnitAbbreviation";
 
 var renderIngredients = (props) => {
     var key = 0
@@ -7,7 +8,7 @@ var renderIngredients = (props) => {
     return props.ingredientsList.map((ingredient) => {
         return (
             <p className="ingredient" key={key++}>
-                {ingredient.name}
+                {ingredient.quantity} {convertUnitAbbreviation[ingredient.units]} of {ingredient.name}
             </p>
         );
     })
