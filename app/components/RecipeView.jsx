@@ -2,10 +2,6 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 var renderIngredients = (props) => {
-    if (!props.currentRecipe) {
-        return <h1>No recipe specified...</h1>
-    }
-    
     var key = 0
 
     return props.ingredientsList.map((ingredient) => {
@@ -18,6 +14,16 @@ var renderIngredients = (props) => {
 }
 
 var RecipeView = (props) => {
+    if (!props.currentRecipe) {
+        return (
+            <div className="content-container row">
+                <div className="content-list columns medium-10 large-8 small-centered">
+                    <h3>No recipe specified...</h3>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="content-container row">
             <div className="content-list columns medium-10 large-8 small-centered">
