@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
+import {connect} from "react-redux";
+
+var actions = require("actions");
 
 class UserRecipe extends Component {
     constructor(props) {
@@ -9,8 +12,10 @@ class UserRecipe extends Component {
     }
 
     async viewRecipe() {
-        var ingredients = await axios.get(`/ingredients/${this.props.id}`);
-        console.log(ingredients);
+        var {dispatch} = this.props;
+        var ingredientsObj = await axios.get(`/ingredients/${this.props.id}`);
+        var ingredients = ingredientsObj.data;
+        dispatch(actions.getRecipeIngredients(ingredients));
 
         window.location.hash = "/recipe/view"
     }
@@ -38,4 +43,4 @@ class UserRecipe extends Component {
     }
 }
 
-export default UserRecipe;
+export default connect()(UserRecipe);
