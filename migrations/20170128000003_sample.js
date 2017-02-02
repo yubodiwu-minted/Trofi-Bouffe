@@ -35,6 +35,11 @@ exports.up = function(knex, Promise) {
             table.string("units");
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
+        }),
+        knex.schema.createTable("recipe_steps", (table) => {
+            table.integer("recipe_id").notNullable().references("id").inTable("recipes").onDelete("cascade");
+            table.integer("step_number").notNullable();
+            table.text("step_content").notNullable();
         })
     ]);
 };
