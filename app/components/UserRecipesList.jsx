@@ -14,12 +14,15 @@ class UserRecipesList extends Component {
     }
 
     async getRecipes() {
-        var {dispatch} = this.props;
-        console.log("get recipes success");
-        var jwt = localStorage.getItem("jwt");
-        var axiosObj = await axios("/recipes?jwt=" + jwt);
-        var recipes = axiosObj.data;
-        dispatch(actions.getRecipesList(recipes));
+        try {
+            var {dispatch} = this.props;
+            var jwt = localStorage.getItem("jwt");
+            var response = await axios("/recipes?jwt=" + jwt);
+            var recipes = response.data;
+            dispatch(actions.getRecipesList(recipes));
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     renderRecipes() {
