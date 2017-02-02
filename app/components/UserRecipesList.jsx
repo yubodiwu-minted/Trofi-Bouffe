@@ -35,7 +35,7 @@ class UserRecipesList extends Component {
             <div className="recipes-container row">
                 <div className="recipes-list columns medium-10 large-8 small-centered">
                     <button onClick={this.getRecipes} id="new-recipe-button" className="columns medium-7 large-6 small-centered">
-                        <span>+</span> RECIPE
+                        <span>+</span> NEW RECIPE
                     </button>
                     <div className="recipes-holder">
                         {this.renderRecipes()}
