@@ -17,29 +17,47 @@
     justify-content: center;
     min-width: 90%;
 
+    h5 {
+        margin-left: 1rem;
+        color: $header-bg;
+        font-family: fantasy;
+        font-weight: 600;
+    }
 }
 
 .recipe-ingredients-div {
     align-self: flex-start;
-    background: $light-grey;
+    // background: $light-grey;
     border-radius: $inner-div-radius;
     min-width: 10%;
     margin: 0 0.5rem 1rem 0.5rem;
-    padding: $global-padding / 2 $global-padding $global-padding / 2 $global-padding;
+    // padding: $global-padding / 2 $global-padding $global-padding / 2 $global-padding;
+    padding: 0;
     box-sizing: content-box;
 }
 
 .recipe-directions-div {
     align-self: flex-start;
-    background: $light-grey;
+    // background: $light-grey;
     border-radius: $inner-div-radius;
     min-width: 70%;
     margin: 0 0.5rem 1rem 0.5rem;
-    padding: $global-padding / 2 $global-padding $global-padding / 2 $global-padding;
+    // padding: $global-padding / 2 $global-padding $global-padding / 2 $global-padding;
+    padding: 0;
+}
+
+.recipe-div-innermost {
+    background: $light-grey;
+    padding: 0.1rem 0.7rem 0.3rem 0.7rem;
+    border-radius: $inner-div-radius;
 }
 
 .ingredient {
-    margin: 0.5rem 0.1rem 0.5rem 0.1rem;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.direction {
+    margin: 0.5rem 0 0.5rem 0;
 }
 
 .recipe-buttons-div {

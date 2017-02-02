@@ -1,9 +1,19 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import axios from "axios";
+
 import convertUnitAbbreviation from "convertUnitAbbreviation";
+import SetNutritionFacts from "SetNutritionFacts";
+
+const APPID = "57583012";
+const APPKEY = "680b07dfde35ff433dadae06d1571c4c";
+
+const testUrl = `https://api.nutritionix.com/v1_1/search/pecorino%20romano?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=${APPID}&appKey=${APPKEY}`
+
+console.log(testUrl);
 
 var renderIngredients = (props) => {
-    var key = 0
+    var key = 0;
 
     return props.ingredientsList.map((ingredient) => {
         return (
@@ -11,8 +21,8 @@ var renderIngredients = (props) => {
                 {ingredient.quantity} {convertUnitAbbreviation[ingredient.units]} of {ingredient.name}
             </p>
         );
-    })
-}
+    });
+};
 
 var renderDirections = (props) => {
     var key = 0;
@@ -24,6 +34,10 @@ var renderDirections = (props) => {
             </p>
         );
     });
+};
+
+var setNutritionFacts = () => {
+    window.location.hash = "/recipe/set_facts";
 }
 
 var RecipeView = (props) => {
@@ -46,14 +60,20 @@ var RecipeView = (props) => {
                 </div>
                 <div className="recipe-content">
                     <div className="recipe-ingredients-div columns large-10">
-                        {renderIngredients(props)}
+                        <h5>STUFF</h5>
+                        <div className="recipe-div-innermost">
+                            {renderIngredients(props)}
+                        </div>
                     </div>
                     <div className="recipe-directions-div columns large-10">
-                        {renderDirections(props)}
+                        <h5>DIRECTIONS</h5>
+                        <div className="recipe-div-innermost">
+                            {renderDirections(props)}
+                        </div>
                     </div>
                 </div>
                 <div className="recipe-buttons-div">
-                    <button id="nutrition-facts-button">NUTRITION FACTS</button>
+                    <button onClick={setNutritionFacts} id="nutrition-facts-button">NUTRITION FACTS</button>
                     <button id="edit-recipe-button">EDIT RECIPE</button>
                 </div>
             </div>
