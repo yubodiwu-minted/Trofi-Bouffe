@@ -6,7 +6,7 @@ var renderIngredients = (props) => {
 
     return props.ingredientsList.map((ingredient) => {
         return (
-            <p key={key++}>
+            <p className="ingredient" key={key++}>
                 {ingredient.name}
             </p>
         );
@@ -27,12 +27,21 @@ var RecipeView = (props) => {
     return (
         <div className="content-container row">
             <div className="content-list columns medium-10 large-8 small-centered">
-                <div>
-                    <img src={props.currentRecipe.img} alt="recipe_img"/>
+                <div className="recipe-header">
+                    <img src={props.currentRecipe.img} alt="recipe_img" className="recipe-image"/>
                     <h3>{props.currentRecipe.name}</h3>
                 </div>
-                <div className="recipes-holder">
-                    {renderIngredients(props)}
+                <div className="recipe-content">
+                    <div className="recipe-content-div columns large-10">
+                        {renderIngredients(props)}
+                    </div>
+                    <div className="recipe-content-div columns large-10">
+                        Instructions will go here
+                    </div>
+                </div>
+                <div className="recipe-buttons-div">
+                    <button id="nutrition-facts-button">NUTRITION FACTS</button>
+                    <button id="edit-recipe-button">EDIT RECIPE</button>
                 </div>
             </div>
         </div>
