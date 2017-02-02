@@ -4,3 +4,21 @@ body {
     background-size: 100%;
     background-attachment: fixed;
 }
+
+.content-container {
+    display: flex;
+    justify-content: center;
+}
+
+.content-list {
+    box-shadow: $div-shadow;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: $global-padding * 3;
+    background: white;
+    margin-top: $global-padding;
+    margin-bottom: $global-padding;
+    border-radius: 2rem;
+}
