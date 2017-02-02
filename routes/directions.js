@@ -1,32 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const knex = require("../knex");
-const JWT = require("jsonwebtoken");
-const APP_SECRET = "SUPERSECRETAPPSECRET";
 
-router.get("/", (req, res) => {
-    console.log("recipes index route hit");
+router.get("/:recipeId", function(req, res) {
+    console.log("get recipe directions by id hit");
 
-    try {
-        var user = JWT.verify(req.query.jwt, APP_SECRET);
-    } catch(err) {
-        console.error(err);
-    }
-
-    if (user) {
-        knex("recipes").select("*")
-            .where("user_id", user.id).then((recipes) => {
-                console.log("does this happen?");
-                console.log(recipes);
-                res.json(recipes)
-            })
-    } else {
-        res.error("failed")
-    }
-});
-
-router.get("/", function(req, res) {
-
+    knex("recipe_directions").select("step_number", "step_content")
+        .where("recipe_id", req.params.recipeId).then((data) => {
+            res.json(data);
+        }).catch((err) => {
+            console.error(err);
+            res.end(err);
+        });
 });
 
 module.exports = router;
