@@ -3,7 +3,7 @@ export var login = (user_id) => {
         type: "LOG_IN",
         payload: user_id
     };
-}
+};
 
 export var getRecipesList = (recipesList) => {
     return {
@@ -24,4 +24,4 @@ export var getCurrentRecipe = (recipe) => {
         type: "GET_CURRENT_RECIPE",
         payload: recipe
     };
-}
+};
