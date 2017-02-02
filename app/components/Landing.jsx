@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
 
-export default() => {
+export default () => {
     if (localStorage.getItem("jwt")) {
         window.location.hash = "/user/recipes"
     }
