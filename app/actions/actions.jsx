@@ -11,3 +11,10 @@ export var getRecipesList = (recipesList) => {
         payload: recipesList
     };
 };
+
+export var getRecipeIngredients = (ingredientsList) => {
+    return {
+        type: "GET_RECIPE_INGREDIENTS",
+        payload: ingredientsList
+    };
+};
