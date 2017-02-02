@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-export default(props) => {
+export default (props) => {
     return (
         <header className="header">
             <h1 className="headline">Trofí
