@@ -5,8 +5,8 @@
     min-height: 10rem;
     padding: $global-padding * 2;
     margin: $global-padding;
-    border-radius: 1.5rem;
-    background: $light-grey-border;
+    border-radius: $inner-div-radius;
+    background: $light-grey;
 
     div {
         display: flex;
@@ -15,8 +15,8 @@
     img {
         margin-right: 1rem;
         border-radius: 50%;
-        height: 5rem;
-        width: 5rem;
+        height: $small-image-size;
+        width: $small-image-size;
     }
 
     button {

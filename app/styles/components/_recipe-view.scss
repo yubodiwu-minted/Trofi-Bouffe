@@ -1,0 +1,54 @@
+.recipe-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $global-padding;
+    align-self: flex-start;
+}
+
+.recipe-image {
+    margin-right: 1rem;
+    border-radius: 50%;
+    height: $medium-image-size;
+    width: $medium-image-size;
+}
+
+.recipe-content {
+    display: flex;
+    justify-content: center;
+    min-width: 90%;
+}
+
+.recipe-content-div {
+    background: $light-grey;
+    border-radius: $inner-div-radius;
+    min-width: 53%;
+    margin: 0 0.5rem 1rem 0.5rem;
+    padding: $global-padding / 2 $global-padding $global-padding / 2 $global-padding;
+}
+
+.ingredient {
+    margin: 0.1rem;
+}
+
+.recipe-buttons-div {
+    align-self: flex-end;
+
+    button {
+        min-height: 2rem;
+        background: $button-blue;
+        font-size: 1rem;
+        font-weight: 300;
+        color: white;
+        border-radius: 2rem;
+        padding: 0.5rem 1rem;
+        margin-right: $global-padding;
+    }
+
+    #nutrition-facts-button {
+        background: $button-blue;
+    }
+
+    #edit-recipe-button {
+        background: $button-green;
+    }
+}
