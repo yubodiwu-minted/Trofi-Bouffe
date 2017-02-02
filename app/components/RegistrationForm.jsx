@@ -10,26 +10,29 @@ export default class RegistrationForm extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFormSubmit(event) {
+    async onFormSubmit(event) {
         event.preventDefault();
 
         if (this.refs.password.value === this.refs.confirmPassword.value) {
-            axios.post("/users", {
-                firstName: this.refs.firstName.value,
-                lastName: this.refs.lastName.value,
-                email: this.refs.email.value,
-                username: this.refs.username.value,
-                password: this.refs.password.value
-            }).then((response) => {
+            try {
+                var response = await axios.post("/users", {
+                    firstName: this.refs.firstName.value,
+                    lastName: this.refs.lastName.value,
+                    email: this.refs.email.value,
+                    username: this.refs.username.value,
+                    password: this.refs.password.value
+                });
+
                 if (response.data !== "user already exists") {
-                    console.log(response);
                     localStorage.setItem("jwt", response.data.jwt);
 
                     window.location.hash = "user/recipes";
+                } else {
+                    console.error(response.data);
                 }
-            }).catch((error) => {
-                console.error(error);
-            })
+            } catch (err) {
+                console.error(err);
+            }
         }
     }
 
