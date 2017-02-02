@@ -42,11 +42,11 @@ var ingredientsListReducer = (state = [], action) => {
     }
 };
 
-var stepsListReducer = (state = [], action) => {
+var directionsReducer = (state = [], action) => {
     Object.freeze(state);
 
     switch (action.type) {
-        case "GET_RECIPE_STEPS":
+        case "GET_RECIPE_DIRECTIONS":
             return action.payload;
         default:
             return state;

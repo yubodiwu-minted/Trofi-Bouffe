@@ -26,9 +26,9 @@ export var getCurrentRecipe = (recipe) => {
     };
 };
 
-export var getRecipeSteps = (stepsList) => {
+export var getRecipeDirections = (stepsList) => {
     return {
-        type: "GET_RECIPE_STEPS",
+        type: "GET_RECIPE_DIRECTIONS",
         payload: stepsList
     };
 };

@@ -9,7 +9,7 @@ import {
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,
-    stepsListReducer
+    directionsReducer
 } from "reducers";
 import promise from "redux-promise";
 
@@ -19,7 +19,7 @@ export var configure = (initialState = {loggedIn: null}) => {
         recipesList: recipesReducer,
         ingredientsList: ingredientsListReducer,
         currentRecipe: currentRecipeReducer,
-        stepsList: stepsListReducer
+        directions: directionsReducer
     });
 
     var store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
