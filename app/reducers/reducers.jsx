@@ -1,14 +1,3 @@
-var loginReducer = (state = false, action) => {
-    Object.freeze(state);
-
-    switch (action.type) {
-        case "LOG_IN":
-            return action.payload;
-        default:
-            return state;
-    }
-};
-
 var recipesReducer = (state = [], action) => {
     Object.freeze(state);
 
@@ -54,7 +43,6 @@ var directionsReducer = (state = [], action) => {
 }
 
 module.exports = {
-    loginReducer,
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,

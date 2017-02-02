@@ -1518,6 +1518,10 @@ electron-to-chromium@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.2.1.tgz#63ac7579a1c5bedb296c8607621f2efc9a54b968"
 
+element-class@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/element-class/-/element-class-0.2.2.tgz#9d3bbd0767f9013ef8e1c8ebe722c1402a60050e"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -1592,6 +1596,10 @@ etag@~1.7.0:
 events@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
+
+exenv@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.0.tgz#3835f127abf075bfe082d0aed4484057c78e3c89"
 
 expand-brackets@^0.1.4:
   version "0.1.5"
@@ -2824,11 +2832,11 @@ morgan@~1.7.0:
     on-finished "~2.3.0"
     on-headers "~1.0.1"
 
-ms@0.7.1:
+ms@0.7.1, ms@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
 
-ms@0.7.2, ms@^0.7.1:
+ms@0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
 
@@ -3608,6 +3616,14 @@ react-forms@beta:
     memoize-decorator "^1.0.2"
     react-derivable "^0.2.0"
     react-stylesheet "^1.0.0"
+
+react-modal@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-1.6.5.tgz#f720d99bd81b1def5c2c32e0ffaa48bdaf484862"
+  dependencies:
+    element-class "^0.2.0"
+    exenv "1.2.0"
+    lodash.assign "^4.2.0"
 
 react-redux@^5.0.2:
   version "5.0.2"

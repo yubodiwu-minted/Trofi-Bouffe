@@ -9,14 +9,7 @@ import RegistrationForm from "RegistrationForm";
 import LoginForm from "LoginForm";
 import UserRecipesList from "UserRecipesList";
 import RecipeView from "RecipeView";
-
-var actions = require("actions");
-var store = require("configureStore").configure();
-
-store.subscribe(() => {
-    var state = store.getState();
-    console.log("New state:", state);
-});
+import SetNutritionFacts from "SetNutritionFacts";
 
 var actions = require("actions");
 var store = require("configureStore").configure();
@@ -42,6 +35,7 @@ ReactDOM.render(
                 <Route path="login" component={LoginForm}></Route>
                 <Route path="user/recipes" component={UserRecipesList}></Route>
                 <Route path="recipe/view" component={RecipeView}></Route>
+                <Route path="recipe/set_facts" component={SetNutritionFacts}></Route>
             </Route>
         </Router>
     </Provider>,

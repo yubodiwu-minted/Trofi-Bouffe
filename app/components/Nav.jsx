@@ -8,7 +8,7 @@ export default (props) => {
             </h1>
             <ul className="header-subnav">
                 <li>
-                    <a href="#">Browse Recipes</a>
+                    <a href="#/user/recipes">Browse Recipes</a>
                 </li>
                 <li>
                     <a href="#/user/new">Sign Up</a>
