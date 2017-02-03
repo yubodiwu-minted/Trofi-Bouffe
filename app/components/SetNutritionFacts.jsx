@@ -36,7 +36,7 @@ class SetNutritionFacts extends Component {
             var name = obj.name;
 
             return (
-                <label key={key++}>{name}
+                <label key={key++}>{capitalizeWords(name)}
                     <select id={obj.id} ref={replaceSpacesWithUnderscores(name)}>
                         {renderOptions(this.state[replaceSpacesWithUnderscores(name)])}
                     </select>
@@ -47,13 +47,23 @@ class SetNutritionFacts extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.refs);
+        var NutritionFactsForDb = [];
+
+        for (let ingredient in this.refs) {
+            var nutritionObj = {
+                ingredient_id: this.refs[ingredient].id,
+                nutrition_facts: JSON.parse(this.refs[ingredient].value)
+            };
+
+            NutritionFactsForDb.push(nutritionObj);
+        }
         debugger;
+        axios.post("/nutrition-facts", NutritionFactsForDb);
     }
 
     render() {
         if (this.props.needNF.length === 0) {
-            return <SetNutritionFactsError></SetNutritionFactsError>
+            return <SetNutritionFactsError></SetNutritionFactsError>;
         }
 
         return (

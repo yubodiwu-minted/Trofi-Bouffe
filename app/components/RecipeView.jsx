@@ -4,6 +4,7 @@ import axios from "axios";
 
 import {convertUnitAbbreviation} from "helperFunctions";
 import SetNutritionFacts from "SetNutritionFacts";
+import RecipeViewError from "RecipeViewError";
 
 var actions = require("actions");
 
@@ -13,7 +14,7 @@ var renderIngredients = (props) => {
     return props.ingredientsList.map((ingredient) => {
         return (
             <p className="ingredient" key={key++}>
-                {ingredient.quantity} {convertUnitAbbreviation[ingredient.units]} of {ingredient.name}
+                {ingredient.quantity || "some"} {convertUnitAbbreviation[ingredient.units]} {ingredient.quantity ? "of" : ""} {ingredient.name}
             </p>
         );
     });
@@ -35,20 +36,14 @@ var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
     var ingredientsNeedNF = response.data;
-
-    dispatch(actions.needNutritionFacts(ingredientsNeedNF));
-    window.location.hash = "/recipe/set_facts";
+    debugger;
+    // dispatch(actions.needNutritionFacts(ingredientsNeedNF));
+    // window.location.hash = "/recipe/set_facts";
 }
 
 var RecipeView = (props) => {
     if (!props.currentRecipe) {
-        return (
-            <div className="content-container row">
-                <div className="content-list columns medium-10 large-8 small-centered">
-                    <h3>No recipe specified...</h3>
-                </div>
-            </div>
-        );
+        return <RecipeViewError></RecipeViewError>;
     }
 
     return (
