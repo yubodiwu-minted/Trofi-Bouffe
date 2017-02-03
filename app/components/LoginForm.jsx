@@ -51,8 +51,6 @@ class LoginForm extends Component {
                                     <option value="ball" >ball</option>
                                     <option value="not-ball">not ball</option>
                                 </select>
-
-
                             </label>
                             <div className="button-holder">
                                 <button>

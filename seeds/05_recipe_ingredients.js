@@ -6,32 +6,44 @@ exports.seed = function(knex, Promise) {
                 recipe_id: 1,
                 ingredient_id: 48,
                 quantity: 2,
-                units: "tbs"
+                units: "tbs",
+                hasWeight: false,
+                hasVolume: true
             }, {
                 recipe_id: 1,
                 ingredient_id: 67,
                 quantity: 0.5,
-                units: "lbs"
+                units: "lbs",
+                hasWeight: false,
+                hasVolume: true
             }, {
                 recipe_id: 1,
                 ingredient_id: 98,
                 quantity: 4,
-                units: "tbs"
+                units: "tbs",
+                hasWeight: false,
+                hasVolume: true
             }, {
                 recipe_id: 1,
                 ingredient_id: 99,
                 quantity: 1,
-                units: "tsp"
+                units: "tsp",
+                hasWeight: false,
+                hasVolume: true
             }, {
                 recipe_id: 1,
                 ingredient_id: 100,
                 quantity: null,
-                units: "a pinch"
+                units: null,
+                hasWeight: false,
+                hasVolume: false
             }, {
                 recipe_id: 1,
                 ingredient_id: 101,
                 quantity: 2,
-                units: "oz"
+                units: "oz",
+                hasWeight: false,
+                hasVolume: true
             }
         ]);
     });

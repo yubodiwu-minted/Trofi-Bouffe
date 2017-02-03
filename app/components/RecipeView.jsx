@@ -14,7 +14,7 @@ var renderIngredients = (props) => {
     return props.ingredientsList.map((ingredient) => {
         return (
             <p className="ingredient" key={key++}>
-                {ingredient.quantity} {convertUnitAbbreviation[ingredient.units]} of {ingredient.name}
+                {ingredient.quantity || "some"} {convertUnitAbbreviation[ingredient.units]} {ingredient.quantity ? "of" : ""} {ingredient.name}
             </p>
         );
     });
@@ -36,9 +36,9 @@ var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
     var ingredientsNeedNF = response.data;
-
-    dispatch(actions.needNutritionFacts(ingredientsNeedNF));
-    window.location.hash = "/recipe/set_facts";
+    debugger;
+    // dispatch(actions.needNutritionFacts(ingredientsNeedNF));
+    // window.location.hash = "/recipe/set_facts";
 }
 
 var RecipeView = (props) => {

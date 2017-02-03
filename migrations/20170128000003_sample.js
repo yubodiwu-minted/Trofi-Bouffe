@@ -35,6 +35,8 @@ exports.up = function(knex, Promise) {
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
             table.float("quantity");
             table.string("units");
+            table.boolean("hasVolume");
+            table.boolean("hasWeight");
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
             table.timestamp("updated_at").notNullable().defaultTo(knex.fn.now());
         }),
@@ -47,7 +49,8 @@ exports.up = function(knex, Promise) {
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
             table.float("serving_quantity");
             table.string("serving_unit");
-            table.string("serving_type");
+            table.boolean("hasVolume");
+            table.boolean("hasWeight");
             table.float("serving_weight_grams");
             table.float("calories");
             table.float("calories_from_fat");
