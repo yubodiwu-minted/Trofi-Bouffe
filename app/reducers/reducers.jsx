@@ -40,7 +40,7 @@ var directionsReducer = (state = [], action) => {
         default:
             return state;
     }
-}
+};
 
 var needNFReducer = (state = [], action) => {
     Object.freeze(state);
@@ -51,6 +51,20 @@ var needNFReducer = (state = [], action) => {
         default:
             return state;
     }
+};
+
+var nfBankReducer = (state = {}, action) => {
+    Object.freeze(state);
+
+    switch (action.type) {
+        case "STORE_NUTRITION_FACTS":
+            var newState = {...state};
+            newState[action.payload.id] = action.payload.nutritionFacts;
+
+            return newState;
+        default:
+            return state;
+    }
 }
 
 module.exports = {
@@ -58,5 +72,6 @@ module.exports = {
     ingredientsListReducer,
     currentRecipeReducer,
     directionsReducer,
-    needNFReducer
+    needNFReducer,
+    nfBankReducer
 };

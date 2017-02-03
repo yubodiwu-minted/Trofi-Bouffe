@@ -31,4 +31,11 @@ export var needNutritionFacts = (ingredientsNeedNF) => {
         type: "INGREDIENTS_NEED_NUTRITION_FACTS",
         payload: ingredientsNeedNF
     };
-}
+};
+
+export var storeNutritionFacts = (nutritionFacts) => {
+    return {
+        type: "STORE_NUTRITION_FACTS",
+        payload: nutritionFacts
+    };
+};
