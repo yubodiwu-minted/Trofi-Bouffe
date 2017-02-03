@@ -4,6 +4,7 @@ import axios from "axios";
 
 import {convertUnitAbbreviation} from "helperFunctions";
 import SetNutritionFacts from "SetNutritionFacts";
+import RecipeViewError from "RecipeViewError";
 
 var actions = require("actions");
 
@@ -42,13 +43,7 @@ var setNutritionFacts = async (props) => {
 
 var RecipeView = (props) => {
     if (!props.currentRecipe) {
-        return (
-            <div className="content-container row">
-                <div className="content-list columns medium-10 large-8 small-centered">
-                    <h3>No recipe specified...</h3>
-                </div>
-            </div>
-        );
+        return <RecipeViewError></RecipeViewError>;
     }
 
     return (

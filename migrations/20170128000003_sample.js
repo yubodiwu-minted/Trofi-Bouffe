@@ -47,6 +47,8 @@ exports.up = function(knex, Promise) {
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
             table.float("serving_quantity");
             table.string("serving_unit");
+            table.string("serving_type");
+            table.float("serving_weight_grams");
             table.float("calories");
             table.float("calories_from_fat");
             table.float("total_fat");

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-import {capitalizeWords, replaceSpacesWithUnderscores} from "helperFunctions";
+import {replaceSpacesWithUnderscores} from "helperFunctions";
 
 const APPID = "57583012";
 const APPKEY = "680b07dfde35ff433dadae06d1571c4c";
