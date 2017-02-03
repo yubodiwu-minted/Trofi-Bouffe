@@ -5,6 +5,8 @@ import axios from "axios";
 import convertUnitAbbreviation from "convertUnitAbbreviation";
 import SetNutritionFacts from "SetNutritionFacts";
 
+var actions = require("actions");
+
 const APPID = "57583012";
 const APPKEY = "680b07dfde35ff433dadae06d1571c4c";
 
@@ -36,8 +38,13 @@ var renderDirections = (props) => {
     });
 };
 
-var setNutritionFacts = async () => {
-    // console.log(await axios.get(testUrl));
+var setNutritionFacts = async (props) => {
+    var {dispatch} = props;
+    var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
+    var ingredientsNeedNF = response.data;
+    
+    dispatch(actions.needNutritionFacts(ingredientsNeedNF));
+
     window.location.hash = "/recipe/set_facts";
 }
 
@@ -74,9 +81,9 @@ var RecipeView = (props) => {
                     </div>
                 </div>
                 <div className="recipe-buttons-div">
-                    <button onClick={setNutritionFacts} className="blue-button">NUTRITION FACTS</button>
-                    <button className="green-button" onClick={async () => {
-                        console.log(await axios.get("https://appriceapi.herokuapp.com/api/products"));
+                    <button onClick={setNutritionFacts.bind(this, props)} className="blue-button">NUTRITION FACTS</button>
+                    <button className="green-button" onClick={() => {
+                        console.log("edit recipe button clicked");
                     }}>EDIT RECIPE</button>
                 </div>
             </div>

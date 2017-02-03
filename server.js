@@ -10,6 +10,7 @@ const users = require("./routes/users");
 const recipes = require("./routes/recipes");
 const ingredients = require("./routes/ingredients");
 const directions = require("./routes/directions");
+const nutritionFacts = require("./routes/nutritionFacts");
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use("/users", users);
 app.use("/recipes", recipes);
 app.use("/ingredients", ingredients);
 app.use("/directions", directions);
+app.use("/nutrition-facts", nutritionFacts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
