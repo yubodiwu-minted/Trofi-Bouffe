@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import axios from "axios";
 
-import convertUnitAbbreviation from "convertUnitAbbreviation";
+import {convertUnitAbbreviation} from "helperFunctions";
 import SetNutritionFacts from "SetNutritionFacts";
 
 var actions = require("actions");
@@ -37,7 +37,6 @@ var setNutritionFacts = async (props) => {
     var ingredientsNeedNF = response.data;
 
     dispatch(actions.needNutritionFacts(ingredientsNeedNF));
-
     window.location.hash = "/recipe/set_facts";
 }
 
