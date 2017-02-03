@@ -2,12 +2,10 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import capitalizeWords from "capitalizeWords";
 
-const actions = require("actions");
-
 var renderIngredients = (props) => {
     var key = 0;
 
-    return props.ingredientsList.map((ingredient) => {
+    return props.needNF.map((ingredient) => {
         var name = capitalizeWords(ingredient.name)
 
         return (
@@ -39,6 +37,6 @@ const SetNutritionFacts = (props) => {
 
 export default connect((state) => {
     return {
-        ingredientsList: state.ingredientsList
+        needNF: state.needNF
     };
 })(SetNutritionFacts);

@@ -25,3 +25,10 @@ export var getRecipeDirections = (directions) => {
         payload: directions
     };
 };
+
+export var needNutritionFacts = (ingredientsNeedNF) => {
+    return {
+        type: "INGREDIENTS_NEED_NUTRITION_FACTS",
+        payload: ingredientsNeedNF
+    };
+}

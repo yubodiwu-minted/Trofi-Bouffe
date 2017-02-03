@@ -45,26 +45,26 @@ exports.up = function(knex, Promise) {
         }),
         knex.schema.createTable("nutrition_facts", (table) => {
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
-            table.integer("serving_quantity");
-            table.integer("serving_unit");
-            table.integer("calories");
-            table.integer("calories_from_fat");
-            table.integer("total_fat");
-            table.integer("saturated_fat");
-            table.integer("monounsaturated_fat");
-            table.integer("polyunsaturated_fat");
-            table.integer("trans_fatty_acid");
-            table.integer("cholesterol");
-            table.integer("sodium");
-            table.integer("total_carbohydrate");
-            table.integer("dietary_fiber");
-            table.integer("sugars");
-            table.integer("protein");
-            table.integer("vitamin_a_dv");
-            table.integer("vitamin_c_dv");
-            table.integer("calcium_dv");
-            table.integer("iron");
-            table.integer("potassium");
+            table.float("serving_quantity");
+            table.string("serving_unit");
+            table.float("calories");
+            table.float("calories_from_fat");
+            table.float("total_fat");
+            table.float("saturated_fat");
+            table.float("monounsaturated_fat");
+            table.float("polyunsaturated_fat");
+            table.float("trans_fatty_acid");
+            table.float("cholesterol"); // mg
+            table.float("sodium");
+            table.float("total_carbohydrate");
+            table.float("dietary_fiber");
+            table.float("sugars");
+            table.float("protein");
+            table.float("vitamin_a_dv");
+            table.float("vitamin_c_dv");
+            table.float("calcium_dv");
+            table.float("iron");
+            table.float("potassium");
         })
     ]);
 };

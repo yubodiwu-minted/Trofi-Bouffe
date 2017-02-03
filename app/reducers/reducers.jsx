@@ -42,9 +42,21 @@ var directionsReducer = (state = [], action) => {
     }
 }
 
+var needNFReducer = (state = [], action) => {
+    Object.freeze(state);
+
+    switch (action.type) {
+        case "INGREDIENTS_NEED_NUTRITION_FACTS":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 module.exports = {
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,
-    directionsReducer
+    directionsReducer,
+    needNFReducer
 };
