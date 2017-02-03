@@ -74,8 +74,8 @@ var RecipeView = (props) => {
                     </div>
                 </div>
                 <div className="recipe-buttons-div">
-                    <button onClick={setNutritionFacts} id="nutrition-facts-button">NUTRITION FACTS</button>
-                    <button id="edit-recipe-button" onClick={async () => {
+                    <button onClick={setNutritionFacts} className="blue-button">NUTRITION FACTS</button>
+                    <button className="green-button" onClick={async () => {
                         console.log(await axios.get("https://appriceapi.herokuapp.com/api/products"));
                     }}>EDIT RECIPE</button>
                 </div>

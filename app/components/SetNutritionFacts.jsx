@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import capitalizeWords from "capitalizeWords";
 
 const actions = require("actions");
 
@@ -7,41 +8,30 @@ var renderIngredients = (props) => {
     var key = 0;
 
     return props.ingredientsList.map((ingredient) => {
-        console.log(key);
-        return <p key={key++}>{ingredient.name}</p>;
-    });
-};
+        var name = capitalizeWords(ingredient.name)
 
-var renderOptions = (props) => {
-    var key = 0;
-
-    var options = [];
-
-    for (let i = 0; i < props.ingredientsList.length; i++) {
-        options.push(
-            <select name="" id="">
-                <option value="tell">WHAT</option>
-                <option value="me">WHY</option>
-            </select>
+        return (
+            <label key={key++}>{name}
+                <select name="" id="">
+                    <option value="tell">WHAT</option>
+                    <option value="me">WHY</option>
+                </select>
+            </label>
         );
-    }
-
-    return options;
+    });
 };
 
 const SetNutritionFacts = (props) => {
     return (
         <div className="content-container row">
             <div className="content-list columns medium-10 large-8 small-centered">
-                <h4>These ingredients need nutrition facts:</h4>
+                <h4>These ingredients need nutrition facts (choose the option that fits):</h4>
                 <div id="nutrition-options-div">
-                    <div id="nutrition-ingredients">
+                    <div id="nutrition-options">
                         {renderIngredients(props)}
                     </div>
-                    <div id="nutrition-select">
-                        {renderOptions(props)}
-                    </div>
                 </div>
+                <button className="blue-button">SET NUTRITION FACTS</button>
             </div>
         </div>
     );
