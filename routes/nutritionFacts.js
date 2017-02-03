@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../knex");
 
-router.get("/:recipeId", function(req, res) {
+router.get("/:recipeId", (req, res) => {
     console.log(`get un-set nutrition facts for recipe ${req.params.recipeId} route hit`);
 
     knex("recipe_ingredients")
@@ -15,5 +15,11 @@ router.get("/:recipeId", function(req, res) {
             res.error(err)
         })
 });
+
+router.post("/", (req, res) => {
+    console.log("nutrition facts post route hit");
+    console.log("body is ", req.body);
+    res.end()
+})
 
 module.exports = router;
