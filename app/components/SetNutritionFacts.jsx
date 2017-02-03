@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import capitalizeWords from "capitalizeWords";
 
 const actions = require("actions");
 
@@ -7,8 +8,10 @@ var renderIngredients = (props) => {
     var key = 0;
 
     return props.ingredientsList.map((ingredient) => {
+        var name = capitalizeWords(ingredient.name)
+
         return (
-            <label key={key++}>{ingredient.name}
+            <label key={key++}>{name}
                 <select name="" id="">
                     <option value="tell">WHAT</option>
                     <option value="me">WHY</option>
