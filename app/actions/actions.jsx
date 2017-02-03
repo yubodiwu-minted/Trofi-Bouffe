@@ -32,10 +32,3 @@ export var needNutritionFacts = (ingredientsNeedNF) => {
         payload: ingredientsNeedNF
     };
 };
-
-export var storeNutritionFacts = (nutritionFacts) => {
-    return {
-        type: "STORE_NUTRITION_FACTS",
-        payload: nutritionFacts
-    };
-};

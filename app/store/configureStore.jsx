@@ -20,8 +20,7 @@ export var configure = (initialState = {loggedIn: null}) => {
         ingredientsList: ingredientsListReducer,
         currentRecipe: currentRecipeReducer,
         directions: directionsReducer,
-        needNF: needNFReducer,
-        nfBank: nfBankReducer
+        needNF: needNFReducer
     });
 
     var createStoreWithMiddleware = applyMiddleware(promise)(createStore);
