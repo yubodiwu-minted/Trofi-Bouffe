@@ -15,6 +15,8 @@ import {
 import promise from "redux-promise";
 
 export var configure = (initialState = {loggedIn: null}) => {
+    console.log(needNFReducer, "nf reducer");
+    console.log(nfBankReducer, "nf bank reducer");
     var reducers = combineReducers({
         recipesList: recipesReducer,
         ingredientsList: ingredientsListReducer,

@@ -58,8 +58,12 @@ var nfBankReducer = (state = {}, action) => {
 
     switch (action.type) {
         case "STORE_NUTRITION_FACTS":
-            var newState = {...state};
-            newState[action.payload.id] = action.payload.nutritionFacts;
+            var newState = JSON.parse(JSON.stringify(state));
+
+            for (let hit of action.payload) {
+                console.log(hit);
+                newState[hit.fields.item_id] = hit.fields
+            }
 
             return newState;
         default:
