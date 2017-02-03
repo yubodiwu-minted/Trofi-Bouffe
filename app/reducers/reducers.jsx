@@ -53,29 +53,10 @@ var needNFReducer = (state = [], action) => {
     }
 };
 
-var nfBankReducer = (state = {}, action) => {
-    Object.freeze(state);
-
-    switch (action.type) {
-        case "STORE_NUTRITION_FACTS":
-            var newState = JSON.parse(JSON.stringify(state));
-
-            for (let hit of action.payload) {
-                console.log(hit);
-                newState[hit.fields.item_id] = hit.fields
-            }
-
-            return newState;
-        default:
-            return state;
-    }
-}
-
 module.exports = {
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,
     directionsReducer,
-    needNFReducer,
-    nfBankReducer
+    needNFReducer
 };
