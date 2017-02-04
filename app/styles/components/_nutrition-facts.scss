@@ -11,3 +11,12 @@
     justify-content: space-around;
     width: 95%;
 }
+
+#set-nutrition-facts {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin-top: 1rem;
+    }
+}
