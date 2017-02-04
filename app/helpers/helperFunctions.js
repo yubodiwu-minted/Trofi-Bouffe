@@ -1,16 +1,16 @@
 export var convertUnitAbbreviation = {
-    tbs: "tablespoons",
+    tbsp: "tablespoons",
     lbs: "pounds",
     tsp: "teaspoons",
     oz: "ounces",
     "a pinch": "a pinch"
 };
 
-export function replaceSpacesWithUnderscores(string) {
+export var replaceSpacesWithUnderscores = (string) => {
     return string.replace(/\s+/g, "_");
-}
+};
 
-export function capitalizeWords(str) {
+export var capitalizeWords = (str) => {
     str = str[0].toUpperCase() + str.slice(1);
 
     for (let i = 0; i < str.length; i++) {
@@ -20,4 +20,20 @@ export function capitalizeWords(str) {
     }
 
     return str;
-}
+};
+
+export var isVolumeUnit = (unit) => {
+    if (unit.indexOf("tbsp") !== -1 || unit.indexOf("cup") !== -1 || unit.indexOf("mL") !== -1 || unit.indexOf("tsp") !== -1 || unit.indexOf("L") !== -1) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+export var isWeightUnit = (unit) => {
+    if (unit.indexOf("oz") !== -1 || unit.indexOf("lbs") !== -1) {
+        return true;
+    } else {
+        return false;
+    }
+};

@@ -14,8 +14,8 @@ exports.seed = function(knex, Promise) {
                 ingredient_id: 67,
                 quantity: 0.5,
                 units: "lbs",
-                hasWeight: false,
-                hasVolume: true
+                hasWeight: true,
+                hasVolume: false
             }, {
                 recipe_id: 1,
                 ingredient_id: 98,
@@ -42,8 +42,8 @@ exports.seed = function(knex, Promise) {
                 ingredient_id: 101,
                 quantity: 2,
                 units: "oz",
-                hasWeight: false,
-                hasVolume: true
+                hasWeight: true,
+                hasVolume: false
             }
         ]);
     });
