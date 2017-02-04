@@ -29,20 +29,14 @@ async function getOptions(name, needsvolume, needsweight) {
     var nutritionixResponse = await axios.get(nutritionixUrl);
 
     var nutritionOptions = nutritionixResponse.data.hits.filter((hit) => {
-        console.log(hit);
         if (needsvolume && isVolumeUnit(hit.fields.nf_serving_size_unit)) {
-            console.log(hit.fields.nf_serving_size_unit, isVolumeUnit(hit.fields.nf_serving_size_unit));
-            console.log("needs weight? ", needsweight);
             return true;
         } else if (needsweight && (isWeightUnit(hit.fields.nf_serving_size_unit) || hit.fields.nf_serving_weight_grams)) {
-            console.log("\n\n\n\n\n\nTHIS SHOULD NOT EVER HAPPEN" + needsweight + "\n\n\n\n\n\n\n\n\n");
             return true;
         } else {
-            console.log("does this ever happen?");
             return false;
         }
     });
-    console.log("number of options: ", nutritionOptions.length);
 
     return {
         name,
@@ -54,7 +48,7 @@ export function renderOptions(options) {
     return options.map((hit) => {
         return (
             <option key={hit.fields.item_id} value={JSON.stringify(hit.fields)}>
-                {hit.fields.item_name} (units: {hit.fields.nf_serving_size_unit})
+                {hit.fields.item_name} (units: {hit.fields.nf_serving_size_unit} {hit.fields.nf_serving_weight_grams ? " or grams" : ""})
             </option>
         );
     });
