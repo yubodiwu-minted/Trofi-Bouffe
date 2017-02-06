@@ -36,7 +36,7 @@ var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
     var ingredientsNeedNF = response.data;
-    
+
     dispatch(actions.needNutritionFacts(ingredientsNeedNF));
     window.location.hash = "/recipe/set_facts";
 }
@@ -51,7 +51,11 @@ var RecipeView = (props) => {
             <div className="content-list columns medium-10 large-8 small-centered">
                 <div className="recipe-header">
                     <img src={props.currentRecipe.img} alt="recipe_img" className="recipe-image"/>
-                    <h3>{props.currentRecipe.name}</h3>
+                    <div>
+                        <h3>{props.currentRecipe.name}</h3>
+                        <p>Calories: {props.currentRecipe.calories || "Not yet set"}</p>
+                        <p>Servings: {props.currentRecipe.servings || "Not yet set"}</p>
+                    </div>
                 </div>
                 <div className="recipe-content">
                     <div className="recipe-ingredients-div columns large-10">

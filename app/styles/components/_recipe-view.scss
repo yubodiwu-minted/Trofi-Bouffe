@@ -3,6 +3,10 @@
     align-items: center;
     margin-bottom: $global-padding;
     align-self: flex-start;
+
+    p {
+        margin: 0;
+    }
 }
 
 .recipe-image {
