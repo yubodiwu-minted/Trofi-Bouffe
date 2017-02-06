@@ -47,7 +47,7 @@ const UserRecipe = (props) => {
                     </p>
                 </div>
             </div>
-            <button id="edit-recipe-button" onClick={viewRecipe}>VIEW RECIPE</button>
+            <button id="edit-recipe-button" onClick={viewRecipe.bind(null, props)}>VIEW RECIPE</button>
         </div>
     );
 }
