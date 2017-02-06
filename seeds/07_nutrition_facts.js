@@ -4,6 +4,7 @@ exports.seed = function(knex, Promise) {
         return knex("nutrition_facts_ingredients").insert([
             {
                 ingredient_id: 101,
+                item_id: "seed_data",
                 serving_quantity: 1,
                 serving_unit: "oz",
                 hasVolume: false,
@@ -25,6 +26,7 @@ exports.seed = function(knex, Promise) {
                 iron: 1.2
             }, {
                 ingredient_id: 99,
+                item_id: "seed_data",
                 serving_quantity: 0.25,
                 serving_unit: "tsp",
                 hasVolume: true,
@@ -42,6 +44,7 @@ exports.seed = function(knex, Promise) {
                 iron: 0
             }, {
                 ingredient_id: 98,
+                item_id: "seed_data",
                 serving_quantity: 1,
                 serving_unit: "tbsp",
                 hasVolume: true,

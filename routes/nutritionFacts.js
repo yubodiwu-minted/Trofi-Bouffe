@@ -41,37 +41,42 @@ router.post("/", (req, res) => {
     if (!user) res.end("verify failed");
     if (!user) throw new Error("failed verification");
 
-    console.log("length of body is ", req.body.length);
-
     for (let ingredient of req.body) {
-        var ingredientId = ingredient.ingredient_id;
-        var nutritionFacts = ingredient.nutrition_facts;
+        let ingredientId = ingredient.ingredient_id;
+        let nutritionFacts = ingredient.nutrition_facts;
 
-        ingredientToDbPromises.push(knex("nutrition_facts_ingredients").insert({
-            ingredient_id: ingredientId,
-            hasVolume: isVolumeUnit(nutritionFacts.nf_serving_size_unit),
-            hasWeight: isWeightUnit(nutritionFacts.nf_serving_size_unit) || nutritionFacts.serving_weight_grams,
-            serving_quantity: nutritionFacts.nf_serving_size_qty,
-            serving_unit: nutritionFacts.nf_serving_size_unit,
-            serving_weight_grams: nutritionFacts.nf_serving_weight_grams,
-            calories: nutritionFacts.nf_calories,
-            calories_from_fat: nutritionFacts.nf_calories_from_fat,
-            total_fat: nutritionFacts.nf_total_fat,
-            saturated_fat: nutritionFacts.nf_saturated_fat,
-            monounsaturated_fat: nutritionFacts.nf_monounsaturated_fat,
-            polyunsaturated_fat: nutritionFacts.nf_polyunsaturated_fat,
-            trans_fatty_acid: nutritionFacts.nf_trans_fatty_acid,
-            cholesterol: nutritionFacts.nf_cholesterol,
-            sodium: nutritionFacts.nf_sodium,
-            total_carbohydrate: nutritionFacts.nf_total_carbohydrate,
-            dietary_fiber: nutritionFacts.nf_dietary_fiber,
-            sugars: nutritionFacts.nf_sugars,
-            protein: nutritionFacts.nf_protein,
-            vitamin_a_dv: nutritionFacts.nf_vitamin_a_dv,
-            vitamin_c_dv: nutritionFacts.nf_vitamin_c_dv,
-            calcium_dv: nutritionFacts.calcium_dv,
-            iron: nutritionFacts.nf_iron_dv
-        }));
+        ingredientToDbPromises.push(
+            knex("nutrition_facts_ingredients").select("item_id")
+                .where("ingredient_id", ingredientId).then((data) => {
+                    if (!data[0] || data[0].item_id !== nutritionFacts.item_id) {
+                        return knex("nutrition_facts_ingredients").insert({
+                            ingredient_id: ingredientId,
+                            item_id: nutritionFacts.item_id,
+                            hasVolume: isVolumeUnit(nutritionFacts.nf_serving_size_unit),
+                            hasWeight: isWeightUnit(nutritionFacts.nf_serving_size_unit) || nutritionFacts.serving_weight_grams,
+                            serving_quantity: nutritionFacts.nf_serving_size_qty,
+                            serving_unit: nutritionFacts.nf_serving_size_unit,
+                            serving_weight_grams: nutritionFacts.nf_serving_weight_grams,
+                            calories: nutritionFacts.nf_calories,
+                            calories_from_fat: nutritionFacts.nf_calories_from_fat,
+                            total_fat: nutritionFacts.nf_total_fat,
+                            saturated_fat: nutritionFacts.nf_saturated_fat,
+                            monounsaturated_fat: nutritionFacts.nf_monounsaturated_fat,
+                            polyunsaturated_fat: nutritionFacts.nf_polyunsaturated_fat,
+                            trans_fatty_acid: nutritionFacts.nf_trans_fatty_acid,
+                            cholesterol: nutritionFacts.nf_cholesterol,
+                            sodium: nutritionFacts.nf_sodium,
+                            total_carbohydrate: nutritionFacts.nf_total_carbohydrate,
+                            dietary_fiber: nutritionFacts.nf_dietary_fiber,
+                            sugars: nutritionFacts.nf_sugars,
+                            protein: nutritionFacts.nf_protein,
+                            vitamin_a_dv: nutritionFacts.nf_vitamin_a_dv,
+                            vitamin_c_dv: nutritionFacts.nf_vitamin_c_dv,
+                            calcium_dv: nutritionFacts.calcium_dv,
+                            iron: nutritionFacts.nf_iron_dv
+                        })
+                    }
+            }));
     }
 
     Promise.all(ingredientToDbPromises).then(() => {
@@ -112,7 +117,6 @@ router.post("/", (req, res) => {
             calcium_dv: cumulativeNutritionFacts.calcium_dv,
             iron: cumulativeNutritionFacts.nf_iron_dv
         }).then(() => {
-            console.log(cumulativeNutritionFacts);
             res.json(cumulativeNutritionFacts);
         });
     });
