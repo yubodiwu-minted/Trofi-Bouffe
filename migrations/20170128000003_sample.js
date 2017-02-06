@@ -45,7 +45,7 @@ exports.up = function(knex, Promise) {
             table.integer("step_number").notNullable();
             table.text("step_content").notNullable();
         }),
-        knex.schema.createTable("nutrition_facts", (table) => {
+        knex.schema.createTable("nutrition_facts_ingredients", (table) => {
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
             table.float("serving_quantity");
             table.string("serving_unit");
@@ -70,13 +70,35 @@ exports.up = function(knex, Promise) {
             table.float("calcium_dv");
             table.float("iron");
             table.float("potassium");
+        }),
+        knex.schema.createTable("nutrition_facts_recipes", (table) => {
+            table.integer("recipe_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
+            table.float("calories");
+            table.float("calories_from_fat");
+            table.float("total_fat");
+            table.float("saturated_fat");
+            table.float("monounsaturated_fat");
+            table.float("polyunsaturated_fat");
+            table.float("trans_fatty_acid");
+            table.float("cholesterol"); // mg
+            table.float("sodium");
+            table.float("total_carbohydrate");
+            table.float("dietary_fiber");
+            table.float("sugars");
+            table.float("protein");
+            table.float("vitamin_a_dv");
+            table.float("vitamin_c_dv");
+            table.float("calcium_dv");
+            table.float("iron");
+            table.float("potassium");
         })
     ]);
 };
 
 exports.down = function(knex, Promise) {
     return Promise.all([
-        knex.schema.dropTable("nutrition_facts"),
+        knex.schema.dropTable("nutrition_facts_ingredients"),
+        knex.schema.dropTable("nutrition_facts_recipes"),
         knex.schema.dropTable("recipe_directions"),
         knex.schema.dropTable("recipe_ingredients"),
         knex.schema.dropTable("ingredients"),

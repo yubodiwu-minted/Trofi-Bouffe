@@ -45,7 +45,7 @@ class SetNutritionFacts extends Component {
         });
     };
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
         var NutritionFactsForDb = [];
 
@@ -58,7 +58,14 @@ class SetNutritionFacts extends Component {
             NutritionFactsForDb.push(nutritionObj);
         }
         debugger;
-        axios.post("/nutrition-facts", NutritionFactsForDb);
+        try {
+            await axios.post(`/nutrition-facts?recipeId=${this.props.currentRecipe.id}&jwt=${localStorage.getItem("jwt")}`, NutritionFactsForDb);
+            var recipeIngredients = await axios.get(`/ingredients/${this.props.currentRecipe.id}?recipeIngredients=${JSON.stringify(this.props.ingredientsList)}`);
+            // var recipeNutritionFacts = await axios.get()
+        } catch(err) {
+            console.error(err);
+        }
+
     }
 
     render() {
@@ -86,6 +93,7 @@ class SetNutritionFacts extends Component {
 
 export default connect((state) => {
     return {
-        needNF: state.needNF
+        needNF: state.needNF,
+        currentRecipe: state.currentRecipe
     };
 })(SetNutritionFacts);

@@ -7,7 +7,7 @@ const {
     getUser,
     hashPassword,
     authenticateAndJWT
-} = require("./users_helpers.js");
+} = require("../helpers.js");
 
 router.get("/", function(req, res, next) {
     console.log("users get / route is hit");

@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
                 recipe_id: 1,
                 ingredient_id: 48,
                 quantity: 2,
-                units: "tbs",
+                units: "tbsp",
                 hasWeight: false,
                 hasVolume: true
             }, {
@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
                 recipe_id: 1,
                 ingredient_id: 98,
                 quantity: 4,
-                units: "tbs",
+                units: "tbsp",
                 hasWeight: false,
                 hasVolume: true
             }, {
