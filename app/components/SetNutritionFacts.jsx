@@ -5,6 +5,7 @@ import axios from "axios";
 import {capitalizeWords, replaceSpacesWithUnderscores} from "helperFunctions";
 import {createOptions, renderOptions} from "setNFFormHelpers";
 import SetNutritionFactsError from "SetNutritionFactsError";
+var actions = require("actions");
 
 const APPID = "57583012";
 const APPKEY = "680b07dfde35ff433dadae06d1571c4c";
@@ -48,6 +49,7 @@ class SetNutritionFacts extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         var NutritionFactsForDb = [];
+        var {dispatch} = this.props;
 
         for (let ingredient in this.refs) {
             var nutritionObj = {
@@ -59,11 +61,17 @@ class SetNutritionFacts extends Component {
         }
 
         try {
-            console.log(await axios.post(`/nutrition-facts?recipeId=${this.props.currentRecipe.id}&jwt=${localStorage.getItem("jwt")}`, NutritionFactsForDb));
+            var nfResponse = await axios.post(`/nutrition-facts?recipeId=${this.props.currentRecipe.id}&jwt=${localStorage.getItem("jwt")}`, NutritionFactsForDb);
+            var nutritionFacts = nfResponse.data;
+
+            dispatch(actions.editCurrentRecipe({
+                field: "calories",
+                value: Math.round(nutritionFacts.calories)
+            }));
+            window.location.hash = "/recipe/view"
         } catch(err) {
             console.error(err);
         }
-
     }
 
     render() {

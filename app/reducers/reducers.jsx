@@ -11,10 +11,16 @@ var recipesReducer = (state = [], action) => {
 
 var currentRecipeReducer = (state = null, action) => {
     Object.freeze(state);
+    console.log(action);
 
     switch (action.type) {
         case "GET_CURRENT_RECIPE":
             return action.payload;
+        case "EDIT_CURRENT_RECIPE":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState[action.payload.field] = action.payload.value;
+
+            return newState;
         default:
             return state;
     }

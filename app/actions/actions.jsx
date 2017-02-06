@@ -32,3 +32,11 @@ export var needNutritionFacts = (ingredientsNeedNF) => {
         payload: ingredientsNeedNF
     };
 };
+
+export var editCurrentRecipe = (recipeChange) => {
+    console.log("edit recipe function hit");
+    return {
+        type: "EDIT_CURRENT_RECIPE",
+        payload: recipeChange
+    };
+};
