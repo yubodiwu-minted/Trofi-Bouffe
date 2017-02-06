@@ -45,10 +45,10 @@ class UserRecipe extends Component {
                             {this.props.name}
                         </h3>
                         <p>
-                            Calories: N/A
+                            Calories: {this.props.calories || "N/A"}
                         </p>
                         <p>
-                            Servings: N/A
+                            Servings: {this.props.servings || "N/A"}
                         </p>
                     </div>
                 </div>
