@@ -10,6 +10,9 @@ class UserRecipesList extends Component {
         super(props);
 
         this.getRecipes = this.getRecipes.bind(this);
+    }
+
+    componentWillMount() {
         this.getRecipes();
     }
 
