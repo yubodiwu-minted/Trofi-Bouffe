@@ -36,7 +36,7 @@ var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
     var ingredientsNeedNF = response.data;
-    debugger;
+    
     dispatch(actions.needNutritionFacts(ingredientsNeedNF));
     window.location.hash = "/recipe/set_facts";
 }

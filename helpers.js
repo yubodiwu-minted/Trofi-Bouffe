@@ -119,13 +119,34 @@ var filterForWeightOrVolumeRequirement = (data) => {
 
 var combineNutritionFacts = (data) => {
     return data.reduce((accum, cur) => {
-        var multiplier = cur.recipeQuantity / cur.serving_quantity * convertUnitsFromTo(cur.serving_unit, cur.recipeUnits);
+        var multiplier = cur.recipeQuantity / cur.serving_quantity * convertUnitsFromTo(cur.recipeUnits, cur.serving_unit);
+        console.log(`adding ${cur.calories * multiplier} calories because of ${cur.name} with multiplier ${multiplier}, from ${cur.serving_unit} to ${cur.recipeUnits}`);
+        console.log(`current calorie count is ${accum.calories}`);
 
         for (let key in accum) {
             accum[key] = accum[key] + cur[key] * multiplier;
         }
 
         return accum;
+    }, {
+        calories: 0,
+        calories_from_fat: 0,
+        total_fat: 0,
+        saturated_fat: 0,
+        monounsaturated_fat: 0,
+        polyunsaturated_fat: 0,
+        trans_fatty_acid: 0,
+        cholesterol: 0,
+        sodium: 0,
+        total_carbohydrate: 0,
+        dietary_fiber: 0,
+        sugars: 0,
+        protein: 0,
+        vitamin_a_dv: 0,
+        vitamin_c_dv: 0,
+        calcium_dv: 0,
+        iron: 0,
+        potassium: 0
     });
 }
 

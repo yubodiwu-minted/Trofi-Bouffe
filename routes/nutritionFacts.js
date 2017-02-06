@@ -76,7 +76,6 @@ router.post("/", (req, res) => {
 
     Promise.all(ingredientToDbPromises).then(() => {
         var recipeId = req.query.recipeId;
-        console.log("id is ", recipeId);
 
         return knex("recipes").select("ingredients.id", "ingredients.name", "recipe_ingredients.quantity as recipeQuantity", "recipe_ingredients.units as recipeUnits", "recipe_ingredients.hasWeight as needsWeight", "recipe_ingredients.hasVolume as needsVolume", "nutrition_facts_ingredients.*")
             .join("recipe_ingredients", "recipes.id", "recipe_ingredients.recipe_id").join("ingredients", "ingredients.id", "recipe_ingredients.ingredient_id")
@@ -88,10 +87,12 @@ router.post("/", (req, res) => {
     }).then((cumulativeNutritionFacts) => {
         knex("recipes").where("recipes.id", "=", req.query.recipeId)
             .update({
-                calories: cumulativeNutritionFacts.calories
+                calories: Math.round(cumulativeNutritionFacts.calories)
+            }).then(() => {
+                console.log("recipe updated with calories");
             });
 
-        return knex("nutrition_facts_recipes").insert({
+        knex("nutrition_facts_recipes").insert({
             recipe_id: req.query.recipeId,
             calories: cumulativeNutritionFacts.nf_calories,
             calories_from_fat: cumulativeNutritionFacts.nf_calories_from_fat,
