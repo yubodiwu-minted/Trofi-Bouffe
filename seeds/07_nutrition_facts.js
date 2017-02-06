@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
-    return knex("nutrition_facts").del().then(function() {
-        return knex("nutrition_facts").insert([
+    return knex("nutrition_facts_ingredients").del().then(function() {
+        return knex("nutrition_facts_ingredients").insert([
             {
                 ingredient_id: 101,
                 serving_quantity: 1,
