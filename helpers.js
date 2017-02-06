@@ -120,8 +120,8 @@ var filterForWeightOrVolumeRequirement = (data) => {
 var combineNutritionFacts = (data) => {
     return data.reduce((accum, cur) => {
         var multiplier = cur.recipeQuantity / cur.serving_quantity * convertUnitsFromTo(cur.recipeUnits, cur.serving_unit);
-        console.log(`adding ${cur.calories * multiplier} calories because of ${cur.name} with multiplier ${multiplier}, from ${cur.serving_unit} to ${cur.recipeUnits}`);
-        console.log(`current calorie count is ${accum.calories}`);
+        // console.log(`adding ${cur.calories * multiplier} calories because of ${cur.name} with multiplier ${multiplier}, from ${cur.serving_unit} to ${cur.recipeUnits}`);
+        // console.log(`current calorie count is ${accum.calories}`);
 
         for (let key in accum) {
             accum[key] = accum[key] + cur[key] * multiplier;

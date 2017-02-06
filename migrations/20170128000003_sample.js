@@ -47,6 +47,7 @@ exports.up = function(knex, Promise) {
         }),
         knex.schema.createTable("nutrition_facts_ingredients", (table) => {
             table.integer("ingredient_id").notNullable().references("id").inTable("ingredients").onDelete("cascade");
+            table.string("item_id").notNullable();
             table.float("serving_quantity");
             table.string("serving_unit");
             table.boolean("hasVolume");
