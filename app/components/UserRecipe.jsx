@@ -25,7 +25,9 @@ class UserRecipe extends Component {
                 id: this.props.id,
                 img: this.props.img,
                 name: this.props.name,
-                user_id: this.props.user_id
+                user_id: this.props.user_id,
+                calories: this.props.calories,
+                servings: this.props.servings
             }));
             dispatch(actions.getRecipeDirections(directions));
 
@@ -45,10 +47,10 @@ class UserRecipe extends Component {
                             {this.props.name}
                         </h3>
                         <p>
-                            Calories: N/A
+                            Calories: {this.props.calories || "Not yet set"}
                         </p>
                         <p>
-                            Servings: N/A
+                            Servings: {this.props.servings || "Not yet set"}
                         </p>
                     </div>
                 </div>

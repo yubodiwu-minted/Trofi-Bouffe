@@ -14,7 +14,6 @@ class LoginForm extends Component {
     async handleSubmit(event) {
         var {dispatch} = this.props;
         event.preventDefault();
-        debugger;
         console.log("form submitted");
 
         try {
@@ -45,12 +44,6 @@ class LoginForm extends Component {
                             </label>
                             <label>Password
                                 <input type="text" ref="password" placeholder="Password"/>
-                            </label>
-                            <label>TestSelector
-                                <select name="" id="" ref="thing">
-                                    <option value="ball" >ball</option>
-                                    <option value="not-ball">not ball</option>
-                                </select>
                             </label>
                             <div className="button-holder">
                                 <button>
