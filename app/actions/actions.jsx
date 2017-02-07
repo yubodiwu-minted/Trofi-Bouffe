@@ -12,10 +12,29 @@ export var getRecipeIngredients = (ingredientsList) => {
     };
 };
 
+export var addRecipeIngredient = (ingredient) => {
+    return {
+        type: "ADD_RECIPE_INGREDIENT",
+        payload: ingredient
+    };
+};
+
+export var clearRecipeIngredients = () => {
+    return {
+        type: "CLEAR_RECIPE_INGREDIENTS"
+    };
+};
+
 export var getCurrentRecipe = (recipe) => {
     return {
         type: "GET_CURRENT_RECIPE",
         payload: recipe
+    };
+};
+
+export var clearCurrentRecipe = () => {
+    return {
+        type: "CLEAR_CURRENT_RECIPE"
     };
 };
 
@@ -25,6 +44,12 @@ export var getRecipeDirections = (directions) => {
         payload: directions
     };
 };
+
+export var clearRecipeDirections = () => {
+    return {
+        type: "CLEAR_RECIPE_DIRECTIONS"
+    };
+}
 
 export var needNutritionFacts = (ingredientsNeedNF) => {
     return {

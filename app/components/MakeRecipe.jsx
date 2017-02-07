@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import MakeRecipeDirections from "MakeRecipeDirections";
+import MakeRecipeIngredients from "MakeRecipeIngredients";
 
 var actions = require("actions");
 
@@ -10,6 +11,7 @@ class MakeRecipe extends Component {
         super(props);
 
         this.ingredientSubmit = this.ingredientSubmit.bind(this);
+        this.directionSubmit = this.directionSubmit.bind(this);
     }
 
     componentWillMount() {
@@ -19,8 +21,17 @@ class MakeRecipe extends Component {
     ingredientSubmit(event) {
         var {dispatch} = this.props;
         event.preventDefault();
-        console.log("ingredient submitted");
-        console.log(this.refs);
+
+        dispatch(actions.addRecipeIngredient({
+            quantity: this.refs.amount.value,
+            units: this.refs.units.value,
+            name: this.refs.description.value
+        }));
+    }
+
+    directionSubmit(event) {
+        var {dispatch} = this.props;
+        event.preventDefault;
     }
 
     render() {
@@ -36,12 +47,7 @@ class MakeRecipe extends Component {
                         </div> */}
                     </div>
                     <div className="recipe-content">
-                        <div className="recipe-ingredients-div columns large-10">
-                            <h5>STUFF</h5>
-                            <div className="recipe-div-innermost">
-                                {/* {renderIngredients(props)} */}
-                            </div>
-                        </div>
+                        <MakeRecipeIngredients></MakeRecipeIngredients>
                         <MakeRecipeDirections></MakeRecipeDirections>
                     </div>
                     <div id="make-recipe-buttons-div">

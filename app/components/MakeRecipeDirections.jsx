@@ -25,5 +25,7 @@ const MakeRecipeDirections = (props) => {
 }
 
 export default connect((state) => {
-    directions: state.directions
+    return {
+        directions: state.directions
+    };
 })(MakeRecipeDirections);

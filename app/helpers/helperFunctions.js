@@ -1,9 +1,9 @@
 export var convertUnitAbbreviation = {
+    g: "grams",
     tbsp: "tablespoons",
     lbs: "pounds",
     tsp: "teaspoons",
-    oz: "ounces",
-    "a pinch": "a pinch"
+    oz: "ounces"
 };
 
 export var replaceSpacesWithUnderscores = (string) => {

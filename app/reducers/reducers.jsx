@@ -9,7 +9,7 @@ var recipesReducer = (state = [], action) => {
     }
 };
 
-var currentRecipeReducer = (state = null, action) => {
+var currentRecipeReducer = (state = {}, action) => {
     Object.freeze(state);
     console.log(action);
 
@@ -21,6 +21,8 @@ var currentRecipeReducer = (state = null, action) => {
             newState[action.payload.field] = action.payload.value;
 
             return newState;
+        case "CLEAR_CURRENT_RECIPE":
+            return {};
         default:
             return state;
     }
@@ -32,6 +34,13 @@ var ingredientsListReducer = (state = [], action) => {
     switch (action.type) {
         case "GET_RECIPE_INGREDIENTS":
             return action.payload;
+        case "ADD_RECIPE_INGREDIENT":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.push(action.payload);
+
+            return newState;
+        case "CLEAR_RECIPE_INGREDIENTS":
+            return [];
         default:
             return state;
     }
@@ -43,6 +52,8 @@ var directionsReducer = (state = [], action) => {
     switch (action.type) {
         case "GET_RECIPE_DIRECTIONS":
             return action.payload;
+        case "CLEAR_RECIPE_DIRECTIONS":
+            return [];
         default:
             return state;
     }
