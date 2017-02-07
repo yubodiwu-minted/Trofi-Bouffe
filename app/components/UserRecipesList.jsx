@@ -40,7 +40,9 @@ class UserRecipesList extends Component {
         return (
             <div className="content-container row">
                 <div className="content-list columns medium-10 large-8 small-centered">
-                    <button onClick={this.getRecipes} id="new-recipe-button" className="columns medium-7 large-6 small-centered">
+                    <button onClick={() => {
+                        window.location.hash = "/recipe/new";
+                    }} id="new-recipe-button" className="columns medium-7 large-6 small-centered">
                         <span>+</span> NEW RECIPE
                     </button>
                     <div className="recipes-holder">

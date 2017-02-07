@@ -10,6 +10,7 @@ import LoginForm from "LoginForm";
 import UserRecipesList from "UserRecipesList";
 import RecipeView from "RecipeView";
 import SetNutritionFacts from "SetNutritionFacts";
+import MakeRecipe from "MakeRecipe";
 
 var actions = require("actions");
 var store = require("configureStore").configure();
@@ -36,6 +37,7 @@ ReactDOM.render(
                 <Route path="user/recipes" component={UserRecipesList}></Route>
                 <Route path="recipe/view" component={RecipeView}></Route>
                 <Route path="recipe/set_facts" component={SetNutritionFacts}></Route>
+                <Route path="recipe/new" component={MakeRecipe}></Route>
             </Route>
         </Router>
     </Provider>,

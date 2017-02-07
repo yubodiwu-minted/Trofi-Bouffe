@@ -1,0 +1,39 @@
+#make-recipe-buttons-div {
+    width: 100%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        div {
+            display: flex;
+        }
+
+        button {
+            justify-content: center;
+            display: flex;
+            height: 2rem;
+            margin: 0.5rem;
+            max-width: 25%;
+
+            span {
+                font-size: small;
+            }
+        }
+
+        input, select {
+            height: 2rem;
+            padding-top: 0rem;
+            padding-bottom: 0rem;
+            margin: 0 0.2rem 0 0.2rem;
+        }
+    }
+}
+
+#ingredient-quantity {
+    width: 5rem;
+}
+
+#ingredient-units {
+    width: 5rem;
+}
