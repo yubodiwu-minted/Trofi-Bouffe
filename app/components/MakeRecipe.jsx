@@ -27,11 +27,22 @@ class MakeRecipe extends Component {
             units: this.refs.units.value,
             name: this.refs.description.value
         }));
+
+        this.refs.amount.value = "";
+        this.refs.units.value = "";
+        this.refs.description.value = "";
     }
 
     directionSubmit(event) {
         var {dispatch} = this.props;
-        event.preventDefault;
+        event.preventDefault();
+
+        dispatch(actions.addRecipeDirection({
+            stepNumber: ++this.directionNumber,
+            stepContent: this.refs.direction.value
+        }));
+
+        this.refs.direction.value = "";
     }
 
     render() {
@@ -55,7 +66,7 @@ class MakeRecipe extends Component {
                             <button className="blue-button" type="submit"><span>+</span> INGREDIENT</button>
                             <div>
                                 <input id="ingredient-quantity" type="text" ref="amount" placeholder="amount"/>
-                                <select id="ingredient-units" ref="units">
+                                <select id="ingredient-units" ref="units" default="">
                                     <option value="g">grams</option>
                                     <option value="oz">oz</option>
                                     <option value="lbs">lbs</option>
@@ -66,9 +77,9 @@ class MakeRecipe extends Component {
                                 <input id="ingredient-name" type="text" ref="description" placeholder="description"/>
                             </div>
                         </form>
-                        <form>
-                            <button className="green-button"><span>+</span> STEP</button>
-                            <input type="text"/>
+                        <form onSubmit={this.directionSubmit}>
+                            <button className="green-button" type="submit"><span>+</span> STEP</button>
+                            <input type="text" ref="direction" placeholder="direction text"/>
                         </form>
                     </div>
                 </div>

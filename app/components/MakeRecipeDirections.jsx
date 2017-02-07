@@ -7,7 +7,7 @@ var renderDirections = (props) => {
     return props.directions.map((direction) => {
         return (
             <p className="direction" key={key++}>
-                {direction.step_number}. {direction.step_content}
+                {direction.stepNumber}. {direction.stepContent}
             </p>
         );
     })

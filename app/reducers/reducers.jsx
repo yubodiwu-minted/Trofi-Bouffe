@@ -52,6 +52,11 @@ var directionsReducer = (state = [], action) => {
     switch (action.type) {
         case "GET_RECIPE_DIRECTIONS":
             return action.payload;
+        case "ADD_RECIPE_DIRECTION":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.push(action.payload);
+
+            return newState;
         case "CLEAR_RECIPE_DIRECTIONS":
             return [];
         default:

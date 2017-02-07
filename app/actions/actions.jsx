@@ -45,6 +45,13 @@ export var getRecipeDirections = (directions) => {
     };
 };
 
+export var addRecipeDirection = (direction) => {
+    return {
+        type: "ADD_RECIPE_DIRECTION",
+        payload: direction
+    };
+};
+
 export var clearRecipeDirections = () => {
     return {
         type: "CLEAR_RECIPE_DIRECTIONS"
