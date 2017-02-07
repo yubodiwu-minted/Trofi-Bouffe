@@ -25,4 +25,10 @@ router.get("/", (req, res) => {
     }
 });
 
+router.post("/", (req, res) => {
+    console.log("recipes post route hit");
+    console.log(req.body);
+    res.end();
+})
+
 module.exports = router;
