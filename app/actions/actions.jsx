@@ -38,6 +38,24 @@ export var clearCurrentRecipe = () => {
     };
 };
 
+export var clearCurrentRecipeName = () => {
+    return {
+        type: "CLEAR_RECIPE_NAME"
+    };
+};
+
+export var clearCurrentRecipeServings = () => {
+    return {
+        type: "CLEAR_RECIPE_SERVINGS"
+    };
+};
+
+export var clearCurrentRecipeImage = () => {
+    return {
+        type: "CLEAR_RECIPE_IMAGE"
+    };
+};
+
 export var getRecipeDirections = (directions) => {
     return {
         type: "GET_RECIPE_DIRECTIONS",
@@ -66,7 +84,6 @@ export var needNutritionFacts = (ingredientsNeedNF) => {
 };
 
 export var editCurrentRecipe = (recipeChange) => {
-    console.log("edit recipe function hit");
     return {
         type: "EDIT_CURRENT_RECIPE",
         payload: recipeChange
