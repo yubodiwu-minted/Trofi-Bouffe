@@ -22,7 +22,12 @@ const viewRecipe = async (props) => {
             calories: props.calories,
             servings: props.servings
         }));
-        dispatch(actions.getRecipeDirections(directions));
+        dispatch(actions.getRecipeDirections(directions.map((direction) => {
+            return {
+                stepNumber: direction.step_number,
+                stepContent: direction.step_content
+            };
+        })));
 
         window.location.hash = "/recipe/view"
     } catch (err) {

@@ -8,6 +8,7 @@ class MakeRecipeForm extends Component {
         super(props);
 
         this.dispatch = props.dispatch;
+        this.ingredientNumber = 0;
 
         this.imageSubmit = this.imageSubmit.bind(this);
         this.ingredientSubmit = this.ingredientSubmit.bind(this);
@@ -21,6 +22,7 @@ class MakeRecipeForm extends Component {
             field: "img",
             value: this.refs.image.value
         }));
+        this.dispatch(actions.submitCurrentRecipeImage());
 
         this.refs.image.value = "";
     }
@@ -31,7 +33,8 @@ class MakeRecipeForm extends Component {
         this.dispatch(actions.addRecipeIngredient({
             quantity: this.refs.amount.value,
             units: this.refs.units.value,
-            name: this.refs.description.value
+            name: this.refs.description.value,
+            ingredientNumber: this.ingredientNumber++
         }));
 
         this.refs.amount.value = "";
@@ -55,10 +58,25 @@ class MakeRecipeForm extends Component {
             <div id="make-recipe-buttons-div">
                 <form onSubmit={this.imageSubmit}>
                     <button className="blue-button" type="submit"><span>+</span>IMAGE</button>
-                    <input id="make-recipe-image" type="text" ref="image" placeholder="image URL"/>
+                    <input id="make-recipe-image" type="text" ref="image" placeholder="image URL" onChange={() => {
+                        this.dispatch(actions.editCurrentRecipe({
+                            field: "img",
+                            value: this.refs.image.value
+                        }))
+                    }}/>
                 </form>
                 <form onSubmit={this.ingredientSubmit}>
-                    <button className="blue-button" type="submit"><span>+</span>INGREDIENT</button>
+                    <div>
+                        <button className="blue-button" type="submit">
+                            <span>+</span>INGREDIENT
+                        </button>
+                        <button className="blue-button" onClick={(event) => {
+                            event.preventDefault();
+                            this.dispatch(actions.deleteRecipeIngredient());
+                        }}>
+                            <span>-</span>INGREDIENT
+                        </button>
+                    </div>
                     <div>
                         <input id="ingredient-quantity" type="text" ref="amount" placeholder="amount"/>
                         <select id="ingredient-units" ref="units" default="">
@@ -73,7 +91,17 @@ class MakeRecipeForm extends Component {
                     </div>
                 </form>
                 <form onSubmit={this.directionSubmit}>
-                    <button className="blue-button" type="submit"><span>+</span>STEP</button>
+                    <div>
+                        <button className="blue-button" type="submit">
+                            <span>+</span>STEP
+                        </button>
+                        <button className="blue-button" onClick={(event) => {
+                            event.preventDefault();
+                            this.dispatch(actions.deleteRecipeDirection());
+                        }}>
+                            <span>-</span>STEP
+                        </button>
+                    </div>
                     <input type="text" ref="direction" placeholder="direction text"/>
                 </form>
             </div>

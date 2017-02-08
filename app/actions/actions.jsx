@@ -19,6 +19,12 @@ export var addRecipeIngredient = (ingredient) => {
     };
 };
 
+export var deleteRecipeIngredient = () => {
+    return {
+        type: "DELETE_RECIPE_INGREDIENT"
+    };
+};
+
 export var clearRecipeIngredients = () => {
     return {
         type: "CLEAR_RECIPE_INGREDIENTS"
@@ -32,11 +38,30 @@ export var getCurrentRecipe = (recipe) => {
     };
 };
 
+export var editRecipeClicked = () => {
+    return {
+        type: "EDIT_RECIPE_BUTTON_CLICKED"
+    };
+};
+
+export var editCurrentRecipe = (recipeChange) => {
+    return {
+        type: "EDIT_CURRENT_RECIPE",
+        payload: recipeChange
+    };
+};
+
 export var clearCurrentRecipe = () => {
     return {
         type: "CLEAR_CURRENT_RECIPE"
     };
 };
+
+export var submitCurrentRecipeName = () => {
+    return {
+        type: "SUBMIT_RECIPE_NAME"
+    };
+}
 
 export var clearCurrentRecipeName = () => {
     return {
@@ -44,9 +69,21 @@ export var clearCurrentRecipeName = () => {
     };
 };
 
+export var submitCurrentRecipeServings = () => {
+    return {
+        type: "SUBMIT_RECIPE_SERVINGS"
+    };
+};
+
 export var clearCurrentRecipeServings = () => {
     return {
         type: "CLEAR_RECIPE_SERVINGS"
+    };
+};
+
+export var submitCurrentRecipeImage = () => {
+    return {
+        type: "SUBMIT_RECIPE_IMAGE"
     };
 };
 
@@ -70,22 +107,21 @@ export var addRecipeDirection = (direction) => {
     };
 };
 
+export var deleteRecipeDirection = () => {
+    return {
+        type: "DELETE_RECIPE_DIRECTION"
+    };
+};
+
 export var clearRecipeDirections = () => {
     return {
         type: "CLEAR_RECIPE_DIRECTIONS"
     };
-}
+};
 
 export var needNutritionFacts = (ingredientsNeedNF) => {
     return {
         type: "INGREDIENTS_NEED_NUTRITION_FACTS",
         payload: ingredientsNeedNF
-    };
-};
-
-export var editCurrentRecipe = (recipeChange) => {
-    return {
-        type: "EDIT_CURRENT_RECIPE",
-        payload: recipeChange
     };
 };
