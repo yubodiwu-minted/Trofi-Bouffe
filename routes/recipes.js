@@ -85,6 +85,93 @@ router.post("/", (req, res) => {
         })
 
     res.end();
-})
+});
+
+router.put("/", (req, res) => {
+    console.log("put recipes route hit");
+
+    try {
+        var user = JWT.verify(req.body.jwt, APP_SECRET);
+    } catch (err) {
+        console.error(err);
+    }
+
+    var notInserted = [];
+    var ingredientsForInsert = req.body.ingredientsList.map((ingredient) => {
+        if (!ingredient.id) {
+            return {
+                name: ingredient.name
+            };
+        } else {
+            notInserted.push({
+                recipe_id: req.body.currentRecipe.id,
+                ingredient_id: ingredient.id,
+                quantity: ingredient.quantity,
+                units: ingredient.units
+            });
+        }
+    }).filter((ingredient) => ingredient);
+
+    Promise.all([
+        knex("recipes").where("id", req.body.currentRecipe.id)
+        .update({
+            name: req.body.currentRecipe.name,
+            img: req.body.currentRecipe.img,
+            servings: req.body.currentRecipe.servings
+        }).then(() => {
+            console.log("recipe info updated");
+        }),
+        knex("ingredients").insert(ingredientsForInsert)
+        .returning(["id", "name"]).then((ingredientData) => {
+            console.log("ingredientData is ", ingredientData instanceof Array);
+            if (ingredientData instanceof Array) {
+                var recipeIngredientsForInsert = ingredientData.map((recipeIngredient) => {
+                    var recipeIngredientForInsert = {
+                        recipe_id: req.body.currentRecipe.id,
+                        ingredient_id: recipeIngredient.id
+                    };
+
+                    for (let ingredient of req.body.ingredientsList) {
+                        if (ingredient.name === recipeIngredient.name) {
+                            recipeIngredientForInsert.quantity = ingredient.quantity;
+                            recipeIngredientForInsert.units = ingredient.units;
+                        }
+                    }
+
+                    return recipeIngredientForInsert;
+                }).concat(notInserted);
+            } else {
+                var recipeIngredientsForInsert = notInserted;
+            }
+
+
+            knex("recipe_ingredients").where("recipe_id", req.body.currentRecipe.id)
+                .del().then(() => {
+                    knex("recipe_ingredients")
+                        .insert(recipeIngredientsForInsert)
+                        .then(() => {
+                            console.log("recipe ingredients relation inserted");
+                        });
+                });
+        }),
+        knex("recipe_directions").where("recipe_id", req.body.currentRecipe.id)
+        .del().then(() => {
+            var recipeDirectionsForInsert = req.body.directions.map((direction) => {
+                return {
+                    recipe_id: req.body.currentRecipe.id,
+                    step_number: direction.stepNumber,
+                    step_content: direction.stepContent
+                };
+            });
+
+            knex("recipe_directions").insert(recipeDirectionsForInsert)
+                .then(() => {
+                    console.log("recipe directions inserted");
+                });
+        })
+    ])
+
+    res.end();
+});
 
 module.exports = router;

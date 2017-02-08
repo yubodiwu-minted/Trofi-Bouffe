@@ -21,9 +21,30 @@ var saveRecipe = async (props) => {
             jwt: localStorage.getItem("jwt")
         });
 
-        window.location.hash = "/user/recipes";
+        window.location.hash = "/recipe/view";
+    }
+};
+
+var editRecipe = async (props) => {
+    if (!props.currentRecipe.saved) {
+        await axios.put("/recipes", {
+            currentRecipe: props.currentRecipe,
+            ingredientsList: props.ingredientsList,
+            directions: props.directions,
+            jwt: localStorage.getItem("jwt")
+        });
+
+        window.location.hash = "/recipe/view";
     }
 }
+
+var renderButton = (props) => {
+    if (!props.currentRecipe.id) {
+        return <button id="save-recipe-button" onClick={saveRecipe.bind(null, props)}>SAVE RECIPE</button>;
+    } else {
+        return <button id="save-recipe-button" onClick={editRecipe.bind(null, props)}>EDIT RECIPE</button>
+    }
+};
 
 var MakeRecipe = (props) => {
     if (localStorage.getItem("jwt")) {
@@ -38,7 +59,7 @@ var MakeRecipe = (props) => {
                         <MakeRecipeDirections></MakeRecipeDirections>
                     </div>
                     <MakeRecipeForm></MakeRecipeForm>
-                    <button id="save-recipe-button" onClick={saveRecipe.bind(null, props)}>SAVE RECIPE</button>
+                    {renderButton(props)}
                 </div>
             </div>
         );
