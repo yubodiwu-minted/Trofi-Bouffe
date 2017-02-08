@@ -20,11 +20,11 @@ var saveRecipe = async (props) => {
             directions: props.directions,
             jwt: localStorage.getItem("jwt")
         });
-        console.log("attempted to dispatch");
-        props.dispatch(actions.editCurrentRecipe({
-            field: "saved",
-            value: true
-        }));
+
+        // props.dispatch(actions.editCurrentRecipe({
+        //     field: "saved",
+        //     value: true
+        // }));
     }
 }
 

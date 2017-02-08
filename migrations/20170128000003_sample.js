@@ -24,7 +24,7 @@ exports.up = function(knex, Promise) {
             table.increments("id").primary();
             table.string("upc").defaultTo(null);
             table.string("plu").defaultTo(null);
-            table.string("product_name").notNullable();
+            table.string("product_name");
             table.string("name");
             table.integer("calories").defaultTo(null);
             table.timestamp("created_at").notNullable().defaultTo(knex.fn.now());
