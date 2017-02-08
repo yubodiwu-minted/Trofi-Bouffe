@@ -67,7 +67,7 @@ class MakeRecipeForm extends Component {
                             <option value="lbs">lbs</option>
                             <option value="tsp">tsp</option>
                             <option value="tbsp">tbsp</option>
-                            <option value="cup">cups</option>
+                            <option value="cups">cups</option>
                         </select>
                         <input id="ingredient-name" type="text" ref="description" placeholder="description"/>
                     </div>

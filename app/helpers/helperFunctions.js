@@ -3,7 +3,9 @@ export var convertUnitAbbreviation = {
     tbsp: "tablespoons",
     lbs: "pounds",
     tsp: "teaspoons",
-    oz: "ounces"
+    oz: "ounces",
+    cups: "cups",
+    cup: "cups"
 };
 
 export var replaceSpacesWithUnderscores = (string) => {
