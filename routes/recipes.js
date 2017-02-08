@@ -46,7 +46,7 @@ router.post("/", (req, res) => {
                     name: ingredient.name
                 };
             });
-            console.log(req.body.ingredientsList);
+
             knex("recipe_directions").insert(req.body.directions.map((direction) => {
                 return {
                     recipe_id: recipeId,
@@ -78,9 +78,12 @@ router.post("/", (req, res) => {
 
             console.log(recipeIngredientsForInsert);
 
-            return knex("recipe_ingredients").insert(recipeIngredientsForInsert);
+            knex("recipe_ingredients").insert(recipeIngredientsForInsert)
+                .then(() => {
+                    console.log("recipe ingredients relation inserted");
+                });
         })
-    console.log(user);
+
     res.end();
 })
 

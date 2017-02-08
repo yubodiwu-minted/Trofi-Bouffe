@@ -21,10 +21,7 @@ var saveRecipe = async (props) => {
             jwt: localStorage.getItem("jwt")
         });
 
-        // props.dispatch(actions.editCurrentRecipe({
-        //     field: "saved",
-        //     value: true
-        // }));
+        window.location.hash = "/user/recipes"
     }
 }
 
