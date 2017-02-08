@@ -14,7 +14,7 @@ import {
 } from "reducers";
 import promise from "redux-promise";
 
-export var configure = (initialState = {loggedIn: null}) => {
+export var configure = (initialState = {}) => {
     var reducers = combineReducers({
         recipesList: recipesReducer,
         ingredientsList: ingredientsListReducer,

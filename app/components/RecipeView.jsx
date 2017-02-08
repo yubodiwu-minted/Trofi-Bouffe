@@ -26,7 +26,7 @@ var renderDirections = (props) => {
     return props.directions.map((direction) => {
         return (
             <p className="direction" key={key++}>
-                {direction.step_number}. {direction.step_content}
+                {direction.stepNumber}. {direction.stepContent}
             </p>
         );
     });
@@ -36,7 +36,7 @@ var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
     var ingredientsNeedNF = response.data;
-    
+
     dispatch(actions.needNutritionFacts(ingredientsNeedNF));
     window.location.hash = "/recipe/set_facts";
 }
@@ -74,7 +74,8 @@ var RecipeView = (props) => {
                 <div className="recipe-buttons-div">
                     <button onClick={setNutritionFacts.bind(this, props)} className="blue-button">NUTRITION FACTS</button>
                     <button className="green-button" onClick={() => {
-                        console.log("edit recipe button clicked");
+                        props.dispatch(actions.editRecipeClicked());
+                        window.location.hash = "/recipe/edit";
                     }}>EDIT RECIPE</button>
                 </div>
             </div>

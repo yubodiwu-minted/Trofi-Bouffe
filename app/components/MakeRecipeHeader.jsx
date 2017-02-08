@@ -20,6 +20,7 @@ class MakeRecipeHeader extends Component {
             field: "servings",
             value: this.refs.recipeServings.value
         }));
+        this.dispatch(actions.submitCurrentRecipeServings());
 
         this.refs.recipeServings.value = "";
     }
@@ -31,13 +32,21 @@ class MakeRecipeHeader extends Component {
             field: "name",
             value: this.refs.recipeName.value
         }));
+        this.dispatch(actions.submitCurrentRecipeName());
 
         this.refs.recipeName.value = "";
     }
 
     renderImage() {
-        if (this.props.currentRecipe.img) {
-            return <img src={this.props.currentRecipe.img} alt="broken url" className="recipe-image"/>;
+        if (this.props.currentRecipe.img && this.props.currentRecipe.imgSubmitted) {
+            return (
+                <div id="make-recipe-image-holder">
+                    <p>Click to edit:</p>
+                    <img src={this.props.currentRecipe.img} alt="broken url" className="recipe-image" onClick={() => {
+                        this.dispatch(actions.clearCurrentRecipeImage());
+                    }}/>
+                </div>
+            );
         } else {
             return (
                 <div id="recipe-image-placeholder">
@@ -48,7 +57,7 @@ class MakeRecipeHeader extends Component {
     }
 
     renderTitle() {
-        if (this.props.currentRecipe.name) {
+        if (this.props.currentRecipe.name && this.props.currentRecipe.nameSubmitted) {
             return <h3 onClick={() => {
                 this.dispatch(actions.clearCurrentRecipeName());
             }}>{this.props.currentRecipe.name} (click to edit)</h3>
@@ -56,7 +65,12 @@ class MakeRecipeHeader extends Component {
             return (
                 <form onSubmit={this.titleSubmit}>
                     <label>Title (hit enter to change):
-                        <input type="text" ref="recipeName"/>
+                        <input type="text" ref="recipeName" onChange={() => {
+                            this.dispatch(actions.editCurrentRecipe({
+                                field: "name",
+                                value: this.refs.recipeName.value
+                            }));
+                        }}/>
                     </label>
                 </form>
             );
@@ -64,7 +78,7 @@ class MakeRecipeHeader extends Component {
     }
 
     renderServings() {
-        if (this.props.currentRecipe.servings) {
+        if (this.props.currentRecipe.servings && this.props.currentRecipe.servingsSubmitted) {
             return <p onClick={() => {
                 this.dispatch(actions.clearCurrentRecipeServings());
             }}>Servings: {this.props.currentRecipe.servings} (click to edit)</p>
@@ -72,7 +86,12 @@ class MakeRecipeHeader extends Component {
             return (
                 <form onSubmit={this.servingsSubmit}>
                     <label>Servings (hit enter to change):
-                        <input type="text" ref="recipeServings"/>
+                        <input type="text" ref="recipeServings" onChange={() => {
+                            this.dispatch(actions.editCurrentRecipe({
+                                field: "servings",
+                                value: this.refs.recipeServings.value
+                            }));
+                        }}/>
                     </label>
                 </form>
             );

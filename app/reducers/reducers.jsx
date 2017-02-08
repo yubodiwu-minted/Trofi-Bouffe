@@ -11,29 +11,54 @@ var recipesReducer = (state = [], action) => {
 
 var currentRecipeReducer = (state = {}, action) => {
     Object.freeze(state);
-    console.log(action);
 
     switch (action.type) {
         case "GET_CURRENT_RECIPE":
             return action.payload;
+        case "EDIT_RECIPE_BUTTON_CLICKED":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.nameSubmitted = true;
+            newState.servingsSubmitted = true;
+            newState.imgSubmitted = true;
+
+            return newState;
         case "EDIT_CURRENT_RECIPE":
             var newState = JSON.parse(JSON.stringify(state));
             newState[action.payload.field] = action.payload.value;
 
             return newState;
+        case "SUBMIT_RECIPE_NAME":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.nameSubmitted = true;
+
+            return newState;
         case "CLEAR_RECIPE_NAME":
             var newState = JSON.parse(JSON.stringify(state));
             newState.name = null;
+            newState.nameSubmitted = false;
+
+            return newState;
+        case "SUBMIT_RECIPE_SERVINGS":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.servingsSubmitted = true;
 
             return newState;
         case "CLEAR_RECIPE_SERVINGS":
             var newState = JSON.parse(JSON.stringify(state));
             newState.servings = null;
+            newState.servingsSubmitted = false;
+
+            return newState;
+        case "SUBMIT_RECIPE_IMAGE":
+            console.log("recipe image submitted");
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.imgSubmitted = true;
 
             return newState;
         case "CLEAR_RECIPE_IMAGE":
             var newState = JSON.parse(JSON.stringify(state));
             newState.img = null;
+            newState.imgSubmitted = false;
 
             return newState;
         case "CLEAR_CURRENT_RECIPE":
@@ -54,6 +79,8 @@ var ingredientsListReducer = (state = [], action) => {
             newState.push(action.payload);
 
             return newState;
+        case "DELETE_RECIPE_INGREDIENT":
+            return state.slice(0, -1);
         case "CLEAR_RECIPE_INGREDIENTS":
             return [];
         default:
@@ -72,6 +99,8 @@ var directionsReducer = (state = [], action) => {
             newState.push(action.payload);
 
             return newState;
+        case "DELETE_RECIPE_DIRECTION":
+            return state.slice(0, -1);
         case "CLEAR_RECIPE_DIRECTIONS":
             return [];
         default:

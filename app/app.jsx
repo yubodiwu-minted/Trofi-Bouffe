@@ -38,6 +38,7 @@ ReactDOM.render(
                 <Route path="recipe/view" component={RecipeView}></Route>
                 <Route path="recipe/set_facts" component={SetNutritionFacts}></Route>
                 <Route path="recipe/new" component={MakeRecipe}></Route>
+                <Route path="recipe/edit" component={MakeRecipe}></Route>
             </Route>
         </Router>
     </Provider>,

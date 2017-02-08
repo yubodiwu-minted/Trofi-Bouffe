@@ -21,7 +21,7 @@ var saveRecipe = async (props) => {
             jwt: localStorage.getItem("jwt")
         });
 
-        window.location.hash = "/user/recipes"
+        window.location.hash = "/user/recipes";
     }
 }
 

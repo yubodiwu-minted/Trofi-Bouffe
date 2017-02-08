@@ -69,3 +69,13 @@
         font-size: 2.8rem;
     }
 }
+
+#make-recipe-image-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        margin-right: 0.7rem;
+    }
+}
