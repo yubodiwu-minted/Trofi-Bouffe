@@ -9,8 +9,8 @@ import {
     ingredientsListReducer,
     currentRecipeReducer,
     directionsReducer,
-    needNFReducer,
-    nfBankReducer
+    needNfReducer,
+    currentRecipeNfReducer
 } from "reducers";
 import promise from "redux-promise";
 
@@ -20,7 +20,8 @@ export var configure = (initialState = {}) => {
         ingredientsList: ingredientsListReducer,
         currentRecipe: currentRecipeReducer,
         directions: directionsReducer,
-        needNF: needNFReducer
+        needNf: needNfReducer,
+        currentRecipeNf: currentRecipeNfReducer
     });
 
     var createStoreWithMiddleware = applyMiddleware(promise)(createStore);

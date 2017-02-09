@@ -108,7 +108,7 @@ var directionsReducer = (state = [], action) => {
     }
 };
 
-var needNFReducer = (state = [], action) => {
+var needNfReducer = (state = [], action) => {
     Object.freeze(state);
 
     switch (action.type) {
@@ -119,10 +119,22 @@ var needNFReducer = (state = [], action) => {
     }
 };
 
+var currentRecipeNfReducer = (state = {}, action) => {
+    Object.freeze(state);
+
+    switch (action.type) {
+        case "SET_RECIPE_NUTRITION_FACTS":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 module.exports = {
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,
     directionsReducer,
-    needNFReducer
+    needNfReducer,
+    currentRecipeNfReducer
 };

@@ -55,8 +55,15 @@ var RecipeView = (props) => {
                     <img src={props.currentRecipe.img} alt="recipe_img" className="recipe-image"/>
                     <div>
                         <h3>{props.currentRecipe.name}</h3>
-                        <p>Calories: {props.currentRecipe.calories || "Not yet set"}</p>
-                        <p>Servings: {props.currentRecipe.servings || "Not yet set"}</p>
+                        <p>
+                            Calories: {props.currentRecipe.calories || "Not yet set"}
+                        </p>
+                        <p>
+                            Servings: {props.currentRecipe.servings || "Not yet set"}
+                        </p>
+                        <p>
+                            Calories per serving: {Math.round(props.currentRecipe.calories / props.currentRecipe.servings) || "Note yet set"}
+                        </p>
                     </div>
                 </div>
                 <div className="recipe-content">

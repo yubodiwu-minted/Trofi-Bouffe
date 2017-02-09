@@ -6,10 +6,10 @@ import {replaceSpacesWithUnderscores, isVolumeUnit, isWeightUnit} from "helperFu
 const APPID = "57583012";
 const APPKEY = "680b07dfde35ff433dadae06d1571c4c";
 
-export async function createOptions(needNF) {
+export async function createOptions(needNf) {
     var stateChanges = {};
 
-    var optionsPromises = needNF.map((ingredient) => {
+    var optionsPromises = needNf.map((ingredient) => {
         return getOptions(ingredient.name, ingredient.needsvolume, ingredient.needsweight);
     });
 

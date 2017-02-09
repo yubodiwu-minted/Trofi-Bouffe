@@ -50,6 +50,9 @@ const UserRecipe = (props) => {
                     <p>
                         Servings: {props.servings || "Not yet set"}
                     </p>
+                    <p>
+                        Calories per serving: {Math.round(props.calories / props.servings) || "Note yet set"}
+                    </p>
                 </div>
             </div>
             <button id="edit-recipe-button" onClick={viewRecipe.bind(null, props)}>VIEW RECIPE</button>
