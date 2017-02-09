@@ -34,6 +34,19 @@ router.get("/:recipeId", (req, res) => {
         });
 });
 
+router.get("/recipe/:recipeId", function(req, res) {
+    console.log(`get nutrtion facts for recipe ${req.params.recipeId} route hit`);
+
+    knex("nutrition_facts_recipes").where("recipe_id", req.params.recipeId)
+        .then((data) => {
+            console.log("nutrition facts data is ", data);
+
+            res.json(data[0]);
+        }).catch((err) => {
+            res.end(err);
+        })
+});
+
 router.post("/", (req, res) => {
     console.log("nutrition facts post route hit");
     var ingredientToDbPromises = [];
@@ -91,6 +104,7 @@ router.post("/", (req, res) => {
                 return combineNutritionFacts(dataForConversion);
             });
     }).then((cumulativeNutritionFacts) => {
+        console.log("cumulative nutrition facts are ", cumulativeNutritionFacts);
         knex("recipes").where("recipes.id", "=", req.query.recipeId)
             .update({
                 calories: Math.round(cumulativeNutritionFacts.calories)
@@ -100,24 +114,25 @@ router.post("/", (req, res) => {
 
         knex("nutrition_facts_recipes").insert({
             recipe_id: req.query.recipeId,
-            calories: cumulativeNutritionFacts.nf_calories,
-            calories_from_fat: cumulativeNutritionFacts.nf_calories_from_fat,
-            total_fat: cumulativeNutritionFacts.nf_total_fat,
-            saturated_fat: cumulativeNutritionFacts.nf_saturated_fat,
-            monounsaturated_fat: cumulativeNutritionFacts.nf_monounsaturated_fat,
-            polyunsaturated_fat: cumulativeNutritionFacts.nf_polyunsaturated_fat,
-            trans_fatty_acid: cumulativeNutritionFacts.nf_trans_fatty_acid,
-            cholesterol: cumulativeNutritionFacts.nf_cholesterol,
-            sodium: cumulativeNutritionFacts.nf_sodium,
-            total_carbohydrate: cumulativeNutritionFacts.nf_total_carbohydrate,
-            dietary_fiber: cumulativeNutritionFacts.nf_dietary_fiber,
-            sugars: cumulativeNutritionFacts.nf_sugars,
-            protein: cumulativeNutritionFacts.nf_protein,
-            vitamin_a_dv: cumulativeNutritionFacts.nf_vitamin_a_dv,
-            vitamin_c_dv: cumulativeNutritionFacts.nf_vitamin_c_dv,
+            calories: cumulativeNutritionFacts.calories,
+            calories_from_fat: cumulativeNutritionFacts.calories_from_fat,
+            total_fat: cumulativeNutritionFacts.total_fat,
+            saturated_fat: cumulativeNutritionFacts.saturated_fat,
+            monounsaturated_fat: cumulativeNutritionFacts.monounsaturated_fat,
+            polyunsaturated_fat: cumulativeNutritionFacts.polyunsaturated_fat,
+            trans_fatty_acid: cumulativeNutritionFacts.trans_fatty_acid,
+            cholesterol: cumulativeNutritionFacts.cholesterol,
+            sodium: cumulativeNutritionFacts.sodium,
+            total_carbohydrate: cumulativeNutritionFacts.total_carbohydrate,
+            dietary_fiber: cumulativeNutritionFacts.dietary_fiber,
+            sugars: cumulativeNutritionFacts.sugars,
+            protein: cumulativeNutritionFacts.protein,
+            vitamin_a_dv: cumulativeNutritionFacts.vitamin_a_dv,
+            vitamin_c_dv: cumulativeNutritionFacts.vitamin_c_dv,
             calcium_dv: cumulativeNutritionFacts.calcium_dv,
-            iron: cumulativeNutritionFacts.nf_iron_dv
+            iron: cumulativeNutritionFacts.iron_dv
         }).then(() => {
+            console.log("nutrition facts inserted");
             res.json(cumulativeNutritionFacts);
         });
     });
