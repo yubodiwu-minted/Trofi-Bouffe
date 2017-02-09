@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import axios from "axios";
 
 import {capitalizeWords, replaceSpacesWithUnderscores} from "helperFunctions";
-import {createOptions, renderOptions} from "setNFFormHelpers";
+import {createOptions, renderOptions} from "setNfFormHelpers";
 import SetNutritionFactsError from "SetNutritionFactsError";
 var actions = require("actions");
 
@@ -16,7 +16,7 @@ class SetNutritionFacts extends Component {
 
         this.state = {};
 
-        for (let obj of this.props.needNF) {
+        for (let obj of this.props.needNf) {
             this.state[replaceSpacesWithUnderscores(obj.name)] = [];
         }
 
@@ -24,7 +24,7 @@ class SetNutritionFacts extends Component {
     }
 
     async componentWillMount() {
-        var stateChanges = await createOptions(this.props.needNF);
+        var stateChanges = await createOptions(this.props.needNf);
 
         this.setState(stateChanges);
     }
@@ -33,7 +33,7 @@ class SetNutritionFacts extends Component {
         var key = 0;
         var selectors = [];
 
-        return this.props.needNF.map((obj) => {
+        return this.props.needNf.map((obj) => {
             var name = obj.name;
 
             return (
@@ -68,6 +68,8 @@ class SetNutritionFacts extends Component {
                 field: "calories",
                 value: Math.round(nutritionFacts.calories)
             }));
+            dispatch(actions.setCurrentRecipeNutritionFacts(nutritionFacts));
+            
             window.location.hash = "/recipe/view"
         } catch(err) {
             console.error(err);
@@ -75,7 +77,7 @@ class SetNutritionFacts extends Component {
     }
 
     render() {
-        if (this.props.needNF.length === 0) {
+        if (this.props.needNf.length === 0) {
             return <SetNutritionFactsError></SetNutritionFactsError>;
         }
 
@@ -99,7 +101,7 @@ class SetNutritionFacts extends Component {
 
 export default connect((state) => {
     return {
-        needNF: state.needNF,
+        needNf: state.needNf,
         currentRecipe: state.currentRecipe
     };
 })(SetNutritionFacts);

@@ -18,7 +18,8 @@ router.get("/:recipeId", (req, res) => {
     join recipes as r on r.id = ri.recipe_id
     join ingredients as i on i.id = ri.ingredient_id
     left outer join nutrition_facts_ingredients as nf on nf.ingredient_id = i.id
-    where ri.units is not null;`).then((data) => {
+    where ri.units is not null and r.id = ${req.params.recipeId};`).then((data) => {
+            console.log(data);
             var parsedData = data.rows.filter((row) => {
                 if (row.needsvolume && !row.hasVolume) {
                     return true;
@@ -121,21 +122,5 @@ router.post("/", (req, res) => {
         });
     });
 });
-
-// select i.id, i.name, nf from recipes as r
-// join recipe_ingredients as ri on r.id = ri.recipe_id
-// join ingredients as i on i.id = ri.ingredient_id
-// join nutrition_facts as nf on i.id = nf.ingredient_id
-// where r.id = 1;
-
-// knex("recipe_ingredients")
-//     .select("ingredients.id", "ingredients.name", 'recipe_ingredients."hasVolume"').join("recipes", "recipes.id", "recipe_ingredients.recipe_id")
-//     .join("ingredients", "ingredients.id", "recipe_ingredients.ingredient_id").leftOuterJoin("nutrition_facts", "nutrition_facts.ingredient_id", "ingredients.id")
-//     .whereNull("nutrition_facts.ingredient_id").whereNotNull("recipe_ingredients.units").then((data) => {
-//         console.log(data);
-//         res.json(data);
-//     }).catch((err) => {
-//         res.end(err)
-//     })
 
 module.exports = router;

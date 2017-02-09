@@ -35,6 +35,8 @@ var renderDirections = (props) => {
 var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
+    console.log("set nutrition facts attempted");
+    console.log(response);
     var ingredientsNeedNF = response.data;
 
     dispatch(actions.needNutritionFacts(ingredientsNeedNF));
@@ -53,8 +55,15 @@ var RecipeView = (props) => {
                     <img src={props.currentRecipe.img} alt="recipe_img" className="recipe-image"/>
                     <div>
                         <h3>{props.currentRecipe.name}</h3>
-                        <p>Calories: {props.currentRecipe.calories || "Not yet set"}</p>
-                        <p>Servings: {props.currentRecipe.servings || "Not yet set"}</p>
+                        <p>
+                            Calories: {props.currentRecipe.calories || "Not yet set"}
+                        </p>
+                        <p>
+                            Servings: {props.currentRecipe.servings || "Not yet set"}
+                        </p>
+                        <p>
+                            Calories per serving: {Math.round(props.currentRecipe.calories / props.currentRecipe.servings) || "Note yet set"}
+                        </p>
                     </div>
                 </div>
                 <div className="recipe-content">

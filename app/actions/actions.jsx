@@ -125,3 +125,10 @@ export var needNutritionFacts = (ingredientsNeedNF) => {
         payload: ingredientsNeedNF
     };
 };
+
+export var setCurrentRecipeNutritionFacts = (nutritionFacts) => {
+    return {
+        type: "SET_RECIPE_NUTRITION_FACTS",
+        payload: nutritionFacts
+    };
+};
