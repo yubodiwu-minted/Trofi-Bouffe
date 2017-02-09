@@ -34,6 +34,7 @@ var renderDirections = (props) => {
 
 var setNutritionFacts = async (props) => {
     var {dispatch} = props;
+    console.log(props.currentRecipe.id);
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
     var ingredientsNeedNF = response.data;
 
