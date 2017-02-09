@@ -4,6 +4,8 @@ const knex = require("../knex");
 const JWT = require("jsonwebtoken");
 const APP_SECRET = "SUPERSECRETAPPSECRET";
 
+const {isWeightUnit, isVolumeUnit} = require("../helpers.js");
+
 router.get("/", (req, res) => {
     console.log("recipes index route hit");
 
@@ -70,6 +72,8 @@ router.post("/", (req, res) => {
                     if (ingredient.name === recipeIngredient.name) {
                         recipeIngredientForInsert.quantity = ingredient.quantity;
                         recipeIngredientForInsert.units = ingredient.units;
+                        recipeIngredientForInsert.hasWeight = isWeightUnit(ingredient.units);
+                        recipeIngredientForInsert.hasVolume = isVolumeUnit(ingredient.units);
                     }
                 }
 
@@ -107,7 +111,9 @@ router.put("/", (req, res) => {
                 recipe_id: req.body.currentRecipe.id,
                 ingredient_id: ingredient.id,
                 quantity: ingredient.quantity,
-                units: ingredient.units
+                units: ingredient.units,
+                hasWeight: isWeightUnit(ingredient.units),
+                hasVolume: isVolumeUnit(ingredient.units)
             });
         }
     }).filter((ingredient) => ingredient);
@@ -135,6 +141,8 @@ router.put("/", (req, res) => {
                         if (ingredient.name === recipeIngredient.name) {
                             recipeIngredientForInsert.quantity = ingredient.quantity;
                             recipeIngredientForInsert.units = ingredient.units;
+                            recipeIngredientForInsert.hasWeight = isWeightUnit(ingredient.units);
+                            recipeIngredientForInsert.hasVolume = isVolumeUnit(ingredient.units);
                         }
                     }
 

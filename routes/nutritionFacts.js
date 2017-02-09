@@ -19,6 +19,7 @@ router.get("/:recipeId", (req, res) => {
     join ingredients as i on i.id = ri.ingredient_id
     left outer join nutrition_facts_ingredients as nf on nf.ingredient_id = i.id
     where ri.units is not null and r.id = ${req.params.recipeId};`).then((data) => {
+            console.log(data);
             var parsedData = data.rows.filter((row) => {
                 if (row.needsvolume && !row.hasVolume) {
                     return true;
