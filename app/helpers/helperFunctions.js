@@ -39,3 +39,7 @@ export var isWeightUnit = (unit) => {
         return false;
     }
 };
+
+export var round = (number) => {
+    return Math.floor(number * 10) / 10;
+};

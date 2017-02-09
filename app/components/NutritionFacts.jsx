@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-var round = (number) => {
-    return Math.floor(number * 10) / 10;
-}
+import {round} from "helperFunctions";
 
 var NutritionFacts = (props) => {
     console.log(props.currentRecipeNf, "logged");
