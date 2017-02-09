@@ -32,16 +32,32 @@ var renderDirections = (props) => {
     });
 };
 
+var renderNfButton = (props) => {
+    console.log("props.currentRecipe is ", props.currentRecipe);
+    if (props.currentRecipe.calories) {
+        return <button onClick={viewNutritionFacts.bind(null, props)} className="blue-button">SEE NUTRITION FACTS</button>;
+    } else {
+        return <button onClick={setNutritionFacts.bind(null, props)} className="blue-button">SET NUTRITION FACTS</button>;
+    }
+};
+
+var viewNutritionFacts = async (props) => {
+    var {dispatch} = props;
+    var response = await axios.get(`/nutrition-facts/recipe/${props.currentRecipe.id}`);
+    var recipeNf = response.data;
+
+    dispatch(actions.setCurrentRecipeNutritionFacts(recipeNf));
+    window.location.hash = "/recipe/nutrition-facts";
+}
+
 var setNutritionFacts = async (props) => {
     var {dispatch} = props;
     var response = await axios.get(`/nutrition-facts/${props.currentRecipe.id}`);
-    console.log("set nutrition facts attempted");
-    console.log(response);
     var ingredientsNeedNF = response.data;
 
     dispatch(actions.needNutritionFacts(ingredientsNeedNF));
     window.location.hash = "/recipe/set_facts";
-}
+};
 
 var RecipeView = (props) => {
     if (!props.currentRecipe) {
@@ -81,7 +97,7 @@ var RecipeView = (props) => {
                     </div>
                 </div>
                 <div className="recipe-buttons-div">
-                    <button onClick={setNutritionFacts.bind(this, props)} className="blue-button">NUTRITION FACTS</button>
+                    {renderNfButton(props)}
                     <button className="green-button" onClick={() => {
                         props.dispatch(actions.editRecipeClicked());
                         window.location.hash = "/recipe/edit";

@@ -11,6 +11,7 @@ import UserRecipesList from "UserRecipesList";
 import RecipeView from "RecipeView";
 import SetNutritionFacts from "SetNutritionFacts";
 import MakeRecipe from "MakeRecipe";
+import NutritionFacts from "NutritionFacts";
 
 var actions = require("actions");
 var store = require("configureStore").configure();
@@ -39,6 +40,7 @@ ReactDOM.render(
                 <Route path="recipe/set_facts" component={SetNutritionFacts}></Route>
                 <Route path="recipe/new" component={MakeRecipe}></Route>
                 <Route path="recipe/edit" component={MakeRecipe}></Route>
+                <Route path="recipe/nutrition-facts" component={NutritionFacts}></Route>
             </Route>
         </Router>
     </Provider>,
