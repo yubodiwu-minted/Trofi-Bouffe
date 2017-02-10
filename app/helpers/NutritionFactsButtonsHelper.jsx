@@ -31,7 +31,7 @@ export var renderButtons = (props) => {
         <button key="4" className="teal-button" onClick={(event) => {
             return buttonClick(event, props, "sugars");
         }}>Sugars</button>,
-        <button key="5" className="mystery-button" onClick={(event) => {
+        <button key="5" className="sky-blue-button" onClick={(event) => {
             return buttonClick(event, props, "total_carbohydrate");
         }}>Total Carbohydrates</button>
     ];
