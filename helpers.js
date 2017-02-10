@@ -1,6 +1,6 @@
 const JWT = require("jsonwebtoken");
 const knex = require("./knex");
-const bcrypt = require("bcrypt-as-promised");
+const bcrypt = require("bcryptjs");
 const APP_SECRET = "SUPERSECRETAPPSECRET";
 
 function generateToken(user, secret) {
