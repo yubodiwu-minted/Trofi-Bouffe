@@ -34,6 +34,11 @@ body {
     margin-right: $global-padding;
 }
 
+.blue-button:hover {
+    transition: all 500ms linear;
+    background-color: darken($button-blue, 10%);
+}
+
 .green-button {
     min-height: 2rem;
     background: $button-green;
@@ -45,19 +50,25 @@ body {
     margin-right: $global-padding;
 }
 
+.green-button:hover {
+    transition: all 500ms linear;
+    background-color: darken($button-green, 20%);
+}
+
 .big-blue-button {
     margin-top: 2rem;
     height: 4rem;
     background: $button-blue;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: white;
     border-radius: 3rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
 
-    span {
-        font-size: 2.8rem;
-    }
+.big-blue-button:hover {
+    transition: all 500ms linear;
+    background-color: darken($button-blue, 10%);
 }
 
 .gold-button {
@@ -69,6 +80,11 @@ body {
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     margin-right: $global-padding;
+}
+
+.gold-button:hover {
+    transition: all 500ms linear;
+    background-color: darken(#C8B631, 15%);
 }
 
 .red-button {
