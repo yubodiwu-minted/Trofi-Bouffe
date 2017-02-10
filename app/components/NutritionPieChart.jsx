@@ -34,7 +34,7 @@ var generateLegend = (props) => {
         );
     });
 };
-
+  
 var NutritionPieChart = (props) => {
     return (
         <div className="content-container row">
