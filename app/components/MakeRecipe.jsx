@@ -40,9 +40,9 @@ var editRecipe = async (props) => {
 
 var renderButton = (props) => {
     if (!props.currentRecipe.id) {
-        return <button id="save-recipe-button" onClick={saveRecipe.bind(null, props)}>SAVE RECIPE</button>;
+        return <button className="save-recipe-button" onClick={saveRecipe.bind(null, props)}>SAVE RECIPE</button>;
     } else {
-        return <button id="save-recipe-button" onClick={editRecipe.bind(null, props)}>SAVE EDITS</button>
+        return <button className="save-recipe-button" onClick={editRecipe.bind(null, props)}>SAVE EDITS</button>
     }
 };
 
