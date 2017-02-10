@@ -12,6 +12,7 @@ import RecipeView from "RecipeView";
 import SetNutritionFacts from "SetNutritionFacts";
 import MakeRecipe from "MakeRecipe";
 import NutritionFacts from "NutritionFacts";
+import NutritionPieChart from "NutritionPieChart";
 
 var actions = require("actions");
 var store = require("configureStore").configure();
@@ -41,6 +42,7 @@ ReactDOM.render(
                 <Route path="recipe/new" component={MakeRecipe}></Route>
                 <Route path="recipe/edit" component={MakeRecipe}></Route>
                 <Route path="recipe/nutrition-facts" component={NutritionFacts}></Route>
+                <Route path="recipe/nutrition-facts/pie-chart" component={NutritionPieChart}></Route>
             </Route>
         </Router>
     </Provider>,
