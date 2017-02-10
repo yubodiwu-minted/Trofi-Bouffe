@@ -189,7 +189,7 @@ var NutritionFacts = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <h4>See Value by Ingredient:</h4>  
+                <h4 id="nf-button-holder-title">See Value by Ingredient:</h4>  
                 <div id="nf-button-holder">
                     {renderButtons(props)}
                 </div>
