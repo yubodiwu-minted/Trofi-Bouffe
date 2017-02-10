@@ -37,6 +37,7 @@ ReactDOM.render(
                 <Route path="user/new" component={RegistrationForm}></Route>
                 <Route path="login" component={LoginForm}></Route>
                 <Route path="user/recipes" component={UserRecipesList}></Route>
+                <Route path="recipes/all" component={UserRecipesList}></Route>
                 <Route path="recipe/view" component={RecipeView}></Route>
                 <Route path="recipe/set_facts" component={SetNutritionFacts}></Route>
                 <Route path="recipe/new" component={MakeRecipe}></Route>

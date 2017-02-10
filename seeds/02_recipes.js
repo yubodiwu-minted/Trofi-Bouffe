@@ -28,20 +28,20 @@ exports.seed = function(knex, Promise) {
             }),
             knex("recipes").insert({
                 id: 5,
-                user_id: 5,
+                user_id: 4,
                 name: "Sous Vide Brisket",
                 img: "http://www.seriouseats.com/images/2016/07/20160801-sous-vide-brisket-guide-35.jpg"
 
             }),
             knex("recipes").insert({
                 id: 6,
-                user_id: 5,
+                user_id: 4,
                 name: "Sicilian Pizza",
                 img: "http://www.seriouseats.com/recipes/assets_c/2016/05/20160503-spicy-spring-pizza-recipe-37-thumb-1500xauto-431711.jpg"
             }),
             knex("recipes").insert({
                 id: 7,
-                user_id: 5,
+                user_id: 4,
                 name: "Cherry Tomato Pasta",
                 img: "http://www.seriouseats.com/recipes/assets_c/2016/08/20160827-cherry-tomato-pasta-13-thumb-1500xauto-433876.jpg"
             })

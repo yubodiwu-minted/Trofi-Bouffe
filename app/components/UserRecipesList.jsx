@@ -18,10 +18,17 @@ class UserRecipesList extends Component {
     }
 
     async getRecipes() {
+        console.log("get recipes fired");
         try {
             var {dispatch} = this.props;
             var jwt = localStorage.getItem("jwt");
-            var response = await axios("/recipes?jwt=" + jwt);
+
+            if (window.location.hash === "#/user/recipes") {
+                var response = await axios("/recipes?jwt=" + jwt);
+            } else if (window.location.hash === "#/recipes/all") {
+                var response = await axios("/recipes/all");
+            }
+
             var recipes = response.data;
             dispatch(actions.getRecipesList(recipes));
         } catch (err) {
@@ -35,6 +42,16 @@ class UserRecipesList extends Component {
                 <UserRecipe key={recipe.id} {...recipe}></UserRecipe>
             );
         })
+    }
+
+    renderNewRecipeButton() {
+        if (window.location.hash === "#/user/recipes") {
+            return (
+                <button onClick={this.newRecipe} id="new-recipe-button" className="columns medium-7 large-6 small-centered">
+                    <span>+</span> NEW RECIPE
+                </button>
+            );
+        }
     }
 
     newRecipe() {
@@ -51,9 +68,7 @@ class UserRecipesList extends Component {
         return (
             <div className="content-container row">
                 <div className="content-list columns medium-10 large-8 small-centered">
-                    <button onClick={this.newRecipe} id="new-recipe-button" className="columns medium-7 large-6 small-centered">
-                        <span>+</span> NEW RECIPE
-                    </button>
+                    {this.renderNewRecipeButton()}
                     <div className="recipes-holder">
                         {this.renderRecipes()}
                     </div>

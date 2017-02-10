@@ -1,6 +1,19 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 
-export default (props) => {
+import {renderOwnRecipes, renderAllRecipes} from "NavHelper";
+
+var renderSeeOwnRecipes = (props) => {
+    if (localStorage.getItem("jwt")) {
+        return (
+            <li>
+                <a href="#/user/recipes" onClick={renderOwnRecipes.bind(this, props)}>See Own Recipes</a>
+            </li>
+        );
+    }
+}
+
+var Nav = (props) => {
     return (
         <header className="header">
             <h1 className="headline">Trofí
@@ -8,8 +21,9 @@ export default (props) => {
             </h1>
             <ul className="header-subnav">
                 <li>
-                    <a href="#/user/recipes">Browse Recipes</a>
+                    <a href="#/recipes/all" onClick={renderAllRecipes.bind(this, props)}>Browse Recipes</a>
                 </li>
+                {renderSeeOwnRecipes(props)}
                 <li>
                     <a href="#/user/new">Sign Up</a>
                 </li>
@@ -20,3 +34,9 @@ export default (props) => {
         </header>
     );
 }
+
+export default connect((state) => {
+    return {
+        recipesList: state.recipesList
+    };
+})(Nav);

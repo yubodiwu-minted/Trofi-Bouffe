@@ -25,6 +25,13 @@ router.get("/", (req, res) => {
     }
 });
 
+router.get("/all", function(req, res) {
+    knex("recipes").select("*")
+        .then((recipes) => {
+            res.json(recipes);
+        });
+});
+
 router.post("/", (req, res) => {
     console.log("recipes post route hit");
     var recipeId;
