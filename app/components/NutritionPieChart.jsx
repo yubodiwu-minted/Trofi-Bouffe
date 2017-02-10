@@ -48,7 +48,7 @@ var NutritionPieChart = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default connect((state) => {
     return {
