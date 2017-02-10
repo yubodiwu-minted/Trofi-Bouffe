@@ -7,7 +7,8 @@ const {
     isWeightUnit,
     isVolumeUnit,
     filterForWeightOrVolumeRequirement,
-    combineNutritionFacts
+    combineNutritionFacts,
+    convertUnitsFromTo
 } = require("../helpers.js");
 const APP_SECRET = "SUPERSECRETAPPSECRET";
 
@@ -35,7 +36,7 @@ router.get("/:recipeId", (req, res) => {
 });
 
 router.get("/recipe/:recipeId", function(req, res) {
-    console.log(`get nutrtion facts for recipe ${req.params.recipeId} route hit`);
+    console.log(`get nutrition facts for recipe ${req.params.recipeId} route hit`);
 
     knex("nutrition_facts_recipes").where("recipe_id", req.params.recipeId)
         .then((data) => {
@@ -46,6 +47,32 @@ router.get("/recipe/:recipeId", function(req, res) {
             res.end(err);
         })
 });
+
+router.get("/recipe-ingredients/:recipeId/:nfField", function(req, res) {
+    console.log(`get ${req.params.nfField} pie chart info for recipe ${req.params.recipeId} route hit`);
+
+    knex.raw(`select i.name, nf.${req.params.nfField}, nf.serving_quantity, nf.serving_unit, nf."hasWeight", nf."hasVolume", ri.quantity, ri.units, ri."hasWeight", ri."hasVolume" from nutrition_facts_ingredients as nf
+    join ingredients as i on nf.ingredient_id = i.id
+    join recipe_ingredients as ri on ri.ingredient_id = i.id
+    where ri.recipe_id = ${req.params.recipeId} and ((nf."hasWeight" = true and ri."hasWeight" = true) or (nf."hasVolume" = true and ri."hasVolume" = true));`).then((data) => {
+        var nfData = data.rows.map((ingredient) => {
+            var multiplier = ingredient.quantity / ingredient.serving_quantity * convertUnitsFromTo(ingredient.units, ingredient.serving_unit);
+
+            ingredient.field = ingredient[req.params.nfField] * multiplier;
+
+            return ingredient;
+        });
+
+        res.json(nfData)
+    }).catch((err) => {
+        res.end(err);
+    });
+});
+
+// select i.name, nf.calories, nf.serving_quantity, nf.serving_unit, nf."hasWeight", nf."hasVolume", ri.quantity, ri.units, ri."hasWeight", ri."hasVolume" from nutrition_facts_ingredients as nf
+// join ingredients as i on nf.ingredient_id = i.id
+// join recipe_ingredients as ri on ri.ingredient_id = i.id
+// where ri.recipe_id = 1 and ((nf."hasWeight" = true and ri."hasWeight" = true) or (nf."hasVolume" = true and ri."hasVolume" = true));
 
 router.post("/", (req, res) => {
     console.log("nutrition facts post route hit");

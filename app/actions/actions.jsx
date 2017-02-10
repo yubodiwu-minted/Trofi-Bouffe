@@ -132,3 +132,17 @@ export var setCurrentRecipeNutritionFacts = (nutritionFacts) => {
         payload: nutritionFacts
     };
 };
+
+export var setNfPieChartData = (nutritionFacts) => {
+    return {
+        type: "SET_NF_PIE_CHART_DATA",
+        payload: nutritionFacts
+    };
+};
+
+export var setCurrentIngredientField = (ingredientField) => {
+    return {
+        type: "SET_CURRENT_INGREDIENT",
+        payload: ingredientField
+    };
+};

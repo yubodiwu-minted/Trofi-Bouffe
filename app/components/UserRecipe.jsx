@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 var actions = require("actions");
 
-const viewRecipe = async (props) => {
+var viewRecipe = async (props) => {
     try {
         var {dispatch} = props;
 
@@ -35,7 +35,7 @@ const viewRecipe = async (props) => {
     }
 }
 
-const UserRecipe = (props) => {
+var UserRecipe = (props) => {
     return (
         <div className="recipe">
             <div>

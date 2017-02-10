@@ -2,21 +2,9 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import {round} from "helperFunctions";
-
-var renderButtons = (props) => {
-    return [
-        <button className="green-button" onClick={() => {
-            window.location.hash = "/recipe/nutrition-facts/pie-chart"
-        }}>Calories</button>,
-        <button className="blue-button">Total Fat</button>,
-        <button className="green-button">Cholesterol</button>,
-        <button className="blue-button">Sodium</button>,
-        <button className="green-button">Total Carbohydrates</button>
-    ];
-};
+import {renderButtons} from "NutritionFactsButtonsHelper";
 
 var NutritionFacts = (props) => {
-    console.log(props.currentRecipeNf, "logged");
     return (
         <div className="content-container row">
             <div className="content-list columns medium-10 large-8 small-centered">
@@ -201,5 +189,8 @@ var NutritionFacts = (props) => {
 }
 
 export default connect((state) => {
-    return {currentRecipeNf: state.currentRecipeNf, currentRecipe: state.currentRecipe};
+    return {
+        currentRecipeNf: state.currentRecipeNf,
+        currentRecipe: state.currentRecipe
+    };
 })(NutritionFacts);

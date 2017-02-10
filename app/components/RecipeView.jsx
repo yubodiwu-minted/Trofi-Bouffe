@@ -33,7 +33,6 @@ var renderDirections = (props) => {
 };
 
 var renderNfButton = (props) => {
-    console.log("props.currentRecipe is ", props.currentRecipe);
     if (props.currentRecipe.calories) {
         return <button onClick={viewNutritionFacts.bind(null, props)} className="blue-button">SEE NUTRITION FACTS</button>;
     } else {
