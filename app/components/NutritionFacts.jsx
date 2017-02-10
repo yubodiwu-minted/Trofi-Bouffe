@@ -3,6 +3,10 @@ import {connect} from "react-redux";
 
 import {round} from "helperFunctions";
 
+var renderButtons = (props) => {
+    
+}
+
 var NutritionFacts = (props) => {
     console.log(props.currentRecipeNf, "logged");
     return (

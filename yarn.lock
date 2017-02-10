@@ -3600,6 +3600,10 @@ react-router@^3.0.2:
     loose-envify "^1.2.0"
     warning "^3.0.0"
 
+react-simple-pie-chart@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-simple-pie-chart/-/react-simple-pie-chart-0.4.0.tgz#f9a56a330d05bb9f9abea670abde804da4f1e861"
+
 react-stylesheet@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-stylesheet/-/react-stylesheet-1.0.2.tgz#4194b3ced11d8aaafd4bacf77c548e87e8d88422"
