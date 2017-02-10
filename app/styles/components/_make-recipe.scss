@@ -54,7 +54,7 @@
     }
 }
 
-#save-recipe-button {
+.save-recipe-button {
     margin-top: 2rem;
     width: 50%;
     height: 4rem;
@@ -68,6 +68,11 @@
     span {
         font-size: 2.8rem;
     }
+}
+
+.save-recipe-button:hover {
+    transition: all 500ms linear;
+    background-color: darken($button-green, 20%);
 }
 
 #make-recipe-image-holder {

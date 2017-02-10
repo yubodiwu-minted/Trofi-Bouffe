@@ -11,3 +11,8 @@
         font-size: 2.8rem;
     }
 }
+
+#new-recipe-button:hover {
+    transition: all 500ms linear;
+    background-color: darken($button-green, 20%);
+}
