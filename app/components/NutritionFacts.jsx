@@ -4,8 +4,14 @@ import {connect} from "react-redux";
 import {round} from "helperFunctions";
 
 var renderButtons = (props) => {
-    
-}
+    return [
+        <button className="green-button">Calories</button>,
+        <button className="blue-button">Total Fat</button>,
+        <button className="green-button">Cholesterol</button>,
+        <button className="blue-button">Sodium</button>,
+        <button className="green-button">Total Carbohydrates</button>
+    ];
+};
 
 var NutritionFacts = (props) => {
     console.log(props.currentRecipeNf, "logged");
@@ -182,6 +188,10 @@ var NutritionFacts = (props) => {
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <h4>See Value by Ingredient:</h4>  
+                <div id="nf-button-holder">
+                    {renderButtons(props)}
                 </div>
             </div>
         </div>
