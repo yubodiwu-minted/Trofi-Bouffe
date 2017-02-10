@@ -43,3 +43,13 @@ export var isWeightUnit = (unit) => {
 export var round = (number) => {
     return Math.floor(number * 10) / 10;
 };
+
+export var pieChartColors = [
+    "#E0F0F2",
+    "#C24642",
+    "#7F6084",
+    "#86B402",
+    "#A2D1CF",
+    "#C8B631",
+    "#6DBCEB"
+];

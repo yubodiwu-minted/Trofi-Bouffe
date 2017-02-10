@@ -128,7 +128,27 @@ var currentRecipeNfReducer = (state = {}, action) => {
         default:
             return state;
     }
-}
+};
+
+var currentIngredientReducer = (state = {}, action) => {
+    Object.freeze(state);
+
+    switch (action.type) {
+        case "SET_NF_PIE_CHART_DATA":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.pieChartData = action.payload;
+
+            return newState;
+        case "SET_CURRENT_INGREDIENT":
+            var newState = JSON.parse(JSON.stringify(state));
+            newState.field = action.payload;
+
+            return newState;
+        default:
+            return state;
+
+    }
+};
 
 module.exports = {
     recipesReducer,
@@ -136,5 +156,6 @@ module.exports = {
     currentRecipeReducer,
     directionsReducer,
     needNfReducer,
-    currentRecipeNfReducer
+    currentRecipeNfReducer,
+    currentIngredientReducer
 };

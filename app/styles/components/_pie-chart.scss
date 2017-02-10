@@ -1,0 +1,17 @@
+.pie-chart-legend-color-box {
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.5rem;
+    box-shadow: $div-shadow;
+}
+
+.pie-chart-legend-element {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0.35rem;
+}
+
+#pie-chart-legend {
+    margin-top: 1rem;
+}

@@ -13,7 +13,7 @@ var renderDirections = (props) => {
     })
 }
 
-const MakeRecipeDirections = (props) => {
+var MakeRecipeDirections = (props) => {
     return (
         <div className="recipe-directions-div columns large-10">
             <h5>DIRECTIONS</h5>

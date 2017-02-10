@@ -15,7 +15,7 @@ var renderIngredients = (props) => {
     })
 }
 
-const MakeRecipeIngredients = (props) => {
+var MakeRecipeIngredients = (props) => {
     return (
         <div className="recipe-ingredients-div columns large-10">
             <h5>STUFF</h5>
