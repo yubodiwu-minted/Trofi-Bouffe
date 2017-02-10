@@ -42,7 +42,7 @@ var renderButton = (props) => {
     if (!props.currentRecipe.id) {
         return <button id="save-recipe-button" onClick={saveRecipe.bind(null, props)}>SAVE RECIPE</button>;
     } else {
-        return <button id="save-recipe-button" onClick={editRecipe.bind(null, props)}>EDIT RECIPE</button>
+        return <button id="save-recipe-button" onClick={editRecipe.bind(null, props)}>SAVE EDITS</button>
     }
 };
 

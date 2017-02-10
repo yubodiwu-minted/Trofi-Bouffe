@@ -32,17 +32,96 @@ body {
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     margin-right: $global-padding;
-    background: $button-blue;
 }
 
 .green-button {
     min-height: 2rem;
-    background: $button-blue;
+    background: $button-green;
     font-size: 1rem;
     font-weight: 300;
     color: white;
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     margin-right: $global-padding;
-    background: $button-green;
+}
+
+.big-blue-button {
+    margin-top: 2rem;
+    height: 4rem;
+    background: $button-blue;
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 3rem;
+    padding: 0.5rem;
+
+    span {
+        font-size: 2.8rem;
+    }
+}
+
+.gold-button {
+    min-height: 2rem;
+    background: #C8B631;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: $global-padding;
+}
+
+.red-button {
+    min-height: 2rem;
+    background: #C24642;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: $global-padding;
+}
+
+.purple-button {
+    min-height: 2rem;
+    background: #7F6084;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: $global-padding;
+}
+
+.slightly-darker-green-button {
+    min-height: 2rem;
+    background: #86B402;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: $global-padding;
+}
+
+.teal-button {
+    min-height: 2rem;
+    background: #A2D1CF;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: $global-padding;
+}
+
+.mystery-button {
+    min-height: 2rem;
+    background: #6DBCEB;
+    font-size: 1rem;
+    font-weight: 300;
+    color: white;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-right: $global-padding;
 }

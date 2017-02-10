@@ -12,6 +12,10 @@ export var replaceSpacesWithUnderscores = (string) => {
     return string.replace(/\s+/g, "_");
 };
 
+export var replaceUnderscoresWithSpaces = (string) => {
+    return string.replace(/_/g, " ");
+}
+
 export var capitalizeWords = (str) => {
     str = str[0].toUpperCase() + str.slice(1);
 
