@@ -32,7 +32,7 @@
     flex-wrap: wrap;
 
     button {
-        margin: 0.25rem 0 0.25rem 0;
+        margin: 0.25rem;
     }
 }
 
@@ -51,35 +51,41 @@
 }
 
 #nutritionfacts td.nf-header {
+    background: white;
     font-family: 'Arial Black','Helvetica Bold',sans-serif;
     font-size: 28px;
     white-space: nowrap;
 }
 
 #nutritionfacts div.nf-label {
+    background: white;
     float: left;
     font-family: 'Arial Black','Helvetica Bold',sans-serif;
 }
 
 #nutritionfacts div.nf-serving {
+    background: white;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 8pt;
     text-align: center;
 }
 
 #nutritionfacts div.weight {
+    background: white;
     display: inline;
     font-family: Arial,Helvetica,sans-serif;
     padding-left: 1px;
 }
 
 #nutritionfacts div.dv {
+    background: white;
     display: inline;
     float: right;
     font-family: 'Arial Black','Helvetica Bold',sans-serif;
 }
 
 #nutritionfacts table.vitamins td {
+    background: white;
     font-family: Arial,Helvetica,sans-serif;
     white-space: nowrap;
     width: 33%;
@@ -87,20 +93,22 @@
 
 #nutritionfacts div.line {
     border-top: 1px solid black;
-    background: white;
 }
 
 #nutritionfacts div.labellight {
+    background: white;
     float: left;
     font-family: Arial,Helvetica,sans-serif;
 }
 
 #nutritionfacts .highlighted {
+    background: white;
     border: 1px dotted grey;
     padding: 2px;
 }
 
 .height-7 {
+    background: white;
     height: 7px;
 
     td {
@@ -109,6 +117,7 @@
 }
 
 .font-7 {
+    background: white;
     font-size: 7px;
 }
 

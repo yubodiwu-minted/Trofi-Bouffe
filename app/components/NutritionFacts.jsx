@@ -5,7 +5,9 @@ import {round} from "helperFunctions";
 
 var renderButtons = (props) => {
     return [
-        <button className="green-button">Calories</button>,
+        <button className="green-button" onClick={() => {
+            window.location.hash = "/recipe/nutrition-facts/pie-chart"
+        }}>Calories</button>,
         <button className="blue-button">Total Fat</button>,
         <button className="green-button">Cholesterol</button>,
         <button className="blue-button">Sodium</button>,
@@ -189,7 +191,7 @@ var NutritionFacts = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <h4 id="nf-button-holder-title">See Value by Ingredient:</h4>  
+                <h4 id="nf-button-holder-title">See Value by Ingredient:</h4>
                 <div id="nf-button-holder">
                     {renderButtons(props)}
                 </div>
