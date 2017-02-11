@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 import {convertUnitAbbreviation} from "helperFunctions";
 import SetNutritionFacts from "SetNutritionFacts";
@@ -39,6 +40,19 @@ var renderNfButton = (props) => {
         return <button onClick={setNutritionFacts.bind(null, props)} className="blue-button">SET NUTRITION FACTS</button>;
     }
 };
+
+var renderEditRecipeButton = (props) => {
+    var jwt = localStorage.getItem("jwt");
+    var decodedJwt = jwtDecode(jwt);
+    console.log("decodedJwt.id is ", decodedJwt.id);
+    console.log("id on current recipe is ", props.currentRecipe.user_id);
+    if (jwt && decodedJwt.id === props.currentRecipe.user_id) {
+        return <button className="green-button" onClick={() => {
+            props.dispatch(actions.editRecipeClicked());
+            window.location.hash = "/recipe/edit";
+        }}>EDIT RECIPE</button>;
+    }
+}
 
 var viewNutritionFacts = async (props) => {
     var {dispatch} = props;
@@ -97,10 +111,7 @@ var RecipeView = (props) => {
                 </div>
                 <div className="recipe-buttons-div">
                     {renderNfButton(props)}
-                    <button className="green-button" onClick={() => {
-                        props.dispatch(actions.editRecipeClicked());
-                        window.location.hash = "/recipe/edit";
-                    }}>EDIT RECIPE</button>
+                    {renderEditRecipeButton(props)}
                 </div>
             </div>
         </div>
