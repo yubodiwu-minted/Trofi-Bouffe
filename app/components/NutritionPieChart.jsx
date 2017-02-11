@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import PieChart from "react-simple-pie-chart";
 
 import {pieChartColors} from "helperFunctions";
+import {replaceSpacesWithUnderscores} from "helperFunctions";
 
 var generateSlices = (props) => {
     var total = props.currentIngredient.pieChartData.reduce((accum, cur) => {
@@ -27,12 +28,29 @@ var generateLegend = (props) => {
         var ingredientPercentOfTotal = Math.round(ingredient.field / total * 1000) / 10;
 
         if (ingredientPercentOfTotal !== 0) {
+            switch (props.currentIngredient.field) {
+                case "Sodium":
+                    var units = " mg of ";
+                    break;
+                case "Saturated Fat":
+                    var units = " grams of ";
+                    break;
+                case "Sugars":
+                    var units = " grams of ";
+                    break;
+                case "Total Carbohydrate":
+                    var units = " grams of ";
+                    break;
+                default:
+                    var units = " ";
+            }
+
             return (
                 <div className="pie-chart-legend-element" key={++key}>
                     <div className="pie-chart-legend-color-box" style={{
                         backgroundColor: pieChartColors[i % props.currentIngredient.pieChartData.length]
                     }} key={++key}/>
-                    {`${Math.round(ingredient.field / total * 1000) / 10}% ${ingredient.name}`}
+                    {`${Math.round(ingredient.field / total * 1000) / 10}% ${ingredient.name}, ${Math.round(ingredient.field / props.currentRecipe.servings * 100) / 100}${units}${props.currentIngredient.field.toLowerCase()} per serving`}
                 </div>
             );
         }
@@ -70,6 +88,7 @@ var NutritionPieChart = (props) => {
 
 export default connect((state) => {
     return {
-        currentIngredient: state.currentIngredient
+        currentIngredient: state.currentIngredient,
+        currentRecipe: state.currentRecipe
     };
 })(NutritionPieChart);

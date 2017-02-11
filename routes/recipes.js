@@ -107,8 +107,11 @@ router.put("/", (req, res) => {
         console.error(err);
     }
 
+    if (!user) throw new Error("failed verification");
+
     var notInserted = [];
     var ingredientsForInsert = req.body.ingredientsList.map((ingredient) => {
+        console.log(ingredient);
         if (!ingredient.id) {
             return {
                 name: ingredient.name
@@ -119,12 +122,12 @@ router.put("/", (req, res) => {
                 ingredient_id: ingredient.id,
                 quantity: ingredient.quantity,
                 units: ingredient.units,
-                hasWeight: isWeightUnit(ingredient.units),
-                hasVolume: isVolumeUnit(ingredient.units)
+                hasWeight: ingredient.units ? isWeightUnit(ingredient.units) : null,
+                hasVolume: ingredient.units ? isVolumeUnit(ingredient.units) : null
             });
         }
     }).filter((ingredient) => ingredient);
-
+    
     Promise.all([
         knex("recipes").where("id", req.body.currentRecipe.id)
         .update({
