@@ -38,7 +38,7 @@ var generateLegend = (props) => {
                 case "Sugars":
                     var units = " grams of ";
                     break;
-                case "Total Carbohydrates":
+                case "Total Carbohydrate":
                     var units = " grams of ";
                     break;
                 default:
