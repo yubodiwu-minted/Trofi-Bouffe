@@ -55,7 +55,7 @@ var isVolumeUnit = (unit) => {
 };
 
 var isWeightUnit = (unit) => {
-    if (unit.indexOf("oz") !== -1 || unit.indexOf("lbs") !== -1) {
+    if (unit.indexOf("oz") !== -1 || unit.indexOf("lbs") !== -1 || unit === "g" || unit === "grams") {
         return true;
     } else {
         return false;
