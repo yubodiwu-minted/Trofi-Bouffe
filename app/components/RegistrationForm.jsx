@@ -45,7 +45,7 @@ export default class RegistrationForm extends Component {
                 <div className="medium-6 medium-centered large-4 large-centered columns">
                     <form onSubmit={this.onFormSubmit}>
                         <div className="row column log-in-form">
-                            <h4 className="text-center">Sign Up to Make Recipes!</h4>
+                            <h4 className="text-center">Sign Up!</h4>
                             <label>First Name
                                 <input type="text" ref="firstName" placeholder="First name"/>
                             </label>
@@ -53,16 +53,16 @@ export default class RegistrationForm extends Component {
                                 <input type="text" ref="lastName" placeholder="Last name"/>
                             </label>
                             <label>Email
-                                <input type="text" ref="email" placeholder="somebody@example.com"/>
+                                <input type="text" ref="email" placeholder="somebody@example.com" type="email" required/>
                             </label>
                             <label>Username
-                                <input type="text" ref="username" placeholder="Username"/>
+                                <input type="text" ref="username" placeholder="Username" required/>
                             </label>
                             <label>Password
-                                <input type="text" ref="password" placeholder="Password"/>
+                                <input type="text" ref="password" placeholder="Password" type="password" required/>
                             </label>
                             <label>Confirm Password
-                                <input type="text" ref="confirmPassword" placeholder="Password"/>
+                                <input type="text" ref="confirmPassword" placeholder="Password" type="password" required/>
                             </label>
                             <div className="button-holder">
                                 <button>

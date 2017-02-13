@@ -53,13 +53,14 @@ router.post("/login", function(req, res) {
         return bcrypt.compare(req.body.password, user[0].hashed_password).then(() => {
             return user[0]
         }).catch(() => {
-            return undefined;
+            throw new Error("failed")
         });
     }).then((user) => {
         var authentication = authenticateAndJWT(user);
         res.json(authentication);
     }).catch((error) => {
         console.log(error);
+        res.json({authenicated: false});
     })
 });
 

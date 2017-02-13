@@ -26,3 +26,12 @@
     padding: $form-padding;
     border-radius: $form-radius;
 }
+
+.authentication-error-holder {
+    display: flex;
+    justify-content: center;
+}
+
+#log-in-error {
+    color: red;
+}
