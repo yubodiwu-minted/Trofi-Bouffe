@@ -38,3 +38,15 @@ export var renderButton = (props) => {
         return <button className="save-recipe-button" onClick={editRecipe.bind(this, props)}>SAVE EDITS</button>;
     }
 };
+
+export var renderDirections = (props) => {
+    var key = 0;
+
+    return props.directions.map((direction) => {
+        return (
+            <p className="direction" key={key++}>
+                {direction.stepNumber}. {direction.stepContent}
+            </p>
+        );
+    })
+}

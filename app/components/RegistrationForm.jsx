@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import axios from "axios";
-// import {Fieldset, Field, createValue} from "react-forms";
-// import JoiForm from "react-joi-forms";
 
 export default class RegistrationForm extends Component {
     constructor(props) {

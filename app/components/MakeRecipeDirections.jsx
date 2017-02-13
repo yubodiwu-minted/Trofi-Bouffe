@@ -1,17 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-var renderDirections = (props) => {
-    var key = 0;
-
-    return props.directions.map((direction) => {
-        return (
-            <p className="direction" key={key++}>
-                {direction.stepNumber}. {direction.stepContent}
-            </p>
-        );
-    })
-}
+import {renderDirections} from "MakeRecipeHelper";
 
 var MakeRecipeDirections = (props) => {
     return (

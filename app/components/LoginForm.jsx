@@ -24,6 +24,7 @@ class LoginForm extends Component {
 
             if (response.data.authenticated) {
                 localStorage.setItem("jwt", response.data.jwt);
+                dispatch(actions.logIn());
 
                 window.location.hash = "user/recipes"
             }
@@ -43,7 +44,7 @@ class LoginForm extends Component {
                                 <input type="text" ref="email" placeholder="somebody@example.com"/>
                             </label>
                             <label>Password
-                                <input type="text" ref="password" placeholder="Password"/>
+                                <input type="text" ref="password" placeholder="Password" type="password"/>
                             </label>
                             <div className="button-holder">
                                 <button>

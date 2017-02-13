@@ -1,3 +1,15 @@
+export var logIn = () => {
+    return {
+        type: "LOG_IN"
+    };
+};
+
+export var logOut = () => {
+    return {
+        type: "LOG_OUT"
+    };
+};
+
 export var getRecipesList = (recipesList) => {
     return {
         type: "GET_RECIPES_LIST",
