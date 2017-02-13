@@ -16,8 +16,10 @@ router.get("/", (req, res) => {
     }
 
     if (user) {
-        knex("recipes").select("*")
-            .where("user_id", user.id).then((recipes) => {
+        knex("recipes").select("recipes.*", "users.username")
+            .join("users", "users.id", "=", "recipes.user_id")
+            .where("recipes.user_id", user.id).then((recipes) => {
+                console.log(recipes);
                 res.json(recipes)
             })
     } else {
@@ -26,7 +28,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/all", function(req, res) {
-    knex("recipes").select("*")
+    knex("recipes").select("recipes.*", "users.username")
+        .join("users", "users.id", "=", "recipes.user_id")
         .then((recipes) => {
             res.json(recipes);
         });
@@ -127,7 +130,7 @@ router.put("/", (req, res) => {
             });
         }
     }).filter((ingredient) => ingredient);
-    
+
     Promise.all([
         knex("recipes").where("id", req.body.currentRecipe.id)
         .update({
