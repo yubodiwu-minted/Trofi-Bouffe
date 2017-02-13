@@ -5,7 +5,17 @@ export default class RegistrationForm extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            userAlreadyExists: false
+        };
+
         this.onFormSubmit = this.onFormSubmit.bind(this);
+    }
+
+    renderRegisterError() {
+        if (this.state.userAlreadyExists) {
+            return <p className="authenticate-error">Email is already taken.</p>;
+        }
     }
 
     async onFormSubmit(event) {
@@ -26,7 +36,7 @@ export default class RegistrationForm extends Component {
 
                     window.location.hash = "user/recipes";
                 } else {
-                    console.error(response.data);
+                    this.setState({userAlreadyExists: true});
                 }
             } catch (err) {
                 console.error(err);
@@ -34,11 +44,6 @@ export default class RegistrationForm extends Component {
         }
     }
 
-    // TODO
-    // hide passwords
-    // validate everything
-    // show password option
-    // forgot password option
     render() {
         return (
             <div className="form-container">
@@ -55,6 +60,9 @@ export default class RegistrationForm extends Component {
                             <label>Email
                                 <input type="text" ref="email" placeholder="somebody@example.com" type="email" required/>
                             </label>
+                            <div className="authenticate-error-holder">
+                                {this.renderRegisterError()}
+                            </div>
                             <label>Username
                                 <input type="text" ref="username" placeholder="Username" required/>
                             </label>

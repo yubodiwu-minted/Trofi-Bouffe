@@ -42,7 +42,7 @@ class LoginForm extends Component {
     renderLogInError() {
         if (!this.state.logInSuccessful) {
             console.log("this is occurring");
-            return <p id="log-in-error">Wrong username/password.</p>;
+            return <p className="authenticate-error">Wrong email/password.</p>;
         }
     }
 

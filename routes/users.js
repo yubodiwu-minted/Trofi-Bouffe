@@ -17,7 +17,7 @@ router.get("/", function(req, res, next) {
 router.post("/", function(req, res) {
     console.log("users post / route is hit");
 
-    getUser(req.body.username, req.body.email).then((data) => {
+    getUser("", req.body.email).then((data) => {
         if (data.length === 0) {
             return hashPassword(req.body.password, 12);
         } else {
