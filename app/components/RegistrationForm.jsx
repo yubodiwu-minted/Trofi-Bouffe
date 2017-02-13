@@ -58,7 +58,7 @@ export default class RegistrationForm extends Component {
                                 <input type="text" ref="lastName" placeholder="Last name"/>
                             </label>
                             <label>Email
-                                <input type="text" ref="email" placeholder="somebody@example.com" type="email" required/>
+                                <input ref="email" placeholder="somebody@example.com" type="email" required/>
                             </label>
                             <div className="authenticate-error-holder">
                                 {this.renderRegisterError()}
@@ -67,10 +67,10 @@ export default class RegistrationForm extends Component {
                                 <input type="text" ref="username" placeholder="Username" required/>
                             </label>
                             <label>Password
-                                <input type="text" ref="password" placeholder="Password" type="password" required/>
+                                <input ref="password" placeholder="Password" type="password" required/>
                             </label>
                             <label>Confirm Password
-                                <input type="text" ref="confirmPassword" placeholder="Password" type="password" required/>
+                                <input ref="confirmPassword" placeholder="Password" type="password" required/>
                             </label>
                             <div className="button-holder">
                                 <button>

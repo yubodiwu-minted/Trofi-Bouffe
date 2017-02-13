@@ -25,6 +25,10 @@
     border: 1px solid $form-border-color;
     padding: $form-padding;
     border-radius: $form-radius;
+
+    input[type="email"] {
+        margin-bottom: 0px;
+    }
 }
 
 .authentication-error-holder {
