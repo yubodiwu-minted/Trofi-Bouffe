@@ -28,7 +28,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/all", function(req, res) {
-    knex("recipes").select("*")
+    knex("recipes").select("recipes.*", "users.username")
+        .join("users", "users.id", "=", "recipes.user_id")
         .then((recipes) => {
             res.json(recipes);
         });

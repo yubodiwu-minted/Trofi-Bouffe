@@ -20,7 +20,8 @@ var viewRecipe = async (props) => {
             name: props.name,
             user_id: props.user_id,
             calories: props.calories,
-            servings: props.servings
+            servings: props.servings,
+            username: props.username
         }));
         dispatch(actions.getRecipeDirections(directions.map((direction) => {
             return {
@@ -55,7 +56,10 @@ var UserRecipe = (props) => {
                     </p>
                 </div>
             </div>
-            <button className="edit-recipe-button" onClick={viewRecipe.bind(null, props)}>VIEW RECIPE</button>
+            <div className="recipe-button-created-holder">
+                <p>created by {props.username}</p>
+                <button className="edit-recipe-button" onClick={viewRecipe.bind(null, props)}>VIEW RECIPE</button>
+            </div>
         </div>
     );
 }

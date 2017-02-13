@@ -80,20 +80,23 @@ var RecipeView = (props) => {
     return (
         <div className="content-container row">
             <div className="content-list columns medium-10 large-8 small-centered">
-                <div className="recipe-header">
-                    <img src={props.currentRecipe.img} alt="recipe_img" className="recipe-image"/>
-                    <div>
-                        <h3>{props.currentRecipe.name}</h3>
-                        <p>
-                            Calories: {props.currentRecipe.calories || "Not yet set"}
-                        </p>
-                        <p>
-                            Servings: {props.currentRecipe.servings || "Not yet set"}
-                        </p>
-                        <p>
-                            Calories per serving: {Math.round(props.currentRecipe.calories / props.currentRecipe.servings) || "Note yet set"}
-                        </p>
+                <div className="recipe-header-holder">
+                    <div className="recipe-header">
+                        <img src={props.currentRecipe.img} alt="recipe_img" className="recipe-image"/>
+                        <div>
+                            <h3>{props.currentRecipe.name}</h3>
+                            <p>
+                                Calories: {props.currentRecipe.calories || "Not yet set"}
+                            </p>
+                            <p>
+                                Servings: {props.currentRecipe.servings || "Not yet set"}
+                            </p>
+                            <p>
+                                Calories per serving: {Math.round(props.currentRecipe.calories / props.currentRecipe.servings) || "Note yet set"}
+                            </p>
+                        </div>
                     </div>
+                    <p className="created-by">created by {props.currentRecipe.username}</p>
                 </div>
                 <div className="recipe-content">
                     <div className="recipe-ingredients-div columns large-10">
