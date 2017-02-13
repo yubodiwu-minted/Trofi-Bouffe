@@ -1,13 +1,21 @@
 import React, {Component} from "react";
 import axios from "axios";
-// import {Fieldset, Field, createValue} from "react-forms";
-// import JoiForm from "react-joi-forms";
 
 export default class RegistrationForm extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            userAlreadyExists: false
+        };
+
         this.onFormSubmit = this.onFormSubmit.bind(this);
+    }
+
+    renderRegisterError() {
+        if (this.state.userAlreadyExists) {
+            return <p className="authenticate-error">Email is already taken.</p>;
+        }
     }
 
     async onFormSubmit(event) {
@@ -28,7 +36,7 @@ export default class RegistrationForm extends Component {
 
                     window.location.hash = "user/recipes";
                 } else {
-                    console.error(response.data);
+                    this.setState({userAlreadyExists: true});
                 }
             } catch (err) {
                 console.error(err);
@@ -36,18 +44,13 @@ export default class RegistrationForm extends Component {
         }
     }
 
-    // TODO
-    // hide passwords
-    // validate everything
-    // show password option
-    // forgot password option
     render() {
         return (
             <div className="form-container">
                 <div className="medium-6 medium-centered large-4 large-centered columns">
                     <form onSubmit={this.onFormSubmit}>
                         <div className="row column log-in-form">
-                            <h4 className="text-center">Sign Up to Make Recipes!</h4>
+                            <h4 className="text-center">Sign Up!</h4>
                             <label>First Name
                                 <input type="text" ref="firstName" placeholder="First name"/>
                             </label>
@@ -55,16 +58,19 @@ export default class RegistrationForm extends Component {
                                 <input type="text" ref="lastName" placeholder="Last name"/>
                             </label>
                             <label>Email
-                                <input type="text" ref="email" placeholder="somebody@example.com"/>
+                                <input ref="email" placeholder="somebody@example.com" type="email" required/>
                             </label>
+                            <div className="authenticate-error-holder">
+                                {this.renderRegisterError()}
+                            </div>
                             <label>Username
-                                <input type="text" ref="username" placeholder="Username"/>
+                                <input type="text" ref="username" placeholder="Username" required/>
                             </label>
                             <label>Password
-                                <input type="text" ref="password" placeholder="Password"/>
+                                <input ref="password" placeholder="Password" type="password" required/>
                             </label>
                             <label>Confirm Password
-                                <input type="text" ref="confirmPassword" placeholder="Password"/>
+                                <input ref="confirmPassword" placeholder="Password" type="password" required/>
                             </label>
                             <div className="button-holder">
                                 <button>

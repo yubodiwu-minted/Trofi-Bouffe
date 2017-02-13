@@ -5,6 +5,7 @@ import {
     combineReducers
 } from "redux";
 import {
+    logInReducer,
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,
@@ -17,6 +18,7 @@ import promise from "redux-promise";
 
 export var configure = (initialState = {}) => {
     var reducers = combineReducers({
+        loggedIn: logInReducer,
         recipesList: recipesReducer,
         ingredientsList: ingredientsListReducer,
         currentRecipe: currentRecipeReducer,

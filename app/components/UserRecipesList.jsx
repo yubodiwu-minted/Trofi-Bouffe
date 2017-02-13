@@ -37,6 +37,10 @@ class UserRecipesList extends Component {
     }
 
     renderRecipes() {
+        if (this.props.recipesList.length === 0) {
+            return <h3>You have no recipes yet.</h3>
+        }
+
         return this.props.recipesList.map((recipe) => {
             return (
                 <UserRecipe key={recipe.id} {...recipe}></UserRecipe>

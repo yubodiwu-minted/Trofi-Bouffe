@@ -1,19 +1,10 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-import {renderOwnRecipes, renderAllRecipes} from "NavHelper";
-
-var renderSeeOwnRecipes = (props) => {
-    if (localStorage.getItem("jwt")) {
-        return (
-            <li>
-                <a href="#/user/recipes" onClick={renderOwnRecipes.bind(this, props)}>See Own Recipes</a>
-            </li>
-        );
-    }
-}
+import {renderSeeOwnRecipes, renderAllRecipes, renderLogInOut} from "NavHelper";
 
 var Nav = (props) => {
+    props.loggedIn;
     return (
         <header className="header">
             <h1 className="headline">Trofí
@@ -27,9 +18,7 @@ var Nav = (props) => {
                 <li>
                     <a href="#/user/new">Sign Up</a>
                 </li>
-                <li>
-                    <a href="#/login">Log in</a>
-                </li>
+                {renderLogInOut(props)}
             </ul>
         </header>
     );
@@ -37,6 +26,7 @@ var Nav = (props) => {
 
 export default connect((state) => {
     return {
-        recipesList: state.recipesList
+        recipesList: state.recipesList,
+        loggedIn: state.loggedIn
     };
 })(Nav);

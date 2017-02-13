@@ -17,7 +17,7 @@ router.get("/", function(req, res, next) {
 router.post("/", function(req, res) {
     console.log("users post / route is hit");
 
-    getUser(req.body.username, req.body.email).then((data) => {
+    getUser("", req.body.email).then((data) => {
         if (data.length === 0) {
             return hashPassword(req.body.password, 12);
         } else {
@@ -53,13 +53,14 @@ router.post("/login", function(req, res) {
         return bcrypt.compare(req.body.password, user[0].hashed_password).then(() => {
             return user[0]
         }).catch(() => {
-            return undefined;
+            throw new Error("failed")
         });
     }).then((user) => {
         var authentication = authenticateAndJWT(user);
         res.json(authentication);
     }).catch((error) => {
         console.log(error);
+        res.json({authenicated: false});
     })
 });
 

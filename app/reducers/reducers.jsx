@@ -1,3 +1,14 @@
+var logInReducer = (state = false, action) => {
+    switch (action.type) {
+        case "LOG_IN":
+            return true;
+        case "LOG_OUT":
+            return false;
+        default:
+            return state;
+    }
+};
+
 var recipesReducer = (state = [], action) => {
     Object.freeze(state);
 
@@ -151,6 +162,7 @@ var currentIngredientReducer = (state = {}, action) => {
 };
 
 module.exports = {
+    logInReducer,
     recipesReducer,
     ingredientsListReducer,
     currentRecipeReducer,

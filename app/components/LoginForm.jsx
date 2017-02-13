@@ -9,6 +9,10 @@ class LoginForm extends Component {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.state = {
+            logInSuccessful: true
+        };
     }
 
     async handleSubmit(event) {
@@ -24,11 +28,21 @@ class LoginForm extends Component {
 
             if (response.data.authenticated) {
                 localStorage.setItem("jwt", response.data.jwt);
+                dispatch(actions.logIn());
 
                 window.location.hash = "user/recipes"
+            } else {
+                this.setState({logInSuccessful: false});
             }
         } catch(error) {
             console.error(error);
+        }
+    }
+
+    renderLogInError() {
+        if (!this.state.logInSuccessful) {
+            console.log("this is occurring");
+            return <p className="authenticate-error">Wrong email/password.</p>;
         }
     }
 
@@ -40,19 +54,22 @@ class LoginForm extends Component {
                         <div className="row column log-in-form">
                             <h4 className="text-center">Log in</h4>
                             <label>Email
-                                <input type="text" ref="email" placeholder="somebody@example.com"/>
+                                <input type="text" ref="email" placeholder="somebody@example.com" type="email" required/>
                             </label>
                             <label>Password
-                                <input type="text" ref="password" placeholder="Password"/>
+                                <input type="text" ref="password" placeholder="Password" type="password" required/>
                             </label>
+                            <div className="authentication-error-holder">
+                                {this.renderLogInError()}
+                            </div>
                             <div className="button-holder">
                                 <button>
                                     <a type="submit" className="button expanded">Log In</a>
                                 </button>
                             </div>
-                            <p className="text-center">
+                            {/* <p className="text-center">
                                 <a href="#">Forgot your password?</a>
-                            </p>
+                            </p> */}
                         </div>
                     </form>
 
