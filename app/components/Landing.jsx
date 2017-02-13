@@ -12,7 +12,7 @@ export default () => {
                 <div className="button-container">
                     <div>
                         <Link to="/login">
-                            <button id="sign-in">Sign In</button>
+                            <button id="sign-in">Log In</button>
                         </Link>
                     </div>
                     <div>
