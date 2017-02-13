@@ -1,50 +1,16 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import axios from "axios";
 
 import MakeRecipeDirections from "MakeRecipeDirections";
 import MakeRecipeIngredients from "MakeRecipeIngredients";
 import MakeRecipeHeader from "MakeRecipeHeader";
 import MakeRecipeForm from "MakeRecipeForm";
 import MakeRecipeError from "MakeRecipeError";
+import {renderButton} from "MakeRecipeHelper";
 
 var actions = require("actions");
 
 var recipeSaved = false;
-
-var saveRecipe = async (props) => {
-    if (!props.currentRecipe.saved) {
-        await axios.post("/recipes", {
-            currentRecipe: props.currentRecipe,
-            ingredientsList: props.ingredientsList,
-            directions: props.directions,
-            jwt: localStorage.getItem("jwt")
-        });
-
-        window.location.hash = "/recipe/view";
-    }
-};
-
-var editRecipe = async (props) => {
-    if (!props.currentRecipe.saved) {
-        await axios.put("/recipes", {
-            currentRecipe: props.currentRecipe,
-            ingredientsList: props.ingredientsList,
-            directions: props.directions,
-            jwt: localStorage.getItem("jwt")
-        });
-
-        window.location.hash = "/recipe/view";
-    }
-}
-
-var renderButton = (props) => {
-    if (!props.currentRecipe.id) {
-        return <button className="save-recipe-button" onClick={saveRecipe.bind(null, props)}>SAVE RECIPE</button>;
-    } else {
-        return <button className="save-recipe-button" onClick={editRecipe.bind(null, props)}>SAVE EDITS</button>
-    }
-};
 
 var MakeRecipe = (props) => {
     if (localStorage.getItem("jwt")) {
