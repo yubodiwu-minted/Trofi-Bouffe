@@ -15,6 +15,8 @@ var recipesReducer = (state = [], action) => {
     switch (action.type) {
         case "GET_RECIPES_LIST":
             return action.payload;
+        case "CLEAR_RECIPES_LIST":
+            return [];
         default:
             return state;
     }

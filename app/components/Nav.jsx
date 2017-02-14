@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-import {renderSeeOwnRecipes, renderAllRecipes, renderLogInOut} from "NavHelper";
+import {renderAllRecipes, renderSeeOwnRecipes, renderSignUp, renderLogInOut} from "NavHelper";
 
 var Nav = (props) => {
     props.loggedIn;
@@ -15,9 +15,7 @@ var Nav = (props) => {
                     <a href="#/recipes/all" onClick={renderAllRecipes.bind(this, props)}>Browse Recipes</a>
                 </li>
                 {renderSeeOwnRecipes(props)}
-                <li>
-                    <a href="#/user/new">Sign Up</a>
-                </li>
+                {renderSignUp(props)}
                 {renderLogInOut(props)}
             </ul>
         </header>

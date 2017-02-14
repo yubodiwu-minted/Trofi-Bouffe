@@ -17,6 +17,12 @@ export var getRecipesList = (recipesList) => {
     };
 };
 
+export var clearRecipesList = () => {
+    return {
+        type: "CLEAR_RECIPES_LIST"
+    };
+};
+
 export var getRecipeIngredients = (ingredientsList) => {
     return {
         type: "GET_RECIPE_INGREDIENTS",
