@@ -1,19 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-import {convertUnitAbbreviation} from "helperFunctions";
-
-var renderIngredients = (props) => {
-    var key = 0;
-
-    return props.ingredientsList.map((ingredient) => {
-        return (
-            <p className="ingredient" key={key++}>
-                {ingredient.quantity || "some"} {convertUnitAbbreviation[ingredient.units]} {ingredient.quantity ? "of" : ""} {ingredient.name}
-            </p>
-        );
-    })
-}
+import {renderIngredients} from "MakeRecipeHelper";
 
 var MakeRecipeIngredients = (props) => {
     return (

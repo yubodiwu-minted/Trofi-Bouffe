@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
 
+import {convertUnitAbbreviation} from "helperFunctions";
+
 var actions = require("actions");
 
 var recipeSaved = false;
@@ -29,7 +31,7 @@ var editRecipe = async (props) => {
 
         window.location.hash = "/recipe/view";
     }
-}
+};
 
 export var renderButton = (props) => {
     if (!props.currentRecipe.id) {
@@ -48,5 +50,17 @@ export var renderDirections = (props) => {
                 {direction.stepNumber}. {direction.stepContent}
             </p>
         );
-    })
-}
+    });
+};
+
+export var renderIngredients = (props) => {
+    var key = 0;
+
+    return props.ingredientsList.map((ingredient) => {
+        return (
+            <p className="ingredient" key={key++}>
+                {ingredient.quantity || "some"} {convertUnitAbbreviation[ingredient.units]} {ingredient.quantity ? "of" : ""} {ingredient.name}
+            </p>
+        );
+    });
+};
