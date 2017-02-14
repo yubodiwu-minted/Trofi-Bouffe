@@ -56,7 +56,7 @@ class LoginForm extends Component {
                             <label>Email
                                 <input type="text" ref="email" placeholder="somebody@example.com" type="email" required/>
                             </label>
-                            <label>Password
+                            <label className="below-email-field">Password
                                 <input type="text" ref="password" placeholder="Password" type="password" required/>
                             </label>
                             <div className="authentication-error-holder">

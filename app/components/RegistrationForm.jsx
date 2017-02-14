@@ -6,7 +6,8 @@ export default class RegistrationForm extends Component {
         super(props);
 
         this.state = {
-            userAlreadyExists: false
+            userAlreadyExists: false,
+            matchingPasswords: true
         };
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -18,8 +19,18 @@ export default class RegistrationForm extends Component {
         }
     }
 
+    renderPasswordError() {
+        if (!this.state.matchingPasswords) {
+            return <p className="authenticate-error">Passwords do not match.</p>
+        }
+    }
+
     async onFormSubmit(event) {
         event.preventDefault();
+        this.setState({
+            userAlreadyExists: false,
+            matchingPasswords: true
+        });
 
         if (this.refs.password.value === this.refs.confirmPassword.value) {
             try {
@@ -41,6 +52,8 @@ export default class RegistrationForm extends Component {
             } catch (err) {
                 console.error(err);
             }
+        } else {
+            this.setState({matchingPasswords: false});
         }
     }
 
@@ -63,15 +76,18 @@ export default class RegistrationForm extends Component {
                             <div className="authenticate-error-holder">
                                 {this.renderRegisterError()}
                             </div>
-                            <label>Username
+                            <label className="below-email-field">Username
                                 <input type="text" ref="username" placeholder="Username" required/>
                             </label>
                             <label>Password
                                 <input ref="password" placeholder="Password" type="password" required/>
                             </label>
                             <label>Confirm Password
-                                <input ref="confirmPassword" placeholder="Password" type="password" required/>
+                                <input id="confirm-password" ref="confirmPassword" placeholder="Password" type="password" required/>
                             </label>
+                            <div className="authenticate-error-holder">
+                                {this.renderPasswordError()}
+                            </div>
                             <div className="button-holder">
                                 <button>
                                     <a type="submit" className="button expanded">Sign Up</a>

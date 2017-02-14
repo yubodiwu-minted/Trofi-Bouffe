@@ -18,6 +18,7 @@
 .button-holder {
     display: flex;
     justify-content: center;
+    margin-top: 1.5rem;
 }
 
 .log-in-form {
@@ -29,6 +30,10 @@
     input[type="email"] {
         margin-bottom: 0px;
     }
+
+    #confirm-password {
+        margin-bottom: 0rem;
+    }
 }
 
 .authentication-error-holder {
@@ -38,4 +43,8 @@
 
 .authenticate-error {
     color: red;
+}
+
+.below-email-field {
+    margin-top: 0.8rem;
 }

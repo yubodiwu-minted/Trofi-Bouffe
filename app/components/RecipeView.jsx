@@ -96,7 +96,9 @@ var RecipeView = (props) => {
                             </p>
                         </div>
                     </div>
-                    <p className="created-by">created by {props.currentRecipe.username}</p>
+                    <p className="created-by">
+                        created by {props.currentRecipe.username}
+                    </p>
                 </div>
                 <div className="recipe-content">
                     <div className="recipe-ingredients-div columns large-10">

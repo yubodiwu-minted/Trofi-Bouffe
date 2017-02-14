@@ -58,7 +58,9 @@ var UserRecipe = (props) => {
             </div>
             <div className="recipe-button-created-holder">
                 <p>created by {props.username}</p>
-                <button className="edit-recipe-button" onClick={viewRecipe.bind(null, props)}>VIEW RECIPE</button>
+                <button className="edit-recipe-button" onClick={viewRecipe.bind(null, props)}>
+                    VIEW RECIPE
+                </button>
             </div>
         </div>
     );
