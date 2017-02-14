@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import axios from "axios";
+import Loading from "react-loading";
 
 import {capitalizeWords, replaceSpacesWithUnderscores} from "helperFunctions";
 import {createOptions, renderOptions} from "setNfFormHelpers";
@@ -14,7 +15,7 @@ class SetNutritionFacts extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {loading: true};
 
         for (let obj of this.props.needNf) {
             this.state[replaceSpacesWithUnderscores(obj.name)] = [];
@@ -26,12 +27,19 @@ class SetNutritionFacts extends Component {
     async componentWillMount() {
         var stateChanges = await createOptions(this.props.needNf);
 
-        this.setState(stateChanges);
+        this.setState({
+            ...stateChanges,
+            loading: false
+        });
     }
 
     renderIngredients() {
         var key = 0;
         var selectors = [];
+
+        if (this.state.loading) {
+            return <Loading type="spin" color="#A2D1CF"></Loading>;
+        }
 
         return this.props.needNf.map((obj) => {
             var name = obj.name;
@@ -69,7 +77,7 @@ class SetNutritionFacts extends Component {
                 value: Math.round(nutritionFacts.calories)
             }));
             dispatch(actions.setCurrentRecipeNutritionFacts(nutritionFacts));
-            
+
             window.location.hash = "/recipe/view"
         } catch(err) {
             console.error(err);

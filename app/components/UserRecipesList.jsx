@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import {connect} from "react-redux";
+import Loading from "react-loading";
 import UserRecipe from "UserRecipe";
 
 var actions = require("actions");
@@ -8,6 +9,8 @@ var actions = require("actions");
 class UserRecipesList extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {loading: true};
 
         this.getRecipes = this.getRecipes.bind(this);
         this.newRecipe = this.newRecipe.bind(this);
@@ -31,6 +34,7 @@ class UserRecipesList extends Component {
 
             var recipes = response.data;
             dispatch(actions.getRecipesList(recipes));
+            this.setState({loading: false});
         } catch (err) {
             console.error(err);
         }
@@ -39,6 +43,8 @@ class UserRecipesList extends Component {
     renderRecipes() {
         if (this.props.recipesList.length === 0) {
             return <h3>You have no recipes yet.</h3>
+        } else if (this.state.loading === true) {
+            return <Loading type="spin" color="#A2D1CF"></Loading>;
         }
 
         return this.props.recipesList.map((recipe) => {
