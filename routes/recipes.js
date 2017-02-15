@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
     } catch (err) {
         console.error(err);
     }
-    
+
     knex("recipes")
         .insert({
             user_id: user.id,
@@ -89,8 +89,6 @@ router.post("/", (req, res) => {
 
                 return recipeIngredientForInsert;
             });
-
-            console.log(recipeIngredientsForInsert);
 
             knex("recipe_ingredients").insert(recipeIngredientsForInsert)
                 .then(() => {
@@ -193,6 +191,26 @@ router.put("/", (req, res) => {
     ])
 
     res.end();
+});
+
+router.delete("/", function(req, res) {
+    console.log("delete recipe route hit");
+
+    try {
+        var user = JWT.verify(req.query.jwt, APP_SECRET);
+        var currentRecipe = JSON.parse(req.query.currentRecipe);
+    } catch (err) {
+        console.error(err);
+    }
+
+    if (!user) throw new Error("failed verification");
+
+    knex("recipes").where("id", currentRecipe.id)
+        .andWhere("user_id", user.id).del()
+        .then((data) => {
+            console.log(data);
+            res.send(`recipe ${currentRecipe.id} deleted`)
+        })
 });
 
 module.exports = router;
