@@ -33,7 +33,7 @@
     }
 }
 
-.edit-recipe-button {
+.view-recipe-button {
     min-height: 2rem;
     background: $button-blue;
     font-size: 1rem;
@@ -43,7 +43,7 @@
     padding: 0.5rem 1rem;
 }
 
-.edit-recipe-button:hover {
+.view-recipe-button:hover {
     transition: all 500ms linear;
     background-color: darken($button-blue, 10%);
 }
