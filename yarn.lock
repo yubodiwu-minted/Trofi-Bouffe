@@ -3566,6 +3566,10 @@ react-forms@beta:
     react-derivable "^0.2.0"
     react-stylesheet "^1.0.0"
 
+react-loading@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-0.0.9.tgz#e9fba6948915ba7742a508193828b6c73eb04956"
+
 react-redux@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.2.tgz#3d9878f5f71c6fafcd45de1fbb162ea31f389814"

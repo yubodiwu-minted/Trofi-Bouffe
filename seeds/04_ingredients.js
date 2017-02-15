@@ -25,6 +25,36 @@ exports.seed = function(knex, Promise) {
                 plu: null,
                 product_name: "Kirkland Signature Costco Pecorino R Romano",
                 name: "pecorino romano cheese"
+            }, {
+                id: 102,
+                upc: "015800064114",
+                plu: null,
+                product_name: "C&H, Pure Cane, Dark Brown Sugar, 16oz Box (Pack of 4)",
+                name: "dark brown sugar"
+            }, {
+                id: 103,
+                upc: "609207320128",
+                plu: null,
+                product_name: "Trader Joe's Semi Sweet Chocolate Chips 12 Oz. Bag",
+                name: "semi sweet chocolate chips"
+            }, {
+                id: 104,
+                upc: "072400711244",
+                plu: null,
+                product_name: "Grandma's Molasses Unsulfured",
+                name: "molasses"
+            }, {
+                id: 105,
+                upc: "033200011101",
+                plu: null,
+                product_name: "Arm & Hammer Baking Soda 16 Oz",
+                name: "baking soda"
+            }, {
+                id: 106,
+                upc: "016000104105",
+                plu: null,
+                product_name: "Gold Medal Flour All Purpose, 10 lb",
+                name: "all-purpose flour"
             }
         ]);
     }).then(() => {

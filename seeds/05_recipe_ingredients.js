@@ -44,6 +44,69 @@ exports.seed = function(knex, Promise) {
                 units: "oz",
                 hasWeight: true,
                 hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 106,
+                quantity: 350,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 48,
+                quantity: 225,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 102,
+                quantity: 225,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 37,
+                quantity: 100,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 103,
+                quantity: 300,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 104,
+                quantity: 25,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 81,
+                quantity: 60,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 100,
+                quantity: 5,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
+            }, {
+                recipe_id: 4,
+                ingredient_id: 105,
+                quantity: 5,
+                units: "g",
+                hasWeight: true,
+                hasVolume: false
             }
         ]);
     });

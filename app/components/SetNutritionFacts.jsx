@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import axios from "axios";
+import Loading from "react-loading";
 
 import {capitalizeWords, replaceSpacesWithUnderscores} from "helperFunctions";
 import {createOptions, renderOptions} from "setNfFormHelpers";
 import SetNutritionFactsError from "SetNutritionFactsError";
+import LoadingNutritionFacts from "LoadingNutritionFacts";
+
 var actions = require("actions");
 
 const APPID = "57583012";
@@ -14,7 +17,7 @@ class SetNutritionFacts extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {loading: true};
 
         for (let obj of this.props.needNf) {
             this.state[replaceSpacesWithUnderscores(obj.name)] = [];
@@ -24,9 +27,13 @@ class SetNutritionFacts extends Component {
     }
 
     async componentWillMount() {
+        console.log("component mounting");
         var stateChanges = await createOptions(this.props.needNf);
 
-        this.setState(stateChanges);
+        this.setState({
+            ...stateChanges,
+            loading: false
+        });
     }
 
     renderIngredients() {
@@ -69,7 +76,7 @@ class SetNutritionFacts extends Component {
                 value: Math.round(nutritionFacts.calories)
             }));
             dispatch(actions.setCurrentRecipeNutritionFacts(nutritionFacts));
-            
+
             window.location.hash = "/recipe/view"
         } catch(err) {
             console.error(err);
@@ -79,6 +86,10 @@ class SetNutritionFacts extends Component {
     render() {
         if (this.props.needNf.length === 0) {
             return <SetNutritionFactsError></SetNutritionFactsError>;
+        }
+
+        if (this.state.loading) {
+            return <LoadingNutritionFacts></LoadingNutritionFacts>;
         }
 
         return (

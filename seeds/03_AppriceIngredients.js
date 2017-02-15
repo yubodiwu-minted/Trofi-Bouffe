@@ -186,7 +186,8 @@ exports.seed = function(knex, Promise) {
                     id: 37,
                     upc: "015800030584",
                     plu: null,
-                    product_name: "C&H Pure Cane Granulated White Sugar (4 lb.)"
+                    product_name: "C&H Pure Cane Granulated White Sugar (4 lb.)",
+                    name: "sugar"
                 }, {
                     id: 38,
                     upc: "089836185136",
@@ -408,7 +409,8 @@ exports.seed = function(knex, Promise) {
                     id: 81,
                     upc: "715141113570",
                     plu: null,
-                    product_name: "Eggland\"s Best Eggs Large (18 Ct.)"
+                    product_name: "Eggland\"s Best Eggs Large (18 Ct.)",
+                    name: "eggs"
                 }, {
                     id: 82,
                     upc: "492840300219",
