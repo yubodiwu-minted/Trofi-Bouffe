@@ -55,7 +55,7 @@ var isVolumeUnit = (unit) => {
 };
 
 var isWeightUnit = (unit) => {
-    if (unit.indexOf("oz") !== -1 || unit.indexOf("lbs") !== -1 || unit === "g" || unit === "grams") {
+    if (unit.indexOf("oz") !== -1 || unit.indexOf("lbs") !== -1 || unit === "g" || unit === "grams" || unit === "G") {
         return true;
     } else {
         return false;
@@ -66,16 +66,19 @@ var convertUnitsFromTo = (fromUnit, toUnit) => {
     var convertTable = {
         g: {
             g: 1,
+            G: 1,
             oz: 16 / 453.592,
             lbs: 1 / 453.5921
         },
         oz: {
             g: 28.3495,
+            G: 28.3495,
             oz: 1,
             lbs: 1/16
         },
         lbs: {
             g: 453.592,
+            G: 453.592,
             oz: 16,
             lbs: 1
         },
