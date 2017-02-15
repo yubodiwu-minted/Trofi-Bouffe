@@ -109,8 +109,9 @@ var convertUnitsFromTo = (fromUnit, toUnit) => {
 
 var filterForWeightOrVolumeRequirement = (data) => {
     return data.filter((ingredient) => {
+        console.log(ingredient);
         if (ingredient.needsWeight) {
-            return ingredient.hasWeight;
+            return ingredient.hasWeight || ingredient.serving_weight_grams;
         } else if (ingredient.needsVolume) {
             return ingredient.hasVolume;
         }
@@ -118,8 +119,13 @@ var filterForWeightOrVolumeRequirement = (data) => {
 }
 
 var combineNutritionFacts = (data) => {
+    console.log(data);
     return data.reduce((accum, cur) => {
-        var multiplier = cur.recipeQuantity / cur.serving_quantity * convertUnitsFromTo(cur.recipeUnits, cur.serving_unit);
+        if (cur.needsWeight && !isWeightUnit(cur.serving_unit)) {
+            var multiplier = cur.recipeQuantity / cur.serving_weight_grams * convertUnitsFromTo(cur.recipeUnits, "g");
+        } else {
+            var multiplier = cur.recipeQuantity / cur.serving_quantity * convertUnitsFromTo(cur.recipeUnits, cur.serving_unit);
+        }
 
         for (let key in accum) {
             accum[key] = accum[key] + cur[key] * multiplier;
