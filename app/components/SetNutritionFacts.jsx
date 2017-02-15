@@ -6,6 +6,8 @@ import Loading from "react-loading";
 import {capitalizeWords, replaceSpacesWithUnderscores} from "helperFunctions";
 import {createOptions, renderOptions} from "setNfFormHelpers";
 import SetNutritionFactsError from "SetNutritionFactsError";
+import LoadingNutritionFacts from "LoadingNutritionFacts";
+
 var actions = require("actions");
 
 const APPID = "57583012";
@@ -25,6 +27,7 @@ class SetNutritionFacts extends Component {
     }
 
     async componentWillMount() {
+        console.log("component mounting");
         var stateChanges = await createOptions(this.props.needNf);
 
         this.setState({
@@ -36,10 +39,6 @@ class SetNutritionFacts extends Component {
     renderIngredients() {
         var key = 0;
         var selectors = [];
-
-        if (this.state.loading) {
-            return <Loading type="spin" color="#A2D1CF"></Loading>;
-        }
 
         return this.props.needNf.map((obj) => {
             var name = obj.name;
@@ -87,6 +86,10 @@ class SetNutritionFacts extends Component {
     render() {
         if (this.props.needNf.length === 0) {
             return <SetNutritionFactsError></SetNutritionFactsError>;
+        }
+
+        if (this.state.loading) {
+            return <LoadingNutritionFacts></LoadingNutritionFacts>;
         }
 
         return (

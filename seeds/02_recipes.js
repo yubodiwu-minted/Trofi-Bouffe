@@ -24,6 +24,7 @@ exports.seed = function(knex, Promise) {
                 id: 4,
                 user_id: 5,
                 name: "Chocolate Chip Cookies",
+                servings: 32,
                 img: "http://www.seriouseats.com/recipes/assets_c/2015/12/20131213-chocolate-chip-cookies-food-lab-55-edit-thumb-1500xauto-428695.jpg"
             }),
             knex("recipes").insert({

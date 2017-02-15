@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
     } catch (err) {
         console.error(err);
     }
-
+    
     knex("recipes")
         .insert({
             user_id: user.id,
