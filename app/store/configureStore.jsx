@@ -30,5 +30,6 @@ export var configure = (initialState = {}) => {
 
     var createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
-    return createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    // return createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    return createStoreWithMiddleware(reducers);
 }
