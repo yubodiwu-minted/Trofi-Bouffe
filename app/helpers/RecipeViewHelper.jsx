@@ -40,9 +40,11 @@ export var renderNfButton = (props) => {
 
 export var renderEditRecipeButton = (props) => {
     var jwt = localStorage.getItem("jwt");
-    var decodedJwt = jwtDecode(jwt);
-    console.log("decodedJwt.id is ", decodedJwt.id);
-    console.log("id on current recipe is ", props.currentRecipe.user_id);
+    
+    if (jwt) {
+        var decodedJwt = jwtDecode(undefined);
+    }
+
     if (jwt && decodedJwt.id === props.currentRecipe.user_id) {
         return <button className="green-button" onClick={() => {
             props.dispatch(actions.editRecipeClicked());
