@@ -40,9 +40,9 @@ export var renderNfButton = (props) => {
 
 export var renderEditRecipeButton = (props) => {
     var jwt = localStorage.getItem("jwt");
-    
+
     if (jwt) {
-        var decodedJwt = jwtDecode(undefined);
+        var decodedJwt = jwtDecode(jwt);
     }
 
     if (jwt && decodedJwt.id === props.currentRecipe.user_id) {
