@@ -33,6 +33,8 @@ router.get("/:recipeId", (req, res) => {
         }).catch((err) => {
             res.end(err)
         });
+
+    console.log('line after database query is being called');
 });
 
 router.get("/recipe/:recipeId", function(req, res) {

@@ -29,7 +29,7 @@ async function getOptions(name, needsvolume, needsweight) {
     var nutritionOptions = nutritionixResponse.data.hits.filter((hit) => {
         if (needsvolume && isVolumeUnit(hit.fields.nf_serving_size_unit)) {
             return true;
-        } else if (needsweight && (isWeightUnit(hit.fields.nf_serving_size_unit) || hit.fields.nf_serving_weight_grams)) {
+        } else if (hit.fields.nf_serving_size_unit && needsweight && (isWeightUnit(hit.fields.nf_serving_size_unit) || hit.fields.nf_serving_weight_grams)) {
             return true;
         } else {
             return false;
