@@ -9,10 +9,21 @@ class LoginForm extends Component {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.passwordChange = this.passwordChange.bind(this);
 
     this.state = {
+      email: '',
+      password: '',
       logInSuccessful: true,
     };
+  }
+
+  emailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  passwordChange(event) {
+    this.setState({ password: event.target.value });
   }
 
   async handleSubmit(event) {
@@ -21,8 +32,8 @@ class LoginForm extends Component {
 
     try {
       const response = await axios.post('/users/login', {
-        email: this.refs.email.value,
-        password: this.refs.password.value,
+        email: this.state.email,
+        password: this.state.password,
       });
 
       if (response.data.authenticated) {
@@ -54,10 +65,22 @@ class LoginForm extends Component {
             <div className="row column log-in-form">
               <h4 className="text-center">Log in</h4>
               <label htmlFor="email">Email
-                <input ref="email" placeholder="somebody@example.com" type="email" required/>
+                <input
+                  placeholder="somebody@example.com"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.emailChange}
+                  required
+                />
               </label>
               <label className="below-email-field" htmlFor="password">Password
-                <input ref="password" placeholder="Password" type="password" required/>
+                <input
+                  placeholder="Password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.passwordChange}
+                  required
+                />
               </label>
               <div className="authentication-error-holder">
                 {this.renderLogInError()}
