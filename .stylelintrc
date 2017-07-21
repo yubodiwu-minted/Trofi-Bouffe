@@ -1,0 +1,24 @@
+{
+  "processors": ["stylelint-processor-html"],
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "declaration-no-important": true,
+    "font-family-name-quotes": "always-unless-keyword",
+    "font-weight-notation": "numeric",
+    "string-quotes": "double",
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "max-nesting-depth": 2,
+    "color-named": "never",
+    "unit-whitelist": [
+      "ms",
+      "rem",
+      "vw",
+      "vh",
+      "vmax",
+      "vmin",
+      "%"
+    ]
+  }
+}
